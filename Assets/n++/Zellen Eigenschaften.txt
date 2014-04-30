@@ -1,0 +1,10 @@
+Celltypen
+
+0 - Erde
+1 - Wasser
+2 - Stein
+3 - Magma
+4 - Kohle
+5 - Gold
+6 - Öl
+7 - Diamanten
