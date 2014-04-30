@@ -51,8 +51,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.3707087, z: 0}
+  m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.37070894, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400000}
@@ -69,7 +69,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: bbbfa29ec91eace439455fae88afb48a, type: 2}
+  - {fileID: 2100000, guid: f7ad1144dbd96fd409159ca85aff819f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -84,7 +84,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 4300000, guid: 3505791dbbfef3a4a87e9bedbcb32fed, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 76c47a2b05844cf4db198e340c9987b0, type: 3}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 2
@@ -93,7 +93,7 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 3505791dbbfef3a4a87e9bedbcb32fed, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 76c47a2b05844cf4db198e340c9987b0, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_ApplyRootMotion: 1
