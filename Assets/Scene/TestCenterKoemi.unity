@@ -133,7 +133,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 148710587}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4df51dfe29464f4bb353a380676e2cd, type: 3}
+  m_Script: {fileID: 11500000, guid: e9f5f4acebd77e34faf9d33ef91c0d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pControl: {fileID: 0}
@@ -502,7 +502,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1315887988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a12834a8d2b7d05438196434d4bd3493, type: 3}
+  m_Script: {fileID: 11500000, guid: d8c3f74922290794f8c97063fa23951c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fps: 0
@@ -578,7 +578,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1315887988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e03d81fbeca1886469c2de62f71949d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 632d7764de7c1c64c9714a41b2c69b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pObject: {fileID: 0}
@@ -665,8 +665,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1447474005}
-  - 114: {fileID: 1447474006}
   - 114: {fileID: 1447474007}
+  - 114: {fileID: 1447474006}
   m_Layer: 0
   m_Name: MenuResearch
   m_TagString: MenuResearch
@@ -693,7 +693,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1447474004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b578271c579423942993c6b1c99dce8e, type: 3}
+  m_Script: {fileID: 11500000, guid: 002576742f40dc942ad126e4e8315132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hintTextObject: {fileID: 0}
@@ -702,9 +702,10 @@ MonoBehaviour:
   tmResearchButtonText: {fileID: 0}
   showResearch: 0
   researchTypeCount: 0
-  researchButtonDefault: {fileID: 2800000, guid: d2c945c1730fa6c44b4693e27dd38ba1,
+  bla: {fileID: 0}
+  researchButtonDefault: {fileID: 2800000, guid: 7b21f5b29fa584943910f453d56d1e6c,
     type: 3}
-  researchBackground: {fileID: 2800000, guid: b061fb4c5e11ce641966545d7eebb8ba, type: 3}
+  researchBackground: {fileID: 2800000, guid: 0b4265576f72d764db52757ac6efd7b3, type: 3}
   researchStyle:
     m_Name: 
     m_Normal:
@@ -751,7 +752,7 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
+    m_Font: {fileID: 0}
     m_FontSize: 0
     m_FontStyle: 0
     m_Alignment: 0
@@ -764,7 +765,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  researchButtonText: {fileID: 100000, guid: dd92e2f746c467749b4ee95b62003c48, type: 2}
+  researchButtonText: {fileID: 0}
   pLResearchButtonText: []
 --- !u!114 &1447474007
 MonoBehaviour:

@@ -16,7 +16,7 @@ public class ResearchWindow : MonoBehaviour {
     public int researchTypeCount;
 
 
-
+    public Texture2D bla;
     // Grafiken
     public Texture2D researchButtonDefault;
     public Texture2D researchBackground;
@@ -51,7 +51,7 @@ public class ResearchWindow : MonoBehaviour {
             GUI.BeginGroup(new Rect(0, 0, 600, 500));
             GUI.Box(new Rect(0, 0, 600, 500), researchBackground);
 
-            if(GUI.Button(new Rect(0,0,130,55), researchButtonDefault))
+            if (GUI.Button(new Rect(0, 0, 130, 55), bla))
             { }
 
             if (GUI.Button(new Rect(0, 70, 130, 55), researchButtonDefault))
