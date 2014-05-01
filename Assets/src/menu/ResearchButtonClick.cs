@@ -47,6 +47,7 @@ public class ResearchButtonClick : MonoBehaviour
                             resWindow.researchingStarted = true;
 
                             pMaster.playerMoney -= researchAmount.costsMoney[researchAmount.currentLevel];
+                            pMaster.playerResearchPoints -= researchAmount.costsResearch[researchAmount.currentLevel];
                         }
 
                     }
@@ -68,6 +69,7 @@ public class ResearchButtonClick : MonoBehaviour
                             resWindow.researchingStarted = true;
 
                             pMaster.playerMoney -= researchBuildCosts.costsMoney[researchBuildCosts.currentLevel];
+                            pMaster.playerResearchPoints -= researchBuildCosts.costsResearch[researchBuildCosts.currentLevel];
                         }
 
                     }
@@ -88,6 +90,7 @@ public class ResearchButtonClick : MonoBehaviour
                             resWindow.researchingStarted = true;
 
                             pMaster.playerMoney -= researchDrill.costsMoney[researchDrill.currentLevel];
+                            pMaster.playerResearchPoints -= researchDrill.costsResearch[researchDrill.currentLevel];
                         }
 
                     }
@@ -108,6 +111,7 @@ public class ResearchButtonClick : MonoBehaviour
                             resWindow.researchingStarted = true;
 
                             pMaster.playerMoney -= researchSpeed.costsMoney[researchSpeed.currentLevel];
+                            pMaster.playerResearchPoints -= researchSpeed.costsResearch[researchSpeed.currentLevel];
                         }
 
                     }
@@ -122,12 +126,13 @@ public class ResearchButtonClick : MonoBehaviour
 
                         if (pMaster.playerMoney >= researchDrillPlattform.costsMoney[researchDrillPlattform.currentLevel] && pMaster.playerResearchPoints >= researchDrillPlattform.costsResearch[researchDrillPlattform.currentLevel])
                         {
-                            resWindow.currentResearchType = rType.Scan;
+                            resWindow.currentResearchType = rType.DrillingPlattform;
                             resWindow.researchTime = researchDrillPlattform.researchTime[researchDrillPlattform.currentLevel];
                             resWindow.speicher1 = resWindow.researchTime / 100;
                             resWindow.researchingStarted = true;
 
                             pMaster.playerMoney -= researchDrillPlattform.costsMoney[researchDrillPlattform.currentLevel];
+                            pMaster.playerResearchPoints -= researchDrillPlattform.costsResearch[researchDrillPlattform.currentLevel];
                         }
 
                     }
@@ -149,7 +154,7 @@ public class ResearchButtonClick : MonoBehaviour
                             resWindow.researchingStarted = true;
 
                             pMaster.playerMoney -= researchScan.costsMoney[researchScan.currentLevel];
-
+                            pMaster.playerResearchPoints -= researchScan.costsResearch[researchScan.currentLevel];
                         }
 
                     }

@@ -586,6 +586,10 @@ Prefab:
       propertyPath: aspectRatio
       value: 2.13636374
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: mDepth
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fee46b827274e694aa251e2d36700135, type: 2}
   m_RootGameObject: {fileID: 495424267}
@@ -655,7 +659,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.13636374
+  aspectRatio: 2.81818175
   mAtlas: {fileID: 11400000, guid: 62adb30369acbf943a67cee0f69267a3, type: 2}
   mSpriteName: Stripes 3
   mType: 2
@@ -851,7 +855,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.13636374
+  aspectRatio: 2.81818175
   mAtlas: {fileID: 11400000, guid: 62adb30369acbf943a67cee0f69267a3, type: 2}
   mSpriteName: Stripes 3
   mType: 2
@@ -1085,6 +1089,10 @@ Prefab:
       propertyPath: aspectRatio
       value: 2.90476179
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: mDepth
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fee46b827274e694aa251e2d36700135, type: 2}
   m_RootGameObject: {fileID: 1689242307}
@@ -1225,7 +1233,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 130
   mHeight: 50
-  mDepth: 0
+  mDepth: 1
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -1545,7 +1553,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 130
   mHeight: 50
-  mDepth: 0
+  mDepth: 1
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -1806,6 +1814,10 @@ Prefab:
     - target: {fileID: 11400014, guid: fee46b827274e694aa251e2d36700135, type: 2}
       propertyPath: aspectRatio
       value: 2.13636374
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: mDepth
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fee46b827274e694aa251e2d36700135, type: 2}
@@ -2302,7 +2314,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 130
   mHeight: 50
-  mDepth: 0
+  mDepth: 1
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -2455,7 +2467,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 130
   mHeight: 50
-  mDepth: 0
+  mDepth: 1
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -3173,6 +3185,10 @@ Prefab:
       propertyPath: aspectRatio
       value: 2.13636374
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: mDepth
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fee46b827274e694aa251e2d36700135, type: 2}
   m_RootGameObject: {fileID: 1120840392}
@@ -3524,6 +3540,10 @@ Prefab:
       propertyPath: rightAnchor.absolute
       value: -4
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: mDepth
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fee46b827274e694aa251e2d36700135, type: 2}
   m_RootGameObject: {fileID: 1037176465}
@@ -3593,7 +3613,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 4.23529434
+  aspectRatio: 2.81818175
   mAtlas: {fileID: 11400000, guid: 62adb30369acbf943a67cee0f69267a3, type: 2}
   mSpriteName: Stripes 3
   mType: 2
@@ -4024,7 +4044,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 130
   mHeight: 50
-  mDepth: 0
+  mDepth: 1
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -4145,7 +4165,7 @@ Transform:
   m_GameObject: {fileID: 1727313767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .00294550811, y: .00294550811, z: .00294550811}
+  m_LocalScale: {x: .00344234076, y: .00344234076, z: .00344234076}
   m_Children:
   - {fileID: 1241459527}
   - {fileID: 1200641058}
@@ -4255,7 +4275,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 20.8571434
+  aspectRatio: 19.181818
   mAtlas: {fileID: 11400000, guid: 62adb30369acbf943a67cee0f69267a3, type: 2}
   mSpriteName: Stripes 1
   mType: 2
@@ -4404,7 +4424,7 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 130
   mHeight: 50
-  mDepth: 0
+  mDepth: 1
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
@@ -4486,7 +4506,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.13636374
+  aspectRatio: 2.81818175
   mAtlas: {fileID: 11400000, guid: 62adb30369acbf943a67cee0f69267a3, type: 2}
   mSpriteName: Stripes 3
   mType: 2
@@ -4564,7 +4584,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.13636374
+  aspectRatio: 2.81818175
   mAtlas: {fileID: 11400000, guid: 62adb30369acbf943a67cee0f69267a3, type: 2}
   mSpriteName: Stripes 3
   mType: 2
@@ -4642,7 +4662,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.13636374
+  aspectRatio: 2.81818175
   mAtlas: {fileID: 11400000, guid: 62adb30369acbf943a67cee0f69267a3, type: 2}
   mSpriteName: Stripes 3
   mType: 2
@@ -4989,6 +5009,10 @@ Prefab:
     - target: {fileID: 11400014, guid: fee46b827274e694aa251e2d36700135, type: 2}
       propertyPath: aspectRatio
       value: 2.13636374
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: mDepth
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fee46b827274e694aa251e2d36700135, type: 2}
