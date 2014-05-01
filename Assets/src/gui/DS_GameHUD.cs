@@ -6,10 +6,12 @@ public class DS_GameHUD : MonoBehaviour
 
     private bool istAmBauen = false;
 
+    public GameObject prefabGebaeude;
     private GameObject instanzGebaeude;
 
-    public GameObject prefabGebaeude;
-    //Dein Vater und deine Mudda
+    private Color colorInit;
+    public Color colorAllowedToBuild;
+    public Color colorDeniedToBuild;
 
     // Use this for initialization
     void Start()
@@ -20,115 +22,77 @@ public class DS_GameHUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
         if (istAmBauen)
         { 
 
-            Vector3 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
-            float mouseX = mousePos.x;
-            float mouseY = mousePos.y;
-
-            Vector2 punktMaus = new Vector2(mouseX,mouseY);
-            Vector2 punkt0 = new Vector2(0,0);
+            Vector3 posMaus = camera.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 posNull = new Vector2(0, 0);
 
             float radius = prefabGebaeude.transform.position.y;
-            float winkel = (Mathf.Atan((punkt0.x-punktMaus.x)/(punkt0.y-punktMaus.y)) * 180/Mathf.PI);
+            float winkel = (Mathf.Atan((posNull.x - posMaus.x) / (posNull.y - posMaus.y)) * 180 / Mathf.PI);
+            float winkelteil = 360f / 20f; //ToDo die 20 ersetzten durch die echten teile
+            float alphaD = (2f * Mathf.PI) / 20; //ToDo die 20 ersetzten durch die echten teile
 
-            if (punktMaus.x >= punkt0.x && punktMaus.y <= punkt0.y) winkel = winkel*-1+180; //Q 1
-            else if (punktMaus.x <= punkt0.x && punktMaus.y <= punkt0.y) winkel =(90-winkel)+90; //Q 2
-            else if (punktMaus.x >= punkt0.x && punktMaus.y >= punkt0.y) winkel =(90-winkel)+270; //Q 3
+
+            if (posMaus.x >= posNull.x && posMaus.y <= posNull.y) winkel = winkel * -1 + 180; //Q 1
+            else if (posMaus.x <= posNull.x && posMaus.y <= posNull.y) winkel = (90 - winkel) + 90; //Q 2
+            else if (posMaus.x >= posNull.x && posMaus.y >= posNull.y) winkel = (90 - winkel) + 270; //Q 3
             else winkel = winkel *-1;  
 
-
-            Debug.Log("Winkel = " + winkel);
-
-            //float intAlpha = 0;
-            //float radius = prefabGebaeude.transform.position.y;
-            //Vector2 punkt0 = new Vector2(0,0);
-
-            //int addition = 0;
-            //if (mousePos.x > 0 && mousePos.y > 0) { intAlpha = 0; }
-            //else if (mousePos.x < 0 && mousePos.y > 0) { intAlpha = 90; punkt0 = new Vector2(0, radius); }
-            //else if (mousePos.x < 0 && mousePos.y < 0) { intAlpha = 180; punkt0 = new Vector2(-radius, 0); }
-            //else if (mousePos.x > 0 && mousePos.y < 0) { intAlpha = 270; punkt0 = new Vector2(0, -radius); }
-
-
-            ////if (mousePos.x > 0 && mousePos.y > 0) { addition = 0; intAlpha = 0; }
-            ////else if (mousePos.x < 0 && mousePos.y > 0) { mouseX *= -1; addition = 5; ;intAlpha = 90; punkt0 = new Vector2(0, radius); }
-            ////else if (mousePos.x < 0 && mousePos.y < 0) { mouseX *= -1; mouseY *= -1; addition = 10; intAlpha = 180; punkt0 = new Vector2(-radius, 0); }
-            ////else if (mousePos.x > 0 && mousePos.y < 0) { mouseY *= -1; addition = 15; intAlpha = 270; punkt0 = new Vector2(0, -radius); }
-
-            ////Debug.DrawRay(new Vector3(0, 0, 0), new Vector3(transform.position.y, 0, 0)*20, Color.red, 10);
-            ////Debug.Log((camera.ScreenToWorldPoint(Input.mousePosition)));
-            ////Debug.Log("Alpha = " + Mathf.Atan((mouseY - 0) / (mouseX - prefabGebaeude.transform.position.y)));
-            ////Debug.Log("Cos Alpha = " + prefabGebaeude.transform.position.y);
-            ////Debug.Log("Sin Alpha = "+Vector3.Distance(new Vector3(transform.position.y,0,0),new Vector3(mouseX,mouseY,0)));
-
-            
-            //Vector2 punktA = new Vector2(radius, 0);
-            //Vector2 punktMaus = new Vector2(mouseX, mouseY);
-            //float gegenkathete = Vector2.Distance(punktA, punktMaus);
-
-
-            //Debug.Log("PunktA = " + punktA);
-            //Debug.Log("PunktMaus = " + punktMaus);
-            //Debug.Log("Gegenkathete = " + gegenkathete);
-
-            //Debug.Log("0,0 zu Maus = " + Vector2.Distance(punkt0,punktMaus));
-            //Debug.Log("0,0 zu Punkt A = " + Vector2.Distance(punkt0, punktA));
-
-            //float hypothenuse = 0;
-            //if (Vector2.Distance(new Vector2(0, 0), punktMaus) > Vector2.Distance(new Vector2(0, 0), punktA))
-            //{ hypothenuse = Vector2.Distance(punkt0, punktMaus); }
-            //else
-            //{ hypothenuse = Vector2.Distance(punkt0, punktA); }
-            //Debug.Log("Hypothenuse = " + hypothenuse);
-            
-            //float gegenhypo = gegenkathete/hypothenuse;
-            //Debug.Log("gegenhypo = " + gegenhypo);
-
-            ////Debug.Log("Alpha = " + (Mathf.Asin(gegenhypo)*Mathf.Rad2Deg));
-            //Debug.Log("NewAlpha = " + (intAlpha + (Mathf.Asin(gegenhypo) * Mathf.Rad2Deg)));
-
-
-
-
-            //float alpha = (2f * Mathf.PI) / 20;
-            ////(camera.ScreenToWorldPoint(Input.mousePosition).x)
-            
-
-
-            float winkelteil = 360f / 20f;
-
             int volleTeile = (int)(winkel / winkelteil);
-            float rest = winkel%winkelteil;
-
-            Debug.Log(volleTeile);
-            Debug.Log(rest);
-            float neuerWinkel = volleTeile*winkelteil;
-            if (rest >= (winkelteil / 2)) volleTeile += 1;
-
-            float alphaD = (2f * Mathf.PI) / 20;
+            if (winkel%winkelteil >= (winkelteil / 2)) volleTeile += 1;
 
             Vector3 newPosition = prefabGebaeude.transform.position;
-            newPosition.x = Mathf.Cos((volleTeile+5)*alphaD) *prefabGebaeude.transform.position.y;
+            newPosition.x = Mathf.Cos((volleTeile+5)*alphaD) *radius;
             newPosition.y = Mathf.Sin((volleTeile+5)*alphaD) *prefabGebaeude.transform.position.y;
-            //newPosition.z = 0;
-
+            
+            Vector3 rayPosition = prefabGebaeude.transform.position;
+            rayPosition.x = Mathf.Cos((volleTeile + 5) * alphaD) * (prefabGebaeude.transform.position.y + 1);
+            rayPosition.y = Mathf.Sin((volleTeile + 5) * alphaD) * (prefabGebaeude.transform.position.y + 1);
+            
             instanzGebaeude.transform.position = newPosition;
-            instanzGebaeude.transform.LookAt(new Vector3(0, 0, 0));
+            instanzGebaeude.transform.localEulerAngles  = new Vector3(0, 0, volleTeile* winkelteil);
 
-            if (Input.GetMouseButton(1))
+
+            Debug.DrawRay(rayPosition, newPosition * -1, Color.black);
+
+            RaycastHit rayHitOtherBuilding;
+
+            instanzGebaeude.renderer.material.color = colorDeniedToBuild;
+
+            if (!Physics.Raycast(rayPosition,newPosition*-1,out rayHitOtherBuilding,1f))            
             {
-                istAmBauen = false;
-                instanzGebaeude = null;
+                RaycastHit rayHitGround;
+
+                GameObject groundCell = null;
+                CellControl groundCellInfos = null;
+
+                Debug.DrawRay(newPosition, newPosition * -1, Color.cyan);
+                if (Physics.Raycast(newPosition, newPosition * -1, out rayHitGround, 1f))
+                {
+                    groundCell = rayHitGround.transform.parent.gameObject;
+                    groundCellInfos = (CellControl)groundCell.GetComponent<CellControl>();
+                    Debug.Log("Transform = " + groundCell.ToString());
+                    Debug.Log("ZellenTyp = " + groundCellInfos.bodenart.ToString());
+
+                    if (groundCellInfos.bodenart != CellControl.BODENARTEN.Magma &&
+                        groundCellInfos.bodenart != CellControl.BODENARTEN.Wasser &&
+                        groundCellInfos.bodenart != CellControl.BODENARTEN.Oel)
+                    {
+                        instanzGebaeude.renderer.material.color = colorAllowedToBuild;
+
+
+                        if (Input.GetMouseButton(1))
+                        {
+                            instanzGebaeude.transform.position = new Vector3(instanzGebaeude.transform.position.x, instanzGebaeude.transform.position.y, 0);
+                            instanzGebaeude.collider.enabled = true;
+                            instanzGebaeude.renderer.material.color = colorInit;
+                            istAmBauen = false;
+                            instanzGebaeude = null;
+                        }
+                    }
+                }
             }
-
-        }
-        else
-        {
-
         }
 
     }
@@ -141,6 +105,8 @@ public class DS_GameHUD : MonoBehaviour
             {
                 istAmBauen = true;
                 instanzGebaeude = (GameObject)Instantiate(prefabGebaeude);
+                instanzGebaeude.collider.enabled = false;
+                colorInit = instanzGebaeude.renderer.material.color;
 
 
             }

@@ -26,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0192915499, y: 6.21198797, z: -.25}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: .0192915499, y: 6.21198797, z: -.100000001}
+  m_LocalScale: {x: 1, y: 1, z: .400000006}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!23 &2300000
@@ -72,7 +72,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
@@ -81,6 +81,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d514d500f2c1c3b42a8447df4eb25c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
+  showInterface: 0
+  isDrilling: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
