@@ -10,17 +10,10 @@ public class PlayerAttributeControl : MonoBehaviour {
     GameObject moneyGameObject;
     GameObject researchPointsGameObject;
 
-    public TextMesh moneyTextMesh;
-    public TextMesh researchPointsTextMesh;
 
     // +++++++
     // Research
 
-    public bool research1 = false;
-    public bool research2 = false;
-    public bool research3 = false;
-    public bool research4 = false;
-    public bool research5 = false;
     
 
     // +++++++
@@ -33,10 +26,10 @@ public class PlayerAttributeControl : MonoBehaviour {
     {
 
         moneyGameObject = GameObject.FindGameObjectWithTag("Money");
-        moneyTextMesh = moneyGameObject.GetComponent<TextMesh>();
+
 
         researchPointsGameObject = GameObject.FindGameObjectWithTag("LaborPoints");
-        researchPointsTextMesh = researchPointsGameObject.GetComponent<TextMesh>();
+
 
 
 	} // END Start
@@ -55,13 +48,13 @@ public class PlayerAttributeControl : MonoBehaviour {
 
     void MoneyLoop()
     {
-        moneyTextMesh.text = "Money: " + playerMoney.ToString();
+       // moneyTextMesh.text = "Money: " + playerMoney.ToString();
     } // END MoneyLoop
 
 
     void ResearchPointsLoop()
     {
-        researchPointsTextMesh.text = "LabPoints: " + playerResearchPoints.ToString();
+       // researchPointsTextMesh.text = "LabPoints: " + playerResearchPoints.ToString();
     } // END ResearchPointsLoop
 
 

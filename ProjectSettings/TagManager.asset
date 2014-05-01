@@ -8,6 +8,7 @@ TagManager:
   - Hint
   - Research
   - MenuResearch
+  - ResearchTime
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

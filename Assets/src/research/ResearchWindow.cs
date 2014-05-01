@@ -1,116 +1,148 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using rType = ResearchMain.rType;
 
 public class ResearchWindow : MonoBehaviour {
 
     // Allgemein
-    public GameObject hintTextObject;
-    public TextMesh hintText;
     public ResearchMaster rMaster;
-    public TextMesh tmResearchButtonText;
-
-
+    public PlayerAttributeControl playerMaster;
+    
     // Research
-    public bool showResearch = false;
+    public bool showResearch = true;
     public int researchTypeCount;
+    public bool researchingStarted = false;
+    public float researchTime = 0f;
+    public float researchResult = 0f;
+    public float speicher1 = 0f;
+    public rType currentResearchType;
 
+    // Grafik
+    public GameObject researchWindowMenu;
 
-    public Texture2D bla;
-    // Grafiken
-    public Texture2D researchButtonDefault;
-    public Texture2D researchBackground;
-    public GUIStyle researchStyle;
-    public GameObject researchButtonText;
-    public List<GameObject> pLResearchButtonText;
+    // Buttons
+    public UILabel buttonSpeedLabel;
+    public UILabel buttonAmountLabel;
+    public UILabel buttonDrillLabel;
+    public UILabel buttonBuildCostsLabel;
+    public UILabel buttonDrillPlattformLabel;
+    public UILabel buttonScan;
 
-
-
+    // ProgressBar
+    public UISlider progressbarSlider;
+    public UILabel researchTimeLabel;
+   
+    
+    
+    
+    
     // ###########################
 	// Use this for initialization
 	void Start () {
 
         rMaster = this.GetComponent<ResearchMaster>();
         researchTypeCount = rMaster.resDictionary.Count;
-	}
+        playerMaster = GameObject.Find("01_Player").GetComponent<PlayerAttributeControl>();
+
+        researchWindowMenu = GameObject.FindGameObjectWithTag("MenuResearch");
+
+        
+
+        GameObject childHolder = gameObject.transform.FindChild("ResearchWindowData").gameObject;
+
+        researchTimeLabel = childHolder.transform.FindChild("ResearchTime").gameObject.GetComponent<UILabel>();
+
+        buttonSpeedLabel = childHolder.transform.FindChild("ButtonSpeed").gameObject.transform.FindChild("Label").gameObject.GetComponent<UILabel>();
+        buttonAmountLabel = childHolder.transform.FindChild("ButtonAmount").gameObject.transform.FindChild("Label").gameObject.GetComponent<UILabel>();
+        buttonDrillLabel = childHolder.transform.FindChild("ButtonDrill").gameObject.transform.FindChild("Label").gameObject.GetComponent<UILabel>();
+        buttonBuildCostsLabel = childHolder.transform.FindChild("ButtonBuildCosts").gameObject.transform.FindChild("Label").gameObject.GetComponent<UILabel>();
+        buttonDrillPlattformLabel = childHolder.transform.FindChild("ButtonDrillPlattform").gameObject.transform.FindChild("Label").gameObject.GetComponent<UILabel>();
+        buttonScan = childHolder.transform.FindChild("ButtonScan").gameObject.transform.FindChild("Label").gameObject.GetComponent<UILabel>();
+
+        progressbarSlider = gameObject.transform.FindChild("ResearchWindowData").gameObject.transform.FindChild("ProgressBarResearch").gameObject.transform.FindChild("Control - Colored Progress Bar").gameObject.GetComponent<UISlider>();
+
+        ResearchShow();
+	} // END Start
 	
 	// Update is called once per frame
 	void Update () {
 	
-	}
-
-
-
-    void OnGUI()
-    { 
-    
-        if(showResearch == true)
+        if(researchingStarted == true)
         {
 
-            GUI.backgroundColor = Color.clear;
-            GUI.BeginGroup(new Rect(0, 0, 600, 500));
-            GUI.Box(new Rect(0, 0, 600, 500), researchBackground);
+            if(researchTime > 0)
+            {
+                //float speicher100 = researchTime;
+                //float speicher1 = researchTime / 100;
 
-            if (GUI.Button(new Rect(0, 0, 130, 55), bla))
-            { }
+                researchTime -= 1 * Time.deltaTime;
+                researchResult = (1 - ((researchTime / speicher1) / 100));
 
-            if (GUI.Button(new Rect(0, 70, 130, 55), researchButtonDefault))
-            { }
+                progressbarSlider.value = researchResult;
+                ResearchWindowReload();
+                researchTimeLabel.text = researchTime.ToString();
+            }
+            else
+            {
+                rMaster.SetUpgrade(currentResearchType);
+                ResearchWindowReload();
+                researchingStarted = false;
+            }
+            
 
-            if (GUI.Button(new Rect(0, 140, 130, 55), researchButtonDefault))
-            { }
-
-            if (GUI.Button(new Rect(0, 210, 130, 55), researchButtonDefault))
-            { }
-
-            if (GUI.Button(new Rect(0, 280, 130, 55), researchButtonDefault))
-            { }
-
-
-            GUI.EndGroup();
-            Debug.Log("juchu");
         }
         else
-        { Debug.Log("hmpf"); }
+        {
+            
 
 
-    } // END OnGUI
+        }
+        
+
+
+	} // END Update
+
 
     public void ResearchShow()
     {
 
-        if(showResearch == false) { showResearch = true; } else { showResearch = false; }
+        if(showResearch == false) 
+        { 
+            showResearch = true;
+            researchWindowMenu.SetActive(true);
 
+            ResearchWindowReload();
+        } 
+        else
+        { 
+            showResearch = false;
+            researchWindowMenu.SetActive(false);
+        }
+
+        
 
     } // END ResearchShow
 
-
-
-    void FillResearchText()
+    public void ResearchWindowReload()
     {
-
-        if(showResearch == true)
-        {
-
-            for (int i = 1; i > researchTypeCount; i++)
-            {
-                pLResearchButtonText.Add(researchButtonText);
-
-                GUI.Button(new Rect(0, 0, 0, 0), "");
-                
-                tmResearchButtonText = pLResearchButtonText[i].GetComponent<TextMesh>();
+        buttonSpeedLabel.text = rMaster.resDictionary[rType.Speed].researchTitle + " - " + rMaster.resDictionary[rType.Speed].currentLevel;
+        buttonAmountLabel.text = rMaster.resDictionary[rType.Amount].researchTitle + " - " + rMaster.resDictionary[rType.Amount].currentLevel;
+        buttonDrillLabel.text = rMaster.resDictionary[rType.Drill].researchTitle + " - " + rMaster.resDictionary[rType.Drill].currentLevel;
+        buttonBuildCostsLabel.text = rMaster.resDictionary[rType.BuildCosts].researchTitle + " - " + rMaster.resDictionary[rType.BuildCosts].currentLevel;
+        buttonScan.text = rMaster.resDictionary[rType.Scan].researchTitle + " - " + rMaster.resDictionary[rType.Scan].currentLevel;
+        buttonDrillPlattformLabel.text = rMaster.resDictionary[rType.DrillingPlattform].researchTitle + " - " + rMaster.resDictionary[rType.DrillingPlattform].currentLevel;
 
 
-                tmResearchButtonText.text = rMaster.resDictionary[(i - 1)].researchTitle + "-" + rMaster.resDictionary[(i-1)].currentLevel;
-                tmResearchButtonText.transform.position = new Vector3(0f, 0f, 0f);
-            }
+        progressbarSlider.value = researchResult;
+    }   // END ResearchShow
+
+    public void ResearchStart()
+    { 
+    
 
 
-
-
-        }
-
-    } // END FillResearchText
+    } // END ResearchStart
 
 
 }

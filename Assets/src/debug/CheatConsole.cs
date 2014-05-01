@@ -33,69 +33,7 @@ public class CheatConsole : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (pControl.research1 == true)
-        { 
-            if(pControl.research2 == true)
-            {
-                if(pControl.research3 == true)
-                {
-                    if (timeIs > 0f)
-                    {
-
-                        timeIs -= 1 * Time.deltaTime;
-
-                    }
-                    else
-                    {
-                        WorkTime();
-                        timeIs = 1.25f;
-                    }
-                }
-                else
-                {
-                    if (timeIs > 0f)
-                    {
-
-                        timeIs -= 1 * Time.deltaTime;
-
-                    }
-                    else
-                    {
-                        WorkTime();
-                        timeIs = 2.5f;
-                    }
-                }
-            }
-            else
-            {
-                if (timeIs > 0f)
-                {
-
-                    timeIs -= 1 * Time.deltaTime;
-
-                }
-                else
-                {
-                    WorkTime();
-                    timeIs = 3.75f;
-                }
-            }
-        }
-        else 
-        {
-            if (timeIs > 0f)
-            {
-
-                timeIs -= 1 * Time.deltaTime;
-
-            }
-            else
-            {
-                WorkTime();
-                timeIs = 5f;
-            }
-        }
-
+        
         
 
 
