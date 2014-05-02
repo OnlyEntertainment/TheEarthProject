@@ -7,120 +7,51 @@ using SONDENART = BuildingInterface.SONDENART;
 
 public class Building : MonoBehaviour
 {
-    public string buildingName = "Bohrturm";
+    private GameObject buildingInterfaceObject;
+    private BuildingInterface buildingInterface;
+
 
     public enum BUILDINGSTATUS { Idle, Drilling, Mining, Probing, OnHold };
 
 
-    //public bool showInterface = false;
+    public string buildingName = "Bohrturm";
+    public BUILDINGSTATUS buildingStatus = BUILDINGSTATUS.Idle;
 
-    public BUILDINGSTATUS status = BUILDINGSTATUS.Idle;
-
-
-    public GameObject bohrer;
-
-
-    public int bohrtiefe = 0;
-    public BuildingInterface.BOHRERART bohrerArt = BuildingInterface.BOHRERART.Standard;
-    public BuildingInterface.SONDENART sondenArt = BuildingInterface.SONDENART.Starterkit;
+    public int drillingDepthCurrent = 0;
+    public int drillingDepthGoal = 0;
+    public BuildingInterface.BOHRERART drillType = BuildingInterface.BOHRERART.Standard;
+    public BuildingInterface.SONDENART probeType = BuildingInterface.SONDENART.Starterkit;
 
 
-    public int bohrTiefeAktuell = 0;
-    public float timer = 5;
+
+    public GameObject prefabDrillObject;
+    private List<GameObject> drillList = new List<GameObject>();
+
+
     public float timerIntervall = 5;
-
-    GameObject buildingInterfaceObject;
-    BuildingInterface buildingInterface;
+    public float timer = 5;
 
 
-    private GameObject abbauEbene;
-    private CellControl abbauCellControl;
-
-    public GameObject drillHolder;
+    private GameObject miningCell;
+    private CellControl miningCellControl;
 
 
-    private List<GameObject> bohrerListe = new List<GameObject>();
-
-    // Use this for initialization
     void Start()
     {
         buildingInterfaceObject = GameObject.Find("BuildingInterface");
         buildingInterface = buildingInterfaceObject.GetComponent<BuildingInterface>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (status == BUILDINGSTATUS.Drilling)
+        if (buildingStatus == BUILDINGSTATUS.Drilling)
         {
-            if (bohrTiefeAktuell <= bohrtiefe)
-            {
-                timer -= (1 * Time.deltaTime);
-
-                if (timer <= 0)
-                {
-
-                    bohrTiefeAktuell++;
-                    timer = timerIntervall;
-
-                    RaycastHit[] hitEbene = Physics.RaycastAll(gameObject.transform.position, gameObject.transform.position * -1, 5, 1 << 8);//Mathf.Infinity                   
-
-                    GameObject ebene = null;
-                    CellControl cell = null;
-
-                    for (int intEbene = 0; intEbene < hitEbene.Length; intEbene++)
-                    {
-                        ebene = hitEbene[intEbene].transform.parent.gameObject;
-                        cell = ebene.GetComponent<CellControl>();
-
-                        if (cell.lage == (20 - bohrTiefeAktuell + 1)) break;
-                    }
-
-                    Vector3 neuePos = new Vector3(ebene.transform.position.x, ebene.transform.position.y, bohrer.transform.position.z);
-                    GameObject neuerBohrer = (GameObject)Instantiate(bohrer, neuePos, ebene.transform.rotation);
-
-                    bohrerListe.Add(neuerBohrer);
-                    neuerBohrer.transform.position = neuePos;
-
-                    if (!canDrill(cell))
-                    {
-                        status = BUILDINGSTATUS.Idle;
-
-                        for (int item = 0; item < bohrerListe.Count; item++)
-                        {
-                            Destroy(bohrerListe[item]);
-                        }
-                        bohrerListe = new List<GameObject>();
-                    }
-
-                    if (bohrTiefeAktuell > bohrtiefe)
-                    {
-                        status = BUILDINGSTATUS.Mining;
-                        abbauEbene = ebene;
-                        abbauCellControl = cell;
-                    }
-
-
-
-                    //                    GameObject neuerBohrer = Instantiate(bohrer,new Vector3(gameObject.transform.position.x);
-
-                }
-            }
+            Drilling();
         }
-        else if (status == BUILDINGSTATUS.Mining)
+        else if (buildingStatus == BUILDINGSTATUS.Mining)
         {
-            if (abbauEbene != null && abbauCellControl != null)
-            { 
-                 timer -= (1 * Time.deltaTime);
+            Mining();
 
-                 if (timer <= 0)
-                 {
-                     timer = timerIntervall;
-
-
-
-                 }
-            }
         }
 
 
@@ -133,11 +64,78 @@ public class Building : MonoBehaviour
         //}
     }
 
+    private void Mining()
+    {
+        if (miningCell != null && miningCellControl != null)
+        {
+            timer -= (1 * Time.deltaTime);
+
+            if (timer <= 0)
+            {
+                timer = timerIntervall;
+
+
+
+            }
+        }
+    }
+
+    private void Drilling()
+    {
+        if (drillingDepthCurrent <= drillingDepthGoal)
+        {
+            timer -= (1 * Time.deltaTime);
+
+            if (timer <= 0)
+            {
+                RaycastHit[] hitEbene = Physics.RaycastAll(gameObject.transform.position, gameObject.transform.position * -1, 5, 1 << 8);//Mathf.Infinity            
+                GameObject ebene = null;
+                CellControl cell = null;
+                Vector3 neuePos;
+                GameObject neuerBohrer;
+
+                drillingDepthCurrent++;
+                timer = timerIntervall;
+
+                for (int intEbene = 0; intEbene < hitEbene.Length; intEbene++)
+                {
+                    ebene = hitEbene[intEbene].transform.parent.gameObject;
+                    cell = ebene.GetComponent<CellControl>();
+
+                    if (cell.lage == (20 - drillingDepthCurrent + 1)) break;
+                }
+
+                neuePos = new Vector3(ebene.transform.position.x, ebene.transform.position.y, prefabDrillObject.transform.position.z);
+                neuerBohrer = (GameObject)Instantiate(prefabDrillObject, neuePos, ebene.transform.rotation);
+
+                drillList.Add(neuerBohrer);
+                neuerBohrer.transform.position = neuePos;
+
+                if (!canDrill(cell))
+                {
+                    buildingStatus = BUILDINGSTATUS.Idle;
+
+                    for (int item = 0; item < drillList.Count; item++)
+                    {
+                        Destroy(drillList[item]);
+                    }
+                    drillList = new List<GameObject>();
+                }
+                else if (drillingDepthCurrent > drillingDepthGoal)
+                {
+
+                    buildingStatus = BUILDINGSTATUS.Mining;
+                    miningCell = ebene;
+                    miningCellControl = cell;
+                }
+            }
+        }
+    }
 
 
     bool canDrill(CellControl cellControl)
     {
-        switch (bohrerArt)
+        switch (drillType)
         {
             case BOHRERART.Standard:
                 if (cellControl.bodenart == CellControl.BODENARTEN.Dreck ||

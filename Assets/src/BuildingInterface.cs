@@ -8,89 +8,85 @@ public class BuildingInterface : MonoBehaviour
     public enum BOHRERART { Standard, Eisen, Stahl, Chrom, Titan, Diamant };
     public enum SONDENART { Starterkit, Schwach, Klein, Mittel, Groß, Stark };
 
-    public GameObject isDrillingVar;
+    //public GameObject isDrillingVar;
 
     public GameObject buildingObject = null;
     Building building = null;
     public GameObject BuildingWindowSpriteContainer;
-
-    public int maxBohrTiefe = 3;
-
+    
+    //General
     public GameObject titleInput;
+    public int drillingDepthMax = 3;
 
-    public GameObject bohrTiefeVar;
-    public GameObject bohrTiefeSlider;
+    //Drill
+    public GameObject drillingDepthVar;
+    public GameObject drillingDepthSlider;
     public int bohrTiefeMax;
 
+    public GameObject drillTypeVar;
+    public GameObject drillTypeSlider;
 
-    public GameObject bohrerArtVar;
-    public GameObject bohrerArtSlider;
-    public GameObject bohrerButton;
+    public GameObject drillButton;
 
-    public GameObject sondenArtVar;
-    public GameObject sondenArtSlider;
-    public GameObject sondenButton;
+    //Probe
+    public GameObject probeTypeVar;
+    public GameObject probeTypeSlider;
 
-    // Use this for initialization
+    public GameObject probeButton;
+
+    
     void Start()
     {
-
+        //%
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (buildingObject != null)
+        if (building.buildingStatus != Building.BUILDINGSTATUS.Idle)
         {
-
-
-            UpdateBohrtiefe();
-            UpdateBohrerArt();
-            UpdateSondenArt();
-            UpdateTitle();
-
-
-            isDrillingVar.GetComponent<UILabel>().text = building.status.ToString();
-
-            //if (building.status != Building.BUILDINGSTATUS.Idle)
-            //{
-            //    bohrerButton.GetComponent<UIButton>().enabled = false;
-            //    sondenButton.GetComponent<UIButton>().enabled = false;
-            //}
-            //else
-            //{
-            //    bohrerButton.GetComponent<UIButton>().enabled = true;
-            //    sondenButton.GetComponent<UIButton>().enabled = true;
-            //}
+            drillButton.GetComponent<UIButton>().enabled = false;
+            probeButton.GetComponent<UIButton>().enabled = false;
+        }
+        else
+        {
+            drillButton.GetComponent<UIButton>().enabled = true;
+            probeButton.GetComponent<UIButton>().enabled = true;
         }
 
+        if (buildingObject != null)
+        {
+            UpdateGUIDrillingDepth();
+            UpdateGUIDrillType();
+            UpdateGUIProbeType();
+            UpdateGUITitle();
+        }
     }
 
-    void UpdateBohrtiefe()
+    void UpdateGUIDrillingDepth()
     {
-        UISlider slider = bohrTiefeSlider.GetComponent<UISlider>();
-        slider.numberOfSteps = maxBohrTiefe;
+        UISlider slider = drillingDepthSlider.GetComponent<UISlider>();
+        slider.numberOfSteps = drillingDepthMax;
 
-        bohrTiefeVar.GetComponent<UILabel>().text = ((slider.value * (maxBohrTiefe - 1)) + 1).ToString();// +"-" + slider.value.ToString();
+        drillingDepthVar.GetComponent<UILabel>().text = ((slider.value * (drillingDepthMax - 1)) + 1).ToString();// +"-" + slider.value.ToString();
     }
 
-    void UpdateBohrerArt()
+    void UpdateGUIDrillType()
     {
-        UISlider slider = bohrerArtSlider.GetComponent<UISlider>();
+        UISlider slider = drillTypeSlider.GetComponent<UISlider>();
         slider.numberOfSteps = Enum.GetNames(typeof(BOHRERART)).Length;
 
-        bohrerArtVar.GetComponent<UILabel>().text = ((BOHRERART)(slider.value * (slider.numberOfSteps - 1))).ToString();// +"-" + slider.value.ToString();
+        drillTypeVar.GetComponent<UILabel>().text = ((BOHRERART)(slider.value * (slider.numberOfSteps - 1))).ToString();// +"-" + slider.value.ToString();
     }
 
-    void UpdateSondenArt()
+    void UpdateGUIProbeType()
     {
-        UISlider slider = sondenArtSlider.GetComponent<UISlider>();
+        UISlider slider = probeTypeSlider.GetComponent<UISlider>();
         slider.numberOfSteps = Enum.GetNames(typeof(SONDENART)).Length;
 
-        sondenArtVar.GetComponent<UILabel>().text = ((SONDENART)(slider.value * (slider.numberOfSteps - 1))).ToString();// +"-" + slider.value.ToString();
+        probeTypeVar.GetComponent<UILabel>().text = ((SONDENART)(slider.value * (slider.numberOfSteps - 1))).ToString();// +"-" + slider.value.ToString();
     }
 
-    void UpdateTitle()
+    void UpdateGUITitle()
     {
         UIInput uiInput = titleInput.GetComponent<UIInput>();
 
@@ -98,54 +94,49 @@ public class BuildingInterface : MonoBehaviour
     }
 
     public void SetTitle()
-    { 
+    {
         UIInput uiInput = titleInput.GetComponent<UIInput>();
         building.buildingName = uiInput.value;
     }
 
 
 
-    public void Bohren()
+    public void StartDrilling()
     {
-        Debug.Log("Bohren");
-
-        building.status = Building.BUILDINGSTATUS.Drilling;
-
-        building.bohrtiefe = (int)((bohrTiefeSlider.GetComponent<UISlider>().value * (maxBohrTiefe - 1)) + 1);
-        building.bohrerArt = (BOHRERART)(bohrerArtSlider.GetComponent<UISlider>().value * (bohrerArtSlider.GetComponent<UISlider>().numberOfSteps - 1));
-        building.sondenArt = (SONDENART)(sondenArtSlider.GetComponent<UISlider>().value * (sondenArtSlider.GetComponent<UISlider>().numberOfSteps - 1));
-        building.bohrTiefeAktuell = 1;
-        building.timer = building.timerIntervall;
-
-
+        StartBuilding(Building.BUILDINGSTATUS.Drilling);     
     }
 
-    public void Sondieren()
+    public void StartProbing()
     {
-        Debug.Log("Sondieren");
-        building.status = Building.BUILDINGSTATUS.Probing;
+        StartBuilding(Building.BUILDINGSTATUS.Probing);
+    }
 
-        building.bohrtiefe = (int)((bohrTiefeSlider.GetComponent<UISlider>().value * (maxBohrTiefe - 1)) + 1);
-        building.bohrerArt = (BOHRERART)(bohrerArtSlider.GetComponent<UISlider>().value * (bohrerArtSlider.GetComponent<UISlider>().numberOfSteps - 1));
-        building.sondenArt = (SONDENART)(sondenArtSlider.GetComponent<UISlider>().value * (sondenArtSlider.GetComponent<UISlider>().numberOfSteps - 1));
+    private void StartBuilding(Building.BUILDINGSTATUS buildingStatus)
+    {
+        building.drillingDepthGoal = (int)((drillingDepthSlider.GetComponent<UISlider>().value * (drillingDepthMax - 1)) + 1);
+        building.drillType = (BOHRERART)(drillTypeSlider.GetComponent<UISlider>().value * (drillTypeSlider.GetComponent<UISlider>().numberOfSteps - 1));
+        building.probeType = (SONDENART)(probeTypeSlider.GetComponent<UISlider>().value * (probeTypeSlider.GetComponent<UISlider>().numberOfSteps - 1));
+        building.drillingDepthCurrent = 1;
+        building.timer = building.timerIntervall;
     }
 
     public void CloseWindow()
     {
-        //building.showInterface = false;
         BuildingWindowSpriteContainer.SetActive(false);
+        buildingObject = null;
+        building = null;
+
     }
 
     public void ShowWindow(GameObject transferItem)
     {
-        BuildingWindowSpriteContainer.SetActive(true);
         buildingObject = transferItem;
         building = buildingObject.GetComponent<Building>();
-        //building.showInterface = false;
 
-        bohrTiefeSlider.GetComponent<UISlider>().value = (float)(((float)building.bohrtiefe - 1f) / ((float)maxBohrTiefe - 1f));
-        bohrerArtSlider.GetComponent<UISlider>().value = (float)building.bohrerArt / (float)(Enum.GetNames(typeof(BOHRERART)).Length);
-        sondenArtSlider.GetComponent<UISlider>().value = (float)building.sondenArt / (float)(Enum.GetNames(typeof(SONDENART)).Length);
+        drillingDepthSlider.GetComponent<UISlider>().value = (float)(((float)building.drillingDepthGoal - 1f) / ((float)drillingDepthMax - 1f));
+        drillTypeSlider.GetComponent<UISlider>().value = (float)building.drillType / (float)(Enum.GetNames(typeof(BOHRERART)).Length);
+        probeTypeSlider.GetComponent<UISlider>().value = (float)building.probeType / (float)(Enum.GetNames(typeof(SONDENART)).Length);
 
+        BuildingWindowSpriteContainer.SetActive(true);
     }
 }
