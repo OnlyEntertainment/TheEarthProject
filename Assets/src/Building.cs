@@ -70,7 +70,7 @@ public class Building : MonoBehaviour
                     Debug.DrawRay(gameObject.transform.position, (gameObject.transform.position * -1), Color.cyan,5);
 
                     
-                    RaycastHit[] hitEbene = Physics.RaycastAll(gameObject.transform.position, gameObject.transform.position * -1,5 , 1 << 8);//Mathf.Infinity
+                    RaycastHit[] hitEbene = Physics.RaycastAll(gameObject.transform.position, gameObject.transform.position * -1,5.5f , 1 << 8);//Mathf.Infinity
                     Debug.Log("Anzahl = " + hitEbene.Length);
 
                     GameObject ebene = null;
