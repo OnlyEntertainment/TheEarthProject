@@ -58,7 +58,7 @@ GameObject:
   - 4: {fileID: 400006}
   - 114: {fileID: 11400018}
   m_Layer: 9
-  m_Name: Var_KostenBohren
+  m_Name: DrillingCost_Var
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,22 +96,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &100012
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400012}
-  - 114: {fileID: 11400024}
-  m_Layer: 9
-  m_Name: Title
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &100014
 GameObject:
   m_ObjectHideFlags: 1
@@ -122,7 +106,7 @@ GameObject:
   - 4: {fileID: 400014}
   - 114: {fileID: 11400026}
   m_Layer: 9
-  m_Name: Var_KostenSonde
+  m_Name: ProbingCost_Var
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,7 +122,7 @@ GameObject:
   - 4: {fileID: 400016}
   - 114: {fileID: 11400028}
   m_Layer: 9
-  m_Name: Label_SondenArt
+  m_Name: ProbeType_Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,7 +174,7 @@ GameObject:
   - 114: {fileID: 11400036}
   - 114: {fileID: 11400034}
   m_Layer: 9
-  m_Name: Slider_Sondenart
+  m_Name: ProbeType_Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +206,7 @@ GameObject:
   - 4: {fileID: 400026}
   - 114: {fileID: 11400044}
   m_Layer: 9
-  m_Name: Label_KostenSonde
+  m_Name: ProbingCost_Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -241,7 +225,7 @@ GameObject:
   - 65: {fileID: 6500002}
   - 114: {fileID: 11400046}
   m_Layer: 9
-  m_Name: Button_Bohrer
+  m_Name: StartDrilling_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -276,7 +260,7 @@ GameObject:
   - 65: {fileID: 6500004}
   - 114: {fileID: 11400054}
   m_Layer: 9
-  m_Name: Button_SondeB
+  m_Name: StartProbing_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -329,7 +313,7 @@ GameObject:
   - 65: {fileID: 6500008}
   - 114: {fileID: 11400066}
   m_Layer: 9
-  m_Name: Button_Close
+  m_Name: Close_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -345,7 +329,7 @@ GameObject:
   - 4: {fileID: 400040}
   - 114: {fileID: 11400072}
   m_Layer: 9
-  m_Name: Label_KostenBohren
+  m_Name: DrillingCost_Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -361,7 +345,7 @@ GameObject:
   - 4: {fileID: 400042}
   - 114: {fileID: 11400074}
   m_Layer: 9
-  m_Name: Label_BohrerArt
+  m_Name: DrillType_Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -379,7 +363,7 @@ GameObject:
   - 114: {fileID: 11400076}
   - 65: {fileID: 6500010}
   m_Layer: 9
-  m_Name: Input_Title
+  m_Name: Title_Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -395,7 +379,7 @@ GameObject:
   - 4: {fileID: 400046}
   - 114: {fileID: 11400080}
   m_Layer: 9
-  m_Name: Label_Status
+  m_Name: Status_Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -431,7 +415,7 @@ GameObject:
   - 114: {fileID: 11400086}
   - 114: {fileID: 11400084}
   m_Layer: 9
-  m_Name: Slider_BohrerArt
+  m_Name: DrillType_Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -447,7 +431,7 @@ GameObject:
   - 4: {fileID: 400052}
   - 114: {fileID: 11400092}
   m_Layer: 9
-  m_Name: Var_Status
+  m_Name: Status_Var
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -467,7 +451,7 @@ GameObject:
   - 114: {fileID: 11400096}
   - 114: {fileID: 11400094}
   m_Layer: 9
-  m_Name: Slider_Bohrtiefe
+  m_Name: DrillingDepth_Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -483,7 +467,7 @@ GameObject:
   - 4: {fileID: 400056}
   - 114: {fileID: 11400102}
   m_Layer: 9
-  m_Name: Var_SondenArt
+  m_Name: ProbeType_Var
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -531,7 +515,7 @@ GameObject:
   - 4: {fileID: 400062}
   - 114: {fileID: 11400108}
   m_Layer: 9
-  m_Name: Var_BohrerArt
+  m_Name: DrillType_Var
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -547,7 +531,7 @@ GameObject:
   - 4: {fileID: 400064}
   - 114: {fileID: 11400110}
   m_Layer: 9
-  m_Name: Var_Bohrtiefe
+  m_Name: DrillingDepth_Var
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -563,7 +547,7 @@ GameObject:
   - 4: {fileID: 400066}
   - 114: {fileID: 11400112}
   m_Layer: 9
-  m_Name: Label_Bohrtiefe
+  m_Name: DrillingDepth_Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -656,7 +640,6 @@ Transform:
   - {fileID: 400032}
   - {fileID: 400044}
   - {fileID: 400042}
-  - {fileID: 400012}
   - {fileID: 400056}
   - {fileID: 400062}
   - {fileID: 400066}
@@ -705,17 +688,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400054}
---- !u!4 &400012
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100012}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -50, y: 330, z: 0}
-  m_LocalScale: {x: 1.000049, y: 1.000049, z: 1.000049}
-  m_Children: []
-  m_Father: {fileID: 400004}
 --- !u!4 &400014
 Transform:
   m_ObjectHideFlags: 1
@@ -1046,7 +1018,7 @@ Transform:
   m_GameObject: {fileID: 100070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .00327868853, y: .00327868853, z: .00327868853}
+  m_LocalScale: {x: .00218102499, y: .00218102499, z: .00218102499}
   m_Children:
   - {fileID: 400034}
   - {fileID: 400072}
@@ -1771,68 +1743,6 @@ MonoBehaviour:
   rightType: 1
   bottomType: 1
   topType: 1
---- !u!114 &11400024
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftAnchor:
-    target: {fileID: 0}
-    relative: 0
-    absolute: 0
-  rightAnchor:
-    target: {fileID: 0}
-    relative: 1
-    absolute: 0
-  bottomAnchor:
-    target: {fileID: 0}
-    relative: 0
-    absolute: 0
-  topAnchor:
-    target: {fileID: 0}
-    relative: 1
-    absolute: 0
-  updateAnchors: 1
-  mColor: {r: 1, g: 1, b: 1, a: 1}
-  mPivot: 4
-  mWidth: 150
-  mHeight: 25
-  mDepth: 1
-  autoResizeBoxCollider: 0
-  hideIfOffScreen: 0
-  keepAspectRatio: 0
-  aspectRatio: 6
-  keepCrispWhenShrunk: 1
-  mTrueTypeFont: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
-  mFont: {fileID: 0}
-  mText: BohrTurm
-  mFontSize: 20
-  mFontStyle: 0
-  mAlignment: 0
-  mEncoding: 1
-  mMaxLineCount: 0
-  mEffectStyle: 0
-  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
-  mSymbols: 1
-  mEffectDistance: {x: 1, y: 1}
-  mOverflow: 0
-  mMaterial: {fileID: 0}
-  mApplyGradient: 1
-  mGradientTop: {r: 1, g: 1, b: 1, a: 1}
-  mGradientBottom: {r: .699999988, g: .699999988, b: .699999988, a: 1}
-  mSpacingX: 0
-  mSpacingY: 0
-  mShrinkToFit: 0
-  mMaxLineWidth: 0
-  mMaxLineHeight: 0
-  mLineWidth: 0
-  mMultiline: 1
 --- !u!114 &11400026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2167,7 +2077,7 @@ MonoBehaviour:
   pixelSnap: 1
   onClick:
   - mTarget: {fileID: 11400120}
-    mMethodName: Bohren
+    mMethodName: StartDrilling
     mParameters: []
     oneShot: 0
 --- !u!114 &11400050
@@ -2308,7 +2218,7 @@ MonoBehaviour:
   pixelSnap: 1
   onClick:
   - mTarget: {fileID: 11400120}
-    mMethodName: Sondieren
+    mMethodName: StartProbing
     mParameters: []
     oneShot: 0
 --- !u!114 &11400058
@@ -3548,20 +3458,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ace7054527b658a40bbaa536bccf9262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDrillingVar: {fileID: 100052}
   buildingObject: {fileID: 0}
   BuildingWindowSpriteContainer: {fileID: 100034}
-  maxBohrTiefe: 20
   titleInput: {fileID: 100044}
-  bohrTiefeVar: {fileID: 100064}
-  bohrTiefeSlider: {fileID: 100054}
-  bohrTiefeMax: 0
-  bohrerArtVar: {fileID: 100062}
-  bohrerArtSlider: {fileID: 100050}
-  bohrerButton: {fileID: 100028}
-  sondenArtVar: {fileID: 100056}
-  sondenArtSlider: {fileID: 100022}
-  sondenButton: {fileID: 100032}
+  drillingDepthMax: 20
+  drillingDepthVar: {fileID: 100064}
+  drillingDepthSlider: {fileID: 100054}
+  drillTypeVar: {fileID: 100062}
+  drillTypeSlider: {fileID: 100050}
+  drillButton: {fileID: 100028}
+  probeTypeVar: {fileID: 100056}
+  probeTypeSlider: {fileID: 100022}
+  probeButton: {fileID: 100032}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

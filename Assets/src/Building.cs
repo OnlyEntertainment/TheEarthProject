@@ -72,7 +72,7 @@ public class Building : MonoBehaviour
 
             if (timer <= 0)
             {
-                timer = timerIntervall;
+                timer = timerIntervall; 
 
 
 

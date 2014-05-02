@@ -21,7 +21,7 @@ public class BuildingInterface : MonoBehaviour
     //Drill
     public GameObject drillingDepthVar;
     public GameObject drillingDepthSlider;
-    public int bohrTiefeMax;
+    
 
     public GameObject drillTypeVar;
     public GameObject drillTypeSlider;
@@ -42,19 +42,19 @@ public class BuildingInterface : MonoBehaviour
 
     void Update()
     {
-        if (building.buildingStatus != Building.BUILDINGSTATUS.Idle)
-        {
-            drillButton.GetComponent<UIButton>().enabled = false;
-            probeButton.GetComponent<UIButton>().enabled = false;
-        }
-        else
-        {
-            drillButton.GetComponent<UIButton>().enabled = true;
-            probeButton.GetComponent<UIButton>().enabled = true;
-        }
-
         if (buildingObject != null)
         {
+            if (building.buildingStatus != Building.BUILDINGSTATUS.Idle)
+            {
+                drillButton.GetComponent<UIButton>().enabled = false;
+                probeButton.GetComponent<UIButton>().enabled = false;
+            }
+            else
+            {
+                drillButton.GetComponent<UIButton>().enabled = true;
+                probeButton.GetComponent<UIButton>().enabled = true;
+            }
+
             UpdateGUIDrillingDepth();
             UpdateGUIDrillType();
             UpdateGUIProbeType();
@@ -118,6 +118,8 @@ public class BuildingInterface : MonoBehaviour
         building.probeType = (SONDENART)(probeTypeSlider.GetComponent<UISlider>().value * (probeTypeSlider.GetComponent<UISlider>().numberOfSteps - 1));
         building.drillingDepthCurrent = 1;
         building.timer = building.timerIntervall;
+
+        building.buildingStatus = buildingStatus;
     }
 
     public void CloseWindow()

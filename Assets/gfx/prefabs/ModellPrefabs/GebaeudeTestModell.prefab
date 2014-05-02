@@ -167,15 +167,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingName: Bohrturm
-  status: 0
-  bohrer: {fileID: 100000}
-  bohrtiefe: 0
-  bohrerArt: 0
-  sondenArt: 0
-  bohrTiefeAktuell: 0
-  timer: 5
+  buildingStatus: 0
+  drillingDepthCurrent: 0
+  drillingDepthGoal: 0
+  drillType: 0
+  probeType: 0
+  prefabDrillObject: {fileID: 100000}
   timerIntervall: 5
-  drillHolder: {fileID: 100004}
+  timer: 5
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

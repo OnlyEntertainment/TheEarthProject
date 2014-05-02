@@ -26,7 +26,7 @@ GameObject:
   - 4: {fileID: 400002}
   - 95: {fileID: 9500000}
   - 114: {fileID: 11400004}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Erdkern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,8 +44,7 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 64: {fileID: 6400000}
-  - 114: {fileID: 11400000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,22 +204,6 @@ Light:
   m_ShadowAngle: 0
   m_IndirectIntensity: 1
   m_AreaSize: {x: 1, y: 1}
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dff72ed44beab14dbc083def160f2be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lage: 0
-  zelle: 0
-  bodenart: 1
-  menge: 0
-  texContainer: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,7 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabLagen:
   - {fileID: 100002, guid: 8e05f39a75c904e488f48eefcb1bf228, type: 2}
-  - {fileID: 100002, guid: 6a1efe9100d2ca0429964303488d8e83, type: 2}
+  - {fileID: 100002, guid: c28b3c9b9de500545b500bb0b51a913c, type: 2}
   - {fileID: 100002, guid: e5c0d9e4d60c4b04baebc765cba251b4, type: 2}
   - {fileID: 100002, guid: d49a01a46d49c8b4c94635e2cf677b4d, type: 2}
   - {fileID: 100002, guid: d8da42a464317ac4cb1e80326fe6fafb, type: 2}
@@ -264,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dff72ed44beab14dbc083def160f2be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lage: 0
+  lage: -1
   zelle: 0
   bodenart: 1
   menge: 0
