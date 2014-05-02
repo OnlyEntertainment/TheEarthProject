@@ -1,0 +1,55 @@
+Standard
+• Kohle
+• Erde
+• Stein
+• Erz
+• Wasser
+
+Eisen
+• Kohle
+• Erde
+• Stein
+• Erz
+• Wasser
+• Gold
+
+Stahl
+• Kohle
+• Erde
+• Stein
+• Erz
+• Wasser
+• Gold
+• Öl
+
+Chrom
+• Kohle
+• Erde
+• Stein
+• Erz
+• Wasser
+• Gold
+• Öl
+
+Titan
+• Kohle
+• Erde
+• Stein
+• Erz
+• Wasser
+• Marmor
+• Obsidian
+• Gold
+• Öl
+
+Diamant
+• Kohle
+• Erde
+• Stein
+• Erz
+• Wasser
+• Marmor
+• Obsidian
+• Gold
+• Öl
+• Magma
