@@ -54,7 +54,7 @@ public class DS_GameHUD : MonoBehaviour
             instanzGebaeude.transform.localEulerAngles  = new Vector3(0, 0, volleTeile* winkelteil);
 
 
-            Debug.DrawRay(rayPosition, newPosition * -1, Color.black);
+            //Debug.DrawRay(rayPosition, newPosition * -1, Color.black);
 
             RaycastHit rayHitOtherBuilding;
 
@@ -67,13 +67,13 @@ public class DS_GameHUD : MonoBehaviour
                 GameObject groundCell = null;
                 CellControl groundCellInfos = null;
 
-                Debug.DrawRay(newPosition, newPosition * -1, Color.cyan);
+                //Debug.DrawRay(newPosition, newPosition * -1, Color.cyan);
                 if (Physics.Raycast(newPosition, newPosition * -1, out rayHitGround, 1f))
                 {
                     groundCell = rayHitGround.transform.parent.gameObject;
                     groundCellInfos = (CellControl)groundCell.GetComponent<CellControl>();
-                    Debug.Log("Transform = " + groundCell.ToString());
-                    Debug.Log("ZellenTyp = " + groundCellInfos.bodenart.ToString());
+                    //Debug.Log("Transform = " + groundCell.ToString());
+                    //Debug.Log("ZellenTyp = " + groundCellInfos.bodenart.ToString());
 
                     if (groundCellInfos.bodenart != CellControl.BODENARTEN.Magma &&
                         groundCellInfos.bodenart != CellControl.BODENARTEN.Wasser &&

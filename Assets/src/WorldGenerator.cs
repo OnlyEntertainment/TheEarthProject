@@ -50,7 +50,9 @@ public class WorldGenerator : MonoBehaviour {
                 cellControl.bodenart = prozentWahrscheinlichkeit[Mathf.Clamp((int)(UnityEngine.Random.value * 100), 1, 100)];
 
 
-                List<int> g = new List<int> { 1, 2, 3, 4 };
+                cellControl.menge = GetMenge(aktuelleLage + 1);
+
+                
 //                Kreisbahn: alpha von 0..2*pi  C#-Quelltext 	markieren 
 // 1:
 // 2:
@@ -70,6 +72,94 @@ public class WorldGenerator : MonoBehaviour {
 
 	
 	}
+
+
+    private int GetMenge(int lage)
+    {
+        int min = 0;
+        int max = 0;
+
+        switch (lage)
+        {
+            case 1: 
+                min = 100; 
+                max = 100;
+                break;
+            case 2:
+                min = 100;
+                max = 100;
+                break;
+            case 3:
+                min = 100;
+                max = 100;
+                break;
+            case 4:
+                min = 100;
+                max = 100;
+                break;
+            case 5:
+                min = 100;
+                max = 100;
+                break;
+            case 6:
+                min = 100;
+                max = 100;
+                break;
+            case 7:
+                min = 100;
+                max = 100;
+                break;
+            case 8:
+                min = 100;
+                max = 100;
+                break;
+            case 9:
+                min = 100;
+                max = 100;
+                break;
+            case 10:
+                min = 100;
+                max = 100;
+                break;
+            case 11:
+                min = 100;
+                max = 100;
+                break;
+            case 12:
+                min = 100;
+                max = 100;
+                break;
+            case 13:
+                min = 100;
+                max = 100;
+                break;
+            case 14:
+                min = 100;
+                max = 100;
+                break;
+            case 15:
+                min = 100;
+                max = 100;
+                break;
+            case 16:
+                min = 2500;
+                max = 8000;
+                break;
+            case 17:
+                min = 2000;
+                max = 7000;
+                break;
+            case 18:
+                min = 1500;
+                max = 6000;
+                break;
+            case 19:
+                min = 1000;
+                max = 5000;
+                break;
+        }
+        return (int)((UnityEngine.Random.value * (max-min)) + min); //new System.Random().Next(min,max);
+    }
 
     private Dictionary<int, BODENARTEN> Wahrscheinlichkeiten(int fuerLage)
     {
