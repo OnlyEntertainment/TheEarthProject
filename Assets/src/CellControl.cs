@@ -32,7 +32,6 @@ public class CellControl : MonoBehaviour
     void Awake()
     {
 
-
         
 
     }

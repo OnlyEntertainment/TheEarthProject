@@ -52,7 +52,6 @@ public class WorldGenerator : MonoBehaviour {
 
                 cellControl.menge = GetMenge(aktuelleLage + 1);
 
-                
 //                Kreisbahn: alpha von 0..2*pi  C#-Quelltext 	markieren 
 // 1:
 // 2:
