@@ -41,6 +41,7 @@ Titan
 • Obsidian
 • Gold
 • Öl
+• Diamant
 
 Diamant
 • Kohle
@@ -53,3 +54,4 @@ Diamant
 • Gold
 • Öl
 • Magma
+• Diamant

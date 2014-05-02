@@ -21,7 +21,7 @@ public class CellControl : MonoBehaviour
     //public bool labPointsBool = false;
     //public int labPoints = 0;
 
-    public enum BODENARTEN { Kohle, Diamant, Dreck, Gold, Magma, Oel, Erz, Stein, Wasser };
+    public enum BODENARTEN { Kohle, Diamant, Dreck, Gold, Magma, Oel, Erz, Stein, Wasser, Obsidian, Marmor };
 
 
      
