@@ -39,7 +39,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: cf77a314a14bd8d41accb252b22a4089, type: 2}
-  mSprites: []
+  mSprites:
+  - name: MenuButtonStorage
+    x: 0
+    y: 382
+    width: 130
+    height: 45
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: MenuWindowStorage
+    x: 0
+    y: 428
+    width: 396
+    height: 596
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 2
+    paddingRight: 2
+    paddingTop: 2
+    paddingBottom: 2
   mPixelSize: 1
   mReplacement: {fileID: 0}
   mCoordinates: 0
