@@ -59,40 +59,27 @@ public class Building : MonoBehaviour
 
                 if (timer <= 0)
                 {
-                    if (bohrTiefeAktuell <= bohrtiefe)
-                    {
-                        bohrTiefeAktuell++;
-                        timer = timerIntervall;
-                    }
 
-                    Debug.Log("Startvector = " + gameObject.transform.position);
-                    Debug.Log("Direction = " + gameObject.transform.position * -1);
-                    Debug.DrawRay(gameObject.transform.position, (gameObject.transform.position * -1), Color.cyan,5);
+                    bohrTiefeAktuell++;
+                    timer = timerIntervall;
 
-                    
-                    RaycastHit[] hitEbene = Physics.RaycastAll(gameObject.transform.position, gameObject.transform.position * -1,5.5f , 1 << 8);//Mathf.Infinity
-                    Debug.Log("Anzahl = " + hitEbene.Length);
+                    RaycastHit[] hitEbene = Physics.RaycastAll(gameObject.transform.position, gameObject.transform.position * -1, 5, 1 << 8);//Mathf.Infinity                   
 
                     GameObject ebene = null;
                     CellControl cell = null;
 
                     for (int intEbene = 0; intEbene < hitEbene.Length; intEbene++)
-                    { 
-                    ebene = hitEbene[intEbene].transform.parent.gameObject;                    
-                    cell = ebene.GetComponent<CellControl>();
+                    {
+                        ebene = hitEbene[intEbene].transform.parent.gameObject;
+                        cell = ebene.GetComponent<CellControl>();
 
-                        if (cell.lage == 20 - bohrTiefeAktuell+1) break;
+                        if (cell.lage == (20 - bohrTiefeAktuell + 1)) break;
                     }
 
-                    //GameObject ebene = hitEbene[bohrTiefeAktuell - 1].transform.parent.gameObject;                    
-                    //CellControl cell = ebene.GetComponent<CellControl>();
-                   
-                    //Vector3 neuePos = new Vector3(ebene.transform.position.x - gameObject.transform.position.x, ebene.transform.position.y - gameObject.transform.position.y, bohrer.transform.position.z);
                     Vector3 neuePos = new Vector3(ebene.transform.position.x, ebene.transform.position.y, bohrer.transform.position.z);
                     GameObject neuerBohrer = (GameObject)Instantiate(bohrer, neuePos, ebene.transform.rotation);
-                   //neuerBohrer.transform.parent = drillHolder.transform;
-                    bohrerListe.Add(neuerBohrer);
 
+                    bohrerListe.Add(neuerBohrer);
                     neuerBohrer.transform.position = neuePos;
 
                     if (!canDrill(cell))
@@ -120,6 +107,21 @@ public class Building : MonoBehaviour
                 }
             }
         }
+        else if (status == BUILDINGSTATUS.Mining)
+        {
+            if (abbauEbene != null && abbauCellControl != null)
+            { 
+                 timer -= (1 * Time.deltaTime);
+
+                 if (timer <= 0)
+                 {
+                     timer = timerIntervall;
+
+
+
+                 }
+            }
+        }
 
 
 
@@ -138,7 +140,7 @@ public class Building : MonoBehaviour
         switch (bohrerArt)
         {
             case BOHRERART.Standard:
-                if (cellControl.bodenart == CellControl.BODENARTEN.Dreck || 
+                if (cellControl.bodenart == CellControl.BODENARTEN.Dreck ||
                     cellControl.bodenart == CellControl.BODENARTEN.Kohle ||
                     cellControl.bodenart == CellControl.BODENARTEN.Erz ||
                     cellControl.bodenart == CellControl.BODENARTEN.Stein ||
@@ -147,7 +149,7 @@ public class Building : MonoBehaviour
                 { return true; }
                 break;
             case BOHRERART.Eisen:
-                if (cellControl.bodenart == CellControl.BODENARTEN.Dreck || 
+                if (cellControl.bodenart == CellControl.BODENARTEN.Dreck ||
                     cellControl.bodenart == CellControl.BODENARTEN.Kohle ||
                     cellControl.bodenart == CellControl.BODENARTEN.Erz ||
                     cellControl.bodenart == CellControl.BODENARTEN.Stein ||
@@ -157,7 +159,7 @@ public class Building : MonoBehaviour
                 { return true; }
                 break;
             case BOHRERART.Stahl:
-                if (cellControl.bodenart == CellControl.BODENARTEN.Dreck || 
+                if (cellControl.bodenart == CellControl.BODENARTEN.Dreck ||
                     cellControl.bodenart == CellControl.BODENARTEN.Kohle ||
                     cellControl.bodenart == CellControl.BODENARTEN.Erz ||
                     cellControl.bodenart == CellControl.BODENARTEN.Stein ||
@@ -168,7 +170,7 @@ public class Building : MonoBehaviour
                 { return true; }
                 break;
             case BOHRERART.Chrom:
-                if (cellControl.bodenart == CellControl.BODENARTEN.Dreck || 
+                if (cellControl.bodenart == CellControl.BODENARTEN.Dreck ||
                     cellControl.bodenart == CellControl.BODENARTEN.Kohle ||
                     cellControl.bodenart == CellControl.BODENARTEN.Erz ||
                     cellControl.bodenart == CellControl.BODENARTEN.Stein ||
@@ -179,7 +181,7 @@ public class Building : MonoBehaviour
                 { return true; }
                 break;
             case BOHRERART.Titan:
-                if (cellControl.bodenart == CellControl.BODENARTEN.Dreck || 
+                if (cellControl.bodenart == CellControl.BODENARTEN.Dreck ||
                     cellControl.bodenart == CellControl.BODENARTEN.Kohle ||
                     cellControl.bodenart == CellControl.BODENARTEN.Erz ||
                     cellControl.bodenart == CellControl.BODENARTEN.Stein ||
@@ -193,7 +195,7 @@ public class Building : MonoBehaviour
                 { return true; }
                 break;
             case BOHRERART.Diamant:
-                if (cellControl.bodenart == CellControl.BODENARTEN.Dreck || 
+                if (cellControl.bodenart == CellControl.BODENARTEN.Dreck ||
                     cellControl.bodenart == CellControl.BODENARTEN.Kohle ||
                     cellControl.bodenart == CellControl.BODENARTEN.Erz ||
                     cellControl.bodenart == CellControl.BODENARTEN.Stein ||
