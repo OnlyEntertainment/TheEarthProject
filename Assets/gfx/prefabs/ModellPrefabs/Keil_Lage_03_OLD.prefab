@@ -29,7 +29,7 @@ GameObject:
   - 95: {fileID: 9500000}
   - 114: {fileID: 11400000}
   m_Layer: 8
-  m_Name: Keil_Lage_16
+  m_Name: Keil_Lage_03_OLD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,8 +52,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.83838797, z: 0}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.61902475, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400000}
@@ -85,7 +85,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 4300000, guid: 17025329b654a354dbf2aaf57a7fc75a, type: 3}
+  m_Mesh: {fileID: 4300000, guid: ceb6ee42d08909f4692337028356e1a8, type: 3}
 --- !u!64 &6400000
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -98,7 +98,7 @@ MeshCollider:
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
   m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: 17025329b654a354dbf2aaf57a7fc75a, type: 3}
+  m_Mesh: {fileID: 4300000, guid: ceb6ee42d08909f4692337028356e1a8, type: 3}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 2
@@ -107,7 +107,7 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 17025329b654a354dbf2aaf57a7fc75a, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 79ec4526fe951c2469df5194a56b9ba5, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_ApplyRootMotion: 1

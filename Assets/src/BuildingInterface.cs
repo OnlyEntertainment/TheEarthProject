@@ -16,6 +16,8 @@ public class BuildingInterface : MonoBehaviour
 
     public int maxBohrTiefe = 3;
 
+    public GameObject titleInput;
+
     public GameObject bohrTiefeVar;
     public GameObject bohrTiefeSlider;
     public int bohrTiefeMax;
@@ -45,6 +47,8 @@ public class BuildingInterface : MonoBehaviour
             UpdateBohrtiefe();
             UpdateBohrerArt();
             UpdateSondenArt();
+            UpdateTitle();
+
 
             isDrillingVar.GetComponent<UILabel>().text = building.status.ToString();
 
@@ -86,7 +90,18 @@ public class BuildingInterface : MonoBehaviour
         sondenArtVar.GetComponent<UILabel>().text = ((SONDENART)(slider.value * (slider.numberOfSteps - 1))).ToString();// +"-" + slider.value.ToString();
     }
 
+    void UpdateTitle()
+    {
+        UIInput uiInput = titleInput.GetComponent<UIInput>();
 
+        if (!uiInput.isSelected) uiInput.value = building.buildingName;
+    }
+
+    public void SetTitle()
+    { 
+        UIInput uiInput = titleInput.GetComponent<UIInput>();
+        building.buildingName = uiInput.value;
+    }
 
 
 
@@ -99,7 +114,8 @@ public class BuildingInterface : MonoBehaviour
         building.bohrtiefe = (int)((bohrTiefeSlider.GetComponent<UISlider>().value * (maxBohrTiefe - 1)) + 1);
         building.bohrerArt = (BOHRERART)(bohrerArtSlider.GetComponent<UISlider>().value * (bohrerArtSlider.GetComponent<UISlider>().numberOfSteps - 1));
         building.sondenArt = (SONDENART)(sondenArtSlider.GetComponent<UISlider>().value * (sondenArtSlider.GetComponent<UISlider>().numberOfSteps - 1));
-
+        building.bohrTiefeAktuell = 1;
+        building.timer = building.timerIntervall;
 
 
     }
@@ -127,7 +143,7 @@ public class BuildingInterface : MonoBehaviour
         building = buildingObject.GetComponent<Building>();
         //building.showInterface = false;
 
-        bohrTiefeSlider.GetComponent<UISlider>().value = (float)building.bohrtiefe;
+        bohrTiefeSlider.GetComponent<UISlider>().value = (float)(((float)building.bohrtiefe - 1f) / ((float)maxBohrTiefe - 1f));
         bohrerArtSlider.GetComponent<UISlider>().value = (float)building.bohrerArt / (float)(Enum.GetNames(typeof(BOHRERART)).Length);
         sondenArtSlider.GetComponent<UISlider>().value = (float)building.sondenArt / (float)(Enum.GetNames(typeof(SONDENART)).Length);
 
