@@ -9,7 +9,7 @@ public class Building : MonoBehaviour
 {
     private GameObject buildingInterfaceObject;
     private BuildingInterface buildingInterface;
-
+    private StorageWindow storageWindow;
 
     public enum BUILDINGSTATUS { Idle, Drilling, Mining, Probing, OnHold };
 
@@ -18,17 +18,22 @@ public class Building : MonoBehaviour
     public BUILDINGSTATUS buildingStatus = BUILDINGSTATUS.Idle;
 
     public int drillingDepthCurrent = 0;
-    public int drillingDepthGoal = 0;
+    public int drillingDepthGoal = 0;    
     public BuildingInterface.BOHRERART drillType = BuildingInterface.BOHRERART.Standard;
+
+    public int probingShowAmountMax = 0;
+    public int probingDepthGoal = 0;
     public BuildingInterface.SONDENART probeType = BuildingInterface.SONDENART.Starterkit;
 
 
 
     public GameObject prefabDrillObject;
+    public GameObject prefabProbeOject;
     private List<GameObject> drillList = new List<GameObject>();
 
-
-    public float timerIntervall = 5;
+    public int miningAmount = 5;
+    public float timerIntervallDrilling = 5;
+    public float timerIntervallProbing = 10;
     public float timer = 5;
 
 
@@ -40,20 +45,27 @@ public class Building : MonoBehaviour
     {
         buildingInterfaceObject = GameObject.Find("BuildingInterface");
         buildingInterface = buildingInterfaceObject.GetComponent<BuildingInterface>();
+        storageWindow = buildingInterface.storageWindow;
     }
 
     void Update()
     {
-        if (buildingStatus == BUILDINGSTATUS.Drilling)
+        switch (buildingStatus)
         {
-            Drilling();
+            case BUILDINGSTATUS.Drilling: 
+                Drilling(); 
+                break;
+            case BUILDINGSTATUS.Mining:
+                Mining();
+                break;
+            case BUILDINGSTATUS.OnHold:
+                OnHold();
+                break;
+            case BUILDINGSTATUS.Probing:
+                Probing();
+                break;
         }
-        else if (buildingStatus == BUILDINGSTATUS.Mining)
-        {
-            Mining();
-
-        }
-
+    
 
 
         //if (showInterface)
@@ -64,6 +76,17 @@ public class Building : MonoBehaviour
         //}
     }
 
+    private void DestroyBuilding(string message)
+    {
+        buildingStatus = BUILDINGSTATUS.Idle;
+
+        for (int item = 0; item < drillList.Count; item++)
+        {
+            Destroy(drillList[item]);
+        }
+        drillList = new List<GameObject>();
+    }
+
     private void Mining()
     {
         if (miningCell != null && miningCellControl != null)
@@ -72,14 +95,42 @@ public class Building : MonoBehaviour
 
             if (timer <= 0)
             {
-                timer = timerIntervall; 
+                if (miningCellControl.menge <= 0) { DestroyBuilding("Rohstoff erschöpft"); }
 
+                timer = timerIntervallDrilling;
+
+                int amount = (int)Mathf.Clamp(miningAmount, 0, miningCellControl.menge);
+
+                int notStored = storageWindow.SetStorageUp(miningCellControl.bodenart, amount);
+
+                if (notStored == -1) DestroyBuilding("Rohstoff hat keinen Wert");
+
+                Debug.Log("Rohstoff = " + miningCellControl.bodenart.ToString());
+                Debug.Log("Menge = " + amount.ToString());
+                Debug.Log("Rest = " + notStored.ToString());
+
+                if (notStored > 0) { buildingStatus = BUILDINGSTATUS.OnHold; return; }
+                miningCellControl.menge -= amount - notStored;
 
 
             }
         }
     }
 
+    private void OnHold()
+    {
+        if (miningCell != null && miningCellControl != null)
+        {
+            timer -= (1 * Time.deltaTime);
+
+            if (timer <= 0)
+            {
+                timer = timerIntervallDrilling;
+
+                buildingStatus = BUILDINGSTATUS.Mining;
+            }
+        }
+    }
     private void Drilling()
     {
         if (drillingDepthCurrent <= drillingDepthGoal)
@@ -89,48 +140,85 @@ public class Building : MonoBehaviour
             if (timer <= 0)
             {
                 RaycastHit[] hitEbene = Physics.RaycastAll(gameObject.transform.position, gameObject.transform.position * -1, 5, 1 << 8);//Mathf.Infinity            
-                GameObject ebene = null;
+                GameObject layer = null;
                 CellControl cell = null;
-                Vector3 neuePos;
-                GameObject neuerBohrer;
+                Vector3 newPos;
+                GameObject newDrill;
 
                 drillingDepthCurrent++;
-                timer = timerIntervall;
+                timer = timerIntervallDrilling;
 
                 for (int intEbene = 0; intEbene < hitEbene.Length; intEbene++)
                 {
-                    ebene = hitEbene[intEbene].transform.parent.gameObject;
-                    cell = ebene.GetComponent<CellControl>();
+                    layer = hitEbene[intEbene].transform.parent.gameObject;
+                    cell = layer.GetComponent<CellControl>();
 
                     if (cell.lage == (20 - drillingDepthCurrent + 1)) break;
                 }
 
-                neuePos = new Vector3(ebene.transform.position.x, ebene.transform.position.y, prefabDrillObject.transform.position.z);
-                neuerBohrer = (GameObject)Instantiate(prefabDrillObject, neuePos, ebene.transform.rotation);
+                newPos = new Vector3(layer.transform.position.x, layer.transform.position.y, prefabDrillObject.transform.position.z);
+                newDrill = (GameObject)Instantiate(prefabDrillObject, newPos, layer.transform.rotation);
 
-                drillList.Add(neuerBohrer);
-                neuerBohrer.transform.position = neuePos;
+                drillList.Add(newDrill);
+                newDrill.transform.position = newPos;
 
-                if (!canDrill(cell))
-                {
-                    buildingStatus = BUILDINGSTATUS.Idle;
-
-                    for (int item = 0; item < drillList.Count; item++)
-                    {
-                        Destroy(drillList[item]);
-                    }
-                    drillList = new List<GameObject>();
-                }
+                if (cell.isHidden) { cell.isHidden = false; cell.LoadTexture(); }
+                if (!canDrill(cell)) { DestroyBuilding("Gestein zu Hart --> Abbruch"); }
                 else if (drillingDepthCurrent > drillingDepthGoal)
                 {
 
                     buildingStatus = BUILDINGSTATUS.Mining;
-                    miningCell = ebene;
+                    miningCell = layer;
                     miningCellControl = cell;
                 }
             }
         }
     }
+
+    private void Probing()
+    {
+        if (drillingDepthCurrent <= probingDepthGoal)
+        {
+            timer -= (1 * Time.deltaTime);
+
+            if (timer <= 0)
+            {
+                RaycastHit[] hitEbene = Physics.RaycastAll(gameObject.transform.position, gameObject.transform.position * -1, 5, 1 << 8);//Mathf.Infinity            
+                GameObject layer = null;
+                CellControl cell = null;
+                Vector3 newPos;
+                GameObject newProbe;
+
+                drillingDepthCurrent++;
+                timer = timerIntervallProbing;
+
+                for (int intEbene = 0; intEbene < hitEbene.Length; intEbene++)
+                {
+                    layer = hitEbene[intEbene].transform.parent.gameObject;
+                    cell = layer.GetComponent<CellControl>();
+
+                    if (cell.lage == (20 - drillingDepthCurrent + 1)) break;
+                }
+
+                newPos = new Vector3(layer.transform.position.x, layer.transform.position.y, prefabProbeOject.transform.position.z);
+                newProbe = (GameObject)Instantiate(prefabProbeOject, newPos, layer.transform.rotation);
+
+                drillList.Add(newProbe);
+                newProbe.transform.position = newPos;
+
+                
+                if (cell.isHidden) { cell.isHidden = false; cell.LoadTexture(); }
+                if (cell.lage >= 20 - probingShowAmountMax) { cell.showAmount = true; }
+
+                if (drillingDepthCurrent > probingDepthGoal)
+                {
+                    buildingStatus = BUILDINGSTATUS.Idle;
+                    DestroyBuilding("Sondieren fertig");
+                }
+            }
+        }
+    }
+
 
 
     bool canDrill(CellControl cellControl)

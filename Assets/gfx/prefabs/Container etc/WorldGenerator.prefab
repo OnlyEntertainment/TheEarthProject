@@ -251,6 +251,8 @@ MonoBehaviour:
   zelle: 0
   bodenart: 1
   menge: 0
+  isHidden: 1
+  showAmount: 0
   texContainer: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:

@@ -14,6 +14,8 @@ public class CellControl : MonoBehaviour
     public BODENARTEN bodenart;
     public float menge = 0;
 
+    public bool isHidden = true;
+    public bool showAmount = false;
 
     //public int cellNumber;
 
@@ -24,7 +26,7 @@ public class CellControl : MonoBehaviour
     public enum BODENARTEN { Kohle, Diamant, Dreck, Gold, Magma, Oel, Erz, Stein, Wasser, Obsidian, Marmor };
 
 
-     
+
     //
 
     public TextureContainer texContainer;
@@ -32,7 +34,7 @@ public class CellControl : MonoBehaviour
     void Awake()
     {
 
-        
+
 
     }
 
@@ -42,6 +44,7 @@ public class CellControl : MonoBehaviour
         GameObject texContainerObject = GameObject.Find("00_TextureContainer");
         texContainer = texContainerObject.GetComponentInChildren<TextureContainer>();
 
+        if (lage == 19) isHidden = false;
 
         //texContainer = texContainerObject.GetComponent<TextureContainer>();
 
@@ -57,43 +60,49 @@ public class CellControl : MonoBehaviour
     }
 
 
-    void LoadTexture()
+    public void LoadTexture()
     {
-
-        switch (bodenart)
+        if (isHidden)
         {
-            case BODENARTEN.Dreck:
-                gameObject.transform.GetChild(0).renderer.material.SetTexture(0, texContainer.textureArray[0]);
-                break;
-            case BODENARTEN.Wasser:
-                gameObject.transform.GetChild(0).renderer.material.SetTexture(0, texContainer.textureArray[1]);
-                break;
-            case BODENARTEN.Stein:
-                gameObject.transform.GetChild(0).renderer.material.SetTexture(0, texContainer.textureArray[2]);
-                break;
-            case BODENARTEN.Magma:
-                gameObject.transform.GetChild(0).renderer.material.SetTexture(0, texContainer.textureArray[3]);
-                break;
-            case BODENARTEN.Erz:
-                gameObject.transform.GetChild(0).renderer.material.SetTexture(0, texContainer.textureArray[4]);
-                break;
-            case BODENARTEN.Kohle:
-                gameObject.transform.GetChild(0).renderer.material.SetTexture(0, texContainer.textureArray[5]);
-                break;
-            case BODENARTEN.Gold:
-                gameObject.transform.GetChild(0).renderer.material.SetTexture(0, texContainer.textureArray[6]);
-                break;
-            case BODENARTEN.Diamant:
-                gameObject.transform.GetChild(0).renderer.material.SetTexture(0, texContainer.textureArray[7]);
-                break;
-            case BODENARTEN.Oel:
-                gameObject.transform.GetChild(0).renderer.material.SetTexture(0, texContainer.textureArray[8]);
-                break;
-                
+            gameObject.transform.GetChild(0).renderer.material.SetTexture(0, texContainer.textureArray[texContainer.textureArray.Length-1]);
+        }
+        else
+        {
+            switch (bodenart)
+            {
+                case BODENARTEN.Dreck:
+                    gameObject.transform.GetChild(0).renderer.material.SetTexture(0, texContainer.textureArray[0]);
+                    break;
+                case BODENARTEN.Wasser:
+                    gameObject.transform.GetChild(0).renderer.material.SetTexture(0, texContainer.textureArray[1]);
+                    break;
+                case BODENARTEN.Stein:
+                    gameObject.transform.GetChild(0).renderer.material.SetTexture(0, texContainer.textureArray[2]);
+                    break;
+                case BODENARTEN.Magma:
+                    gameObject.transform.GetChild(0).renderer.material.SetTexture(0, texContainer.textureArray[3]);
+                    break;
+                case BODENARTEN.Erz:
+                    gameObject.transform.GetChild(0).renderer.material.SetTexture(0, texContainer.textureArray[4]);
+                    break;
+                case BODENARTEN.Kohle:
+                    gameObject.transform.GetChild(0).renderer.material.SetTexture(0, texContainer.textureArray[5]);
+                    break;
+                case BODENARTEN.Gold:
+                    gameObject.transform.GetChild(0).renderer.material.SetTexture(0, texContainer.textureArray[6]);
+                    break;
+                case BODENARTEN.Diamant:
+                    gameObject.transform.GetChild(0).renderer.material.SetTexture(0, texContainer.textureArray[7]);
+                    break;
+                case BODENARTEN.Oel:
+                    gameObject.transform.GetChild(0).renderer.material.SetTexture(0, texContainer.textureArray[8]);
+                    break;
+
+            }
         }
     }
 
-  
+
 
 
 }

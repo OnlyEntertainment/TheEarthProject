@@ -171,9 +171,14 @@ MonoBehaviour:
   drillingDepthCurrent: 0
   drillingDepthGoal: 0
   drillType: 0
+  probingShowAmountMax: 0
+  probingDepthGoal: 0
   probeType: 0
   prefabDrillObject: {fileID: 100000}
-  timerIntervall: 5
+  prefabProbeOject: {fileID: 100000}
+  miningAmount: 5
+  timerIntervallDrilling: 5
+  timerIntervallProbing: 10
   timer: 5
 --- !u!136 &13600000
 CapsuleCollider:
