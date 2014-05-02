@@ -68,7 +68,7 @@ public class Building : MonoBehaviour
                     }
 
                     //TODo Prüfung ob man überhaupt durchbohren darf....
-                    if (
+                    //if (
 
 
 
@@ -86,7 +86,8 @@ public class Building : MonoBehaviour
         //    GameObject interfaceObject = GameObject.Find("BuildingInterface");
         //    BuildingInterface buildingInterface = interfaceObject.GetComponent<BuildingInterface>();
         //    buildingInterface.buildingObject = gameObject;
-        //}
+        //
+        //  }
     }
 
 
