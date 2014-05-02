@@ -15,10 +15,4 @@ public class StorageMaster : MonoBehaviour {
 	} // END Awake
 	
 
-    public void UpgradeStorage()
-    {
-
-        stoDictionary["Storage"].currentLevel++;
-
-    } // END UpgradeStorage
 }
