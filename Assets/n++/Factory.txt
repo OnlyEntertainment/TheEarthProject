@@ -1,0 +1,24 @@
+Factory
+
+
+○ Bohrköpfe (0 - 5)
+- Bohrart
+- Anzahl
+• 4 Button
+• 2 Label
+
+○ Sonden (0 - 5)
+- Sondenart
+- Anzahl
+• 4 Button
+• 2 Label
+
+
+○ Stangen
+- Anzahl
+• 2 Button
+• 1 Label
+
+
+• ProgressBar
+• 2 Label (Was/Anzahl(noch/insgesamt))

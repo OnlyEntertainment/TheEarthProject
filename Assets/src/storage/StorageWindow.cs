@@ -98,6 +98,7 @@ public class StorageWindow : MonoBehaviour
             showStorage = true;
             storageWindowMenu.SetActive(true);
 
+            
             ReloadStorageDataInWindow();
         }
         else
@@ -109,9 +110,6 @@ public class StorageWindow : MonoBehaviour
 
     public int SetStorageUp(bodenArten bArten, int amount)
     {
-
-        int rest = 0;
-
 
         if (bodenData.ContainsKey(bArten))
         {
@@ -130,41 +128,6 @@ public class StorageWindow : MonoBehaviour
         {
             return -1;
         }
-
-
-        //if (currentStorageValue < maxStorageValue)
-        //{
-        //    5
-        //        10
-        //            -5
-
-        //    int newCurrentAmount = currentStorageValue + amount;
-        //    int newResultAmount = maxStorageValue;
-        //    int newRestAmount = newCurrentAmount - maxStorageValue;
-
-        //    if (newCurrentAmount > maxStorageValue)
-        //    {
-        //        bodenData[bArten] = amount - newRestAmount;
-        //        currentStorageValue = newResultAmount;
-
-        //        return newRestAmount;
-        //    }
-        //    else
-        //    {
-        //        currentStorageValue = newCurrentAmount;
-        //        bodenData[bArten] = amount - newRestAmount;
-        //        return rest;
-        //    }
-        //}
-        //else
-        //{
-
-        //    return amount;
-
-        //}
-
-
-        //return rest;
 
     } // END SetStorageUp
 

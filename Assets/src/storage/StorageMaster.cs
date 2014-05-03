@@ -7,7 +7,6 @@ public class StorageMaster : MonoBehaviour {
     public Dictionary<string, StorageMain> stoDictionary;
 
 
-	// Use this for initialization
 	void Awake () {
 
         stoDictionary = StorageMain.GenerateStorage();

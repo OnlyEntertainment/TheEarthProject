@@ -1,0 +1,23 @@
+Handelfenster
+
+• aktuelle Rohstoffpreise
+• eigene  Rohstoffe
+• Menge an zuverkaufenden Rohstoffen (Slider)
+• Anzeige von Geld was generiert werden würde
+• Verkaufen (Button)
+• Schließen (Button)
+• 
+
+
+
+
+
+
+○ Zufällige Events
+○ Unternehmensangebote / Aufträge
+○ Szenarien
+- x-Bohrer in den Erdkern
+- mache x-Viel Umsatz in x-Jahren
+- erziele mit einem Verkauf einen Handelsgewinn von x-Viel Moneten
+- überstehe die Wirtschaftskrise
+- 

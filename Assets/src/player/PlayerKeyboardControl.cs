@@ -7,13 +7,14 @@ public class PlayerKeyboardControl : MonoBehaviour {
     // variablen
     private bool showResearch = false;
     private bool showStorage = false;
+    private bool showFactory = false;
 
     public PlayerAttributeControl pControl;
 
     public GameObject menuResearch;
     public ResearchWindow menuResearchWindow;
     public StorageWindow menuStorageWindow;
-
+    public FactoryWindow menuFactoryWindow;
     // #####
     
     
@@ -30,6 +31,7 @@ public class PlayerKeyboardControl : MonoBehaviour {
         menuResearch = GameObject.Find("00_GuiStuff");
         menuResearchWindow = menuResearch.GetComponent<ResearchWindow>();
         menuStorageWindow = menuResearch.GetComponent<StorageWindow>();
+        menuFactoryWindow = menuResearch.GetComponent<FactoryWindow>();
 
 	} // END Start
 	
@@ -39,9 +41,14 @@ public class PlayerKeyboardControl : MonoBehaviour {
 
 
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             menuResearchWindow.ResearchShow();
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            menuFactoryWindow.FactoryShow();
         }
 
         if (Input.GetKeyDown(KeyCode.S))

@@ -137,12 +137,5 @@ public class ResearchWindow : MonoBehaviour {
         progressbarSlider.value = researchResult;
     }   // END ResearchShow
 
-    public void ResearchStart()
-    { 
-    
-
-
-    } // END ResearchStart
-
 
 }
