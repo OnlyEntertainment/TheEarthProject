@@ -113,33 +113,55 @@ public class StorageWindow : MonoBehaviour
         int rest = 0;
 
 
-        if (currentStorageValue < maxStorageValue)
+        if (bodenData.ContainsKey(bArten))
         {
 
-            int newCurrentAmount = currentStorageValue + amount;
-            int newResultAmount = maxStorageValue;
-            int newRestAmount = newCurrentAmount - maxStorageValue;
+                if (currentStorageValue <maxStorageValue)
+                {                    
+                    int storedAmount = Mathf.Clamp(amount, 0,(maxStorageValue-currentStorageValue));
+                    bodenData[bArten] += storedAmount;
+                    currentStorageValue += storedAmount;
+                    return (amount-storedAmount);
 
-            if (newCurrentAmount > maxStorageValue)
-            {
-                bodenData[bArten] = amount - newRestAmount;
-                currentStorageValue = newResultAmount;
-
-                return newRestAmount;
-            }
-            else
-            {
-                currentStorageValue = newCurrentAmount;
-                bodenData[bArten] = amount - newRestAmount;
-                return rest;
-            }
+                }
+                return amount;
         }
         else
         {
-
-            return rest;
-
+            return -1;
         }
+
+
+        //if (currentStorageValue < maxStorageValue)
+        //{
+        //    5
+        //        10
+        //            -5
+
+        //    int newCurrentAmount = currentStorageValue + amount;
+        //    int newResultAmount = maxStorageValue;
+        //    int newRestAmount = newCurrentAmount - maxStorageValue;
+
+        //    if (newCurrentAmount > maxStorageValue)
+        //    {
+        //        bodenData[bArten] = amount - newRestAmount;
+        //        currentStorageValue = newResultAmount;
+
+        //        return newRestAmount;
+        //    }
+        //    else
+        //    {
+        //        currentStorageValue = newCurrentAmount;
+        //        bodenData[bArten] = amount - newRestAmount;
+        //        return rest;
+        //    }
+        //}
+        //else
+        //{
+
+        //    return amount;
+
+        //}
 
 
         //return rest;
