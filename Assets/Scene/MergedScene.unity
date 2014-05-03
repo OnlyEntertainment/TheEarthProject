@@ -738,7 +738,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingObject: {fileID: 0}
   BuildingWindowSpriteContainer: {fileID: 2011316768}
+  GUIStuff: {fileID: 0}
+  storageWindow: {fileID: 0}
   titleInput: {fileID: 1728202214}
+  statusVar: {fileID: 94801622}
   drillingDepthMax: 20
   drillingDepthVar: {fileID: 875260800}
   drillingDepthSlider: {fileID: 585645193}
@@ -807,13 +810,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 46
+  mWidth: 50
   mHeight: 18
   mDepth: 8
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.55555558
+  aspectRatio: 2.77777767
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
   mFont: {fileID: 0}
@@ -2240,13 +2243,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 154
+  mWidth: 164
   mHeight: 18
   mDepth: 8
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 8.55555534
+  aspectRatio: 9.11111069
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
   mFont: {fileID: 0}
@@ -2477,15 +2480,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400070, guid: 19db295f78ce29646a75ba938163ba43, type: 2}
       propertyPath: m_LocalScale.x
-      value: .00411522621
+      value: .00511508947
       objectReference: {fileID: 0}
     - target: {fileID: 400070, guid: 19db295f78ce29646a75ba938163ba43, type: 2}
       propertyPath: m_LocalScale.y
-      value: .00411522621
+      value: .00511508947
       objectReference: {fileID: 0}
     - target: {fileID: 400070, guid: 19db295f78ce29646a75ba938163ba43, type: 2}
       propertyPath: m_LocalScale.z
-      value: .00411522621
+      value: .00511508947
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19db295f78ce29646a75ba938163ba43, type: 2}
@@ -4210,7 +4213,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 7.57894754
+  aspectRatio: 1
   mAtlas: {fileID: 11400000, guid: 62adb30369acbf943a67cee0f69267a3, type: 2}
   mSpriteName: Stripes 3
   mType: 2
@@ -5123,13 +5126,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 34
+  mWidth: 36
   mHeight: 18
   mDepth: 8
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 1.88888884
+  aspectRatio: 2
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
   mFont: {fileID: 0}
@@ -5567,13 +5570,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 122
+  mWidth: 128
   mHeight: 18
   mDepth: 8
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 6.77777767
+  aspectRatio: 7.11111116
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
   mFont: {fileID: 0}
@@ -6652,15 +6655,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textureArray:
-  - {fileID: 2800000, guid: 667dc9e94401f5d47bbae8a87c6e0b1e, type: 3}
-  - {fileID: 2800000, guid: e9f240470d111914185714fb7c9d4f83, type: 3}
-  - {fileID: 2800000, guid: 0967f61957df1554bbd20d5042b35871, type: 3}
-  - {fileID: 2800000, guid: 4b680333011efb940a1e17cd072beb11, type: 3}
-  - {fileID: 2800000, guid: cd60ece13d5d23041a76a79f72d94dd4, type: 3}
-  - {fileID: 2800000, guid: a01ac5a94e5f5414fbb323f0aa70ea50, type: 3}
-  - {fileID: 2800000, guid: f76d306806e8b8e469499a81c097dc0a, type: 3}
-  - {fileID: 2800000, guid: 0bcd0f908658bf141add9c0280bd3432, type: 3}
-  - {fileID: 2800000, guid: 20b8a726d0245cc4fa90e6efa3ac815e, type: 3}
+  - {fileID: 2800000, guid: 967a93cc64f42414bb5bfa76b621b405, type: 3}
+  - {fileID: 2800000, guid: a4a99800131a7ad4390caefb019650e1, type: 3}
+  - {fileID: 2800000, guid: a98f88ba4e4c9634a880c58c3ec1bb72, type: 3}
+  - {fileID: 2800000, guid: c9c7c223fa4c689438ebaf2d50882da3, type: 3}
+  - {fileID: 2800000, guid: 856420fa71405fc4c881ceae29d0f207, type: 3}
+  - {fileID: 2800000, guid: 7d8b20b5c12843445a88273e07899372, type: 3}
+  - {fileID: 2800000, guid: 8b71274476265ad4cace45e39bb403fc, type: 3}
+  - {fileID: 2800000, guid: 9bbabe9891078f54fba272624a0bc669, type: 3}
+  - {fileID: 2800000, guid: bb10cf63c436294418cbf6f9ab89c3c1, type: 3}
+  - {fileID: 2800000, guid: f0ff9a4279ab9f54aa7877617818965c, type: 3}
+  - {fileID: 2800000, guid: ab87e28a05fdc5f4ba95acf162200d25, type: 3}
+  - {fileID: 2800000, guid: 5aec5e26bf245fd4bbedae4d164d1294, type: 3}
 --- !u!4 &1308943748
 Transform:
   m_ObjectHideFlags: 0
@@ -6975,13 +6981,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 82
+  mWidth: 86
   mHeight: 18
   mDepth: 8
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 4.55555534
+  aspectRatio: 4.77777767
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
   mFont: {fileID: 0}
@@ -7201,7 +7207,7 @@ Transform:
   m_GameObject: {fileID: 1489187716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .00411522621, y: .00411522621, z: .00411522621}
+  m_LocalScale: {x: .00511508947, y: .00511508947, z: .00511508947}
   m_Children:
   - {fileID: 2011316769}
   - {fileID: 99382028}
@@ -7523,13 +7529,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 40
+  mWidth: 44
   mHeight: 18
   mDepth: 8
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.22222233
+  aspectRatio: 2.44444442
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
   mFont: {fileID: 0}
@@ -7753,6 +7759,8 @@ MonoBehaviour:
   zelle: 0
   bodenart: 1
   menge: 0
+  isHidden: 1
+  showAmount: 0
   texContainer: {fileID: 0}
 --- !u!95 &1608111310
 Animator:
@@ -7804,6 +7812,50 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 93afcf02e304d2f4b8d1b30d80dfe091, type: 2}
+      propertyPath: textureArray.Array.data[5]
+      value: 
+      objectReference: {fileID: 2800000, guid: 7d8b20b5c12843445a88273e07899372, type: 3}
+    - target: {fileID: 11400000, guid: 93afcf02e304d2f4b8d1b30d80dfe091, type: 2}
+      propertyPath: textureArray.Array.data[7]
+      value: 
+      objectReference: {fileID: 2800000, guid: 9bbabe9891078f54fba272624a0bc669, type: 3}
+    - target: {fileID: 11400000, guid: 93afcf02e304d2f4b8d1b30d80dfe091, type: 2}
+      propertyPath: textureArray.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 967a93cc64f42414bb5bfa76b621b405, type: 3}
+    - target: {fileID: 11400000, guid: 93afcf02e304d2f4b8d1b30d80dfe091, type: 2}
+      propertyPath: textureArray.Array.data[6]
+      value: 
+      objectReference: {fileID: 2800000, guid: 8b71274476265ad4cace45e39bb403fc, type: 3}
+    - target: {fileID: 11400000, guid: 93afcf02e304d2f4b8d1b30d80dfe091, type: 2}
+      propertyPath: textureArray.Array.data[3]
+      value: 
+      objectReference: {fileID: 2800000, guid: c9c7c223fa4c689438ebaf2d50882da3, type: 3}
+    - target: {fileID: 11400000, guid: 93afcf02e304d2f4b8d1b30d80dfe091, type: 2}
+      propertyPath: textureArray.Array.data[10]
+      value: 
+      objectReference: {fileID: 2800000, guid: ab87e28a05fdc5f4ba95acf162200d25, type: 3}
+    - target: {fileID: 11400000, guid: 93afcf02e304d2f4b8d1b30d80dfe091, type: 2}
+      propertyPath: textureArray.Array.data[9]
+      value: 
+      objectReference: {fileID: 2800000, guid: f0ff9a4279ab9f54aa7877617818965c, type: 3}
+    - target: {fileID: 11400000, guid: 93afcf02e304d2f4b8d1b30d80dfe091, type: 2}
+      propertyPath: textureArray.Array.data[8]
+      value: 
+      objectReference: {fileID: 2800000, guid: bb10cf63c436294418cbf6f9ab89c3c1, type: 3}
+    - target: {fileID: 11400000, guid: 93afcf02e304d2f4b8d1b30d80dfe091, type: 2}
+      propertyPath: textureArray.Array.data[4]
+      value: 
+      objectReference: {fileID: 2800000, guid: 856420fa71405fc4c881ceae29d0f207, type: 3}
+    - target: {fileID: 11400000, guid: 93afcf02e304d2f4b8d1b30d80dfe091, type: 2}
+      propertyPath: textureArray.Array.data[2]
+      value: 
+      objectReference: {fileID: 2800000, guid: a98f88ba4e4c9634a880c58c3ec1bb72, type: 3}
+    - target: {fileID: 11400000, guid: 93afcf02e304d2f4b8d1b30d80dfe091, type: 2}
+      propertyPath: textureArray.Array.data[1]
+      value: 
+      objectReference: {fileID: 2800000, guid: a4a99800131a7ad4390caefb019650e1, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93afcf02e304d2f4b8d1b30d80dfe091, type: 2}
   m_RootGameObject: {fileID: 1308943746}
@@ -8562,13 +8614,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 28
+  mWidth: 30
   mHeight: 18
   mDepth: 8
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 1.55555558
+  aspectRatio: 1.66666663
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
   mFont: {fileID: 0}
@@ -8658,7 +8710,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 4.23529434
+  aspectRatio: 7.57894754
   mAtlas: {fileID: 11400000, guid: 62adb30369acbf943a67cee0f69267a3, type: 2}
   mSpriteName: Stripes 3
   mType: 2
