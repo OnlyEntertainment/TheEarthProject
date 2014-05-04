@@ -11,9 +11,9 @@ public class DrillMain
     public int costsMoney;    // Kosten
     public float buildTime; // Bauzeit in der Fabrik
 
-    float drillSpeed;
-    int materialAmount;
-    float mainPriceToDrill;
+    public float drillSpeed;
+    public int materialAmount;
+    public float mainPriceToDrill;
 
 
     // Use this for initialization

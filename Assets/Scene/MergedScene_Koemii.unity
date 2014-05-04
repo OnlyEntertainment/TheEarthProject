@@ -401,6 +401,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1559682407}
     m_Modifications:
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: fee46b827274e694aa251e2d36700135, type: 2}
       propertyPath: m_LocalPosition.x
       value: .216420397
@@ -618,6 +622,26 @@ Prefab:
     - target: {fileID: 400002, guid: fee46b827274e694aa251e2d36700135, type: 2}
       propertyPath: m_LocalScale.z
       value: .00400000019
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: pressedSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: disabledSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.data[0].mTarget
+      value: 
+      objectReference: {fileID: 1072447802}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.data[0].mMethodName
+      value: ButtonScanMoreTypeSmashed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fee46b827274e694aa251e2d36700135, type: 2}
@@ -1531,13 +1555,13 @@ MonoBehaviour:
   disabledColor: {r: 1, g: 1, b: 1, a: 1}
   duration: .200000003
   dragHighlight: 0
-  hoverSprite: Flat
-  pressedSprite: Button
-  disabledSprite: Flat
+  hoverSprite: 
+  pressedSprite: 
+  disabledSprite: 
   pixelSnap: 1
   onClick:
   - mTarget: {fileID: 392132718}
-    mMethodName: ButtonDrillLessTypeSmashed
+    mMethodName: ButtonDrillLessAmountSmashed
     mParameters: []
     oneShot: 0
 --- !u!114 &154854610
@@ -2138,6 +2162,8 @@ GameObject:
   - 114: {fileID: 246597003}
   - 114: {fileID: 246597002}
   - 114: {fileID: 246597009}
+  - 114: {fileID: 246597010}
+  - 114: {fileID: 246597011}
   m_Layer: 9
   m_Name: 00_GuiStuff
   m_TagString: Untagged
@@ -2153,7 +2179,7 @@ Transform:
   m_GameObject: {fileID: 246597000}
   m_LocalRotation: {x: 0, y: 0, z: -8.74227766e-08, w: -1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .00380228134, y: .00380228134, z: .00380228134}
+  m_LocalScale: {x: .00379506638, y: .00379506638, z: .00379506638}
   m_Children:
   - {fileID: 227311907}
   - {fileID: 1301089964}
@@ -2332,18 +2358,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showFactory: 1
+  costsAmount: 0
+  dMaster: {fileID: 0}
+  drillCurrentShownType: 0
   drillAmount: 0
+  sMaster: {fileID: 0}
+  scanCurrentShownType: 0
   scanAmount: 0
   pipesAmount: 0
-  costsAmount: 0
+  pipesPrice: 150
+  pipesTime: 5
   factoryWindowMenu: {fileID: 0}
-  dMaster: {fileID: 0}
   drillLabelType: {fileID: 0}
   drillLabelValue: {fileID: 0}
   scanLabelType: {fileID: 0}
   scanLabelValue: {fileID: 0}
   pipesValue: {fileID: 0}
   costsValue: {fileID: 0}
+--- !u!114 &246597010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 246597000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e9019d114f79c40b01a6a48583076d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &246597011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 246597000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c54f0664abf8c474fafb4208e4278103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &252811668
 GameObject:
   m_ObjectHideFlags: 0
@@ -2369,7 +2422,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 252811668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -640, y: 37, z: 0}
+  m_LocalPosition: {x: 153.515778, y: 36.9998627, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1677318513}
@@ -2754,6 +2807,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1218747316}
     m_Modifications:
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: fee46b827274e694aa251e2d36700135, type: 2}
       propertyPath: m_LocalPosition.x
       value: .216420397
@@ -2972,6 +3029,26 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: .00400000019
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: pressedSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: disabledSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.data[0].mTarget
+      value: 
+      objectReference: {fileID: 1462865675}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.data[0].mMethodName
+      value: ButtonPipesMoreAmountSmashed
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fee46b827274e694aa251e2d36700135, type: 2}
   m_RootGameObject: {fileID: 1462865669}
@@ -3152,6 +3229,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1559682407}
     m_Modifications:
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: fee46b827274e694aa251e2d36700135, type: 2}
       propertyPath: m_LocalPosition.x
       value: -.191572517
@@ -3370,6 +3451,26 @@ Prefab:
       propertyPath: aspectRatio
       value: 2.16666675
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: pressedSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: disabledSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.data[0].mTarget
+      value: 
+      objectReference: {fileID: 1145884978}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.data[0].mMethodName
+      value: ButtonScanLessAmountSmashed
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fee46b827274e694aa251e2d36700135, type: 2}
   m_RootGameObject: {fileID: 1145884972}
@@ -3382,6 +3483,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1218747316}
     m_Modifications:
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: fee46b827274e694aa251e2d36700135, type: 2}
       propertyPath: m_LocalPosition.x
       value: -.191572309
@@ -3600,6 +3705,26 @@ Prefab:
       propertyPath: aspectRatio
       value: 2.16666675
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: pressedSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: disabledSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.data[0].mTarget
+      value: 
+      objectReference: {fileID: 366543157}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.data[0].mMethodName
+      value: ButtonPipesLessAmountSmashed
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fee46b827274e694aa251e2d36700135, type: 2}
   m_RootGameObject: {fileID: 366543151}
@@ -3707,6 +3832,7 @@ GameObject:
   - 114: {fileID: 366543155}
   - 65: {fileID: 366543154}
   - 114: {fileID: 366543153}
+  - 114: {fileID: 366543157}
   m_Layer: 9
   m_Name: ButtonPipesLess
   m_TagString: Untagged
@@ -3774,11 +3900,15 @@ MonoBehaviour:
   disabledColor: {r: 1, g: 1, b: 1, a: 1}
   duration: .200000003
   dragHighlight: 0
-  hoverSprite: Flat
-  pressedSprite: Button
-  disabledSprite: Flat
+  hoverSprite: 
+  pressedSprite: 
+  disabledSprite: 
   pixelSnap: 1
-  onClick: []
+  onClick:
+  - mTarget: {fileID: 366543157}
+    mMethodName: ButtonPipesLessAmountSmashed
+    mParameters: []
+    oneShot: 0
 --- !u!114 &366543156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3830,6 +3960,19 @@ MonoBehaviour:
   rightType: 1
   bottomType: 1
   topType: 1
+--- !u!114 &366543157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 366543151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c75bbb6d0fd332448ebde403c51e9ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facWindow: {fileID: 0}
+  pMaster: {fileID: 0}
 --- !u!1 &392132712
 GameObject:
   m_ObjectHideFlags: 0
@@ -3910,9 +4053,9 @@ MonoBehaviour:
   disabledColor: {r: 1, g: 1, b: 1, a: 1}
   duration: .200000003
   dragHighlight: 0
-  hoverSprite: Flat
-  pressedSprite: Button
-  disabledSprite: Flat
+  hoverSprite: 
+  pressedSprite: 
+  disabledSprite: 
   pixelSnap: 1
   onClick:
   - mTarget: {fileID: 392132718}
@@ -6563,7 +6706,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 13
+  aspectRatio: 20.8571434
   mAtlas: {fileID: 11400000, guid: 62adb30369acbf943a67cee0f69267a3, type: 2}
   mSpriteName: Stripes 1
   mType: 2
@@ -7390,6 +7533,18 @@ Prefab:
     - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
       propertyPath: onClick.Array.data[0].mMethodName
       value: ButtonDrillMoreTypeSmashed
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: pressedSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: disabledSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fee46b827274e694aa251e2d36700135, type: 2}
@@ -9199,6 +9354,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1559682407}
     m_Modifications:
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: fee46b827274e694aa251e2d36700135, type: 2}
       propertyPath: m_LocalPosition.x
       value: -.191572309
@@ -9416,6 +9575,26 @@ Prefab:
     - target: {fileID: 11400014, guid: fee46b827274e694aa251e2d36700135, type: 2}
       propertyPath: aspectRatio
       value: 2.16666675
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: pressedSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: disabledSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.data[0].mTarget
+      value: 
+      objectReference: {fileID: 1235090120}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.data[0].mMethodName
+      value: ButtonScanLessTypeSmashed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fee46b827274e694aa251e2d36700135, type: 2}
@@ -9657,7 +9836,19 @@ Prefab:
       objectReference: {fileID: 392132718}
     - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
       propertyPath: onClick.Array.data[0].mMethodName
-      value: ButtonDrillLessTypeSmashed
+      value: ButtonDrillLessAmountSmashed
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: pressedSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: disabledSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fee46b827274e694aa251e2d36700135, type: 2}
@@ -10068,6 +10259,18 @@ Prefab:
       propertyPath: onClick.Array.data[0].mMethodName
       value: ButtonDrillLessTypeSmashed
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: pressedSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: disabledSprite
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fee46b827274e694aa251e2d36700135, type: 2}
   m_RootGameObject: {fileID: 392132712}
@@ -10475,7 +10678,6 @@ GameObject:
   - 124: {fileID: 946496278}
   - 81: {fileID: 946496277}
   - 114: {fileID: 946496276}
-  - 114: {fileID: 946496275}
   - 114: {fileID: 946496274}
   m_Layer: 0
   m_Name: 00_MainCamera
@@ -10561,24 +10763,6 @@ MonoBehaviour:
   pControl: {fileID: 0}
   buildingsCount: 0
   mass: 0
---- !u!114 &946496275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: f1840ea704e2ca44597d8477f5a15927,
-    type: 2}
-  m_PrefabInternal: {fileID: 1674048062}
-  m_GameObject: {fileID: 946496273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 632d7764de7c1c64c9714a41b2c69b6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pObject: {fileID: 0}
-  pControl: {fileID: 0}
-  pKeyControl: {fileID: 0}
-  camObject: {fileID: 0}
-  cShowingStuff: {fileID: 0}
-  timeIs: 3
 --- !u!114 &946496276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10778,15 +10962,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400070, guid: 19db295f78ce29646a75ba938163ba43, type: 2}
       propertyPath: m_LocalScale.x
-      value: .00380228134
+      value: .00379506638
       objectReference: {fileID: 0}
     - target: {fileID: 400070, guid: 19db295f78ce29646a75ba938163ba43, type: 2}
       propertyPath: m_LocalScale.y
-      value: .00380228134
+      value: .00379506638
       objectReference: {fileID: 0}
     - target: {fileID: 400070, guid: 19db295f78ce29646a75ba938163ba43, type: 2}
       propertyPath: m_LocalScale.z
-      value: .00380228134
+      value: .00379506638
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19db295f78ce29646a75ba938163ba43, type: 2}
@@ -11041,9 +11225,9 @@ MonoBehaviour:
   disabledColor: {r: 1, g: 1, b: 1, a: 1}
   duration: .200000003
   dragHighlight: 0
-  hoverSprite: Flat
-  pressedSprite: Button
-  disabledSprite: Flat
+  hoverSprite: 
+  pressedSprite: 
+  disabledSprite: 
   pixelSnap: 1
   onClick:
   - mTarget: {fileID: 1007476019}
@@ -11121,6 +11305,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1745384593}
     m_Modifications:
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: fee46b827274e694aa251e2d36700135, type: 2}
       propertyPath: m_LocalPosition.x
       value: .216420665
@@ -11339,6 +11527,26 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: .00400000019
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: pressedSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: disabledSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.data[0].mTarget
+      value: 
+      objectReference: {fileID: 1213374168}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.data[0].mMethodName
+      value: ButtonDrillMoreAmountSmashed
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fee46b827274e694aa251e2d36700135, type: 2}
   m_RootGameObject: {fileID: 1213374162}
@@ -11434,6 +11642,7 @@ GameObject:
   - 114: {fileID: 1072447800}
   - 65: {fileID: 1072447799}
   - 114: {fileID: 1072447798}
+  - 114: {fileID: 1072447802}
   m_Layer: 9
   m_Name: ButtonScanTypeMore
   m_TagString: Untagged
@@ -11501,11 +11710,15 @@ MonoBehaviour:
   disabledColor: {r: 1, g: 1, b: 1, a: 1}
   duration: .200000003
   dragHighlight: 0
-  hoverSprite: Flat
-  pressedSprite: Button
-  disabledSprite: Flat
+  hoverSprite: 
+  pressedSprite: 
+  disabledSprite: 
   pixelSnap: 1
-  onClick: []
+  onClick:
+  - mTarget: {fileID: 1072447802}
+    mMethodName: ButtonScanMoreTypeSmashed
+    mParameters: []
+    oneShot: 0
 --- !u!114 &1072447801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11557,6 +11770,19 @@ MonoBehaviour:
   rightType: 1
   bottomType: 1
   topType: 1
+--- !u!114 &1072447802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1072447796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c75bbb6d0fd332448ebde403c51e9ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facWindow: {fileID: 0}
+  pMaster: {fileID: 0}
 --- !u!1 &1075113786
 GameObject:
   m_ObjectHideFlags: 0
@@ -11874,7 +12100,7 @@ MonoBehaviour:
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
   mFont: {fileID: 0}
-  mText: Type
+  mText: Value
   mFontSize: 18
   mFontStyle: 0
   mAlignment: 0
@@ -12177,6 +12403,7 @@ GameObject:
   - 114: {fileID: 1145884976}
   - 65: {fileID: 1145884975}
   - 114: {fileID: 1145884974}
+  - 114: {fileID: 1145884978}
   m_Layer: 9
   m_Name: ButtonScanLess
   m_TagString: Untagged
@@ -12244,11 +12471,15 @@ MonoBehaviour:
   disabledColor: {r: 1, g: 1, b: 1, a: 1}
   duration: .200000003
   dragHighlight: 0
-  hoverSprite: Flat
-  pressedSprite: Button
-  disabledSprite: Flat
+  hoverSprite: 
+  pressedSprite: 
+  disabledSprite: 
   pixelSnap: 1
-  onClick: []
+  onClick:
+  - mTarget: {fileID: 1145884978}
+    mMethodName: ButtonScanLessAmountSmashed
+    mParameters: []
+    oneShot: 0
 --- !u!114 &1145884977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12300,6 +12531,19 @@ MonoBehaviour:
   rightType: 1
   bottomType: 1
   topType: 1
+--- !u!114 &1145884978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1145884972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c75bbb6d0fd332448ebde403c51e9ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facWindow: {fileID: 0}
+  pMaster: {fileID: 0}
 --- !u!1 &1147170190
 GameObject:
   m_ObjectHideFlags: 0
@@ -12860,7 +13104,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.16666675
+  aspectRatio: 4.23529434
   mAtlas: {fileID: 11400000, guid: 62adb30369acbf943a67cee0f69267a3, type: 2}
   mSpriteName: Stripes 3
   mType: 2
@@ -13294,11 +13538,15 @@ MonoBehaviour:
   disabledColor: {r: 1, g: 1, b: 1, a: 1}
   duration: .200000003
   dragHighlight: 0
-  hoverSprite: Flat
-  pressedSprite: Button
-  disabledSprite: Flat
+  hoverSprite: 
+  pressedSprite: 
+  disabledSprite: 
   pixelSnap: 1
-  onClick: []
+  onClick:
+  - mTarget: {fileID: 1213374168}
+    mMethodName: ButtonDrillMoreAmountSmashed
+    mParameters: []
+    oneShot: 0
 --- !u!114 &1213374167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13495,6 +13743,7 @@ GameObject:
   - 114: {fileID: 1235090118}
   - 65: {fileID: 1235090117}
   - 114: {fileID: 1235090116}
+  - 114: {fileID: 1235090120}
   m_Layer: 9
   m_Name: ButtonScanTypeLess
   m_TagString: Untagged
@@ -13562,11 +13811,15 @@ MonoBehaviour:
   disabledColor: {r: 1, g: 1, b: 1, a: 1}
   duration: .200000003
   dragHighlight: 0
-  hoverSprite: Flat
-  pressedSprite: Button
-  disabledSprite: Flat
+  hoverSprite: 
+  pressedSprite: 
+  disabledSprite: 
   pixelSnap: 1
-  onClick: []
+  onClick:
+  - mTarget: {fileID: 1235090120}
+    mMethodName: ButtonScanLessTypeSmashed
+    mParameters: []
+    oneShot: 0
 --- !u!114 &1235090119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13618,6 +13871,19 @@ MonoBehaviour:
   rightType: 1
   bottomType: 1
   topType: 1
+--- !u!114 &1235090120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1235090114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c75bbb6d0fd332448ebde403c51e9ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facWindow: {fileID: 0}
+  pMaster: {fileID: 0}
 --- !u!1 &1256840413
 GameObject:
   m_ObjectHideFlags: 0
@@ -14287,6 +14553,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1559682407}
     m_Modifications:
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: fee46b827274e694aa251e2d36700135, type: 2}
       propertyPath: m_LocalPosition.x
       value: .216420665
@@ -14505,6 +14775,26 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: .00400000019
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: pressedSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: disabledSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.data[0].mTarget
+      value: 
+      objectReference: {fileID: 1373977513}
+    - target: {fileID: 11400000, guid: fee46b827274e694aa251e2d36700135, type: 2}
+      propertyPath: onClick.Array.data[0].mMethodName
+      value: ButtonScanMoreAmountSmashed
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fee46b827274e694aa251e2d36700135, type: 2}
   m_RootGameObject: {fileID: 1373977507}
@@ -14613,6 +14903,7 @@ GameObject:
   - 114: {fileID: 1373977511}
   - 65: {fileID: 1373977510}
   - 114: {fileID: 1373977509}
+  - 114: {fileID: 1373977513}
   m_Layer: 9
   m_Name: ButtonScanMore
   m_TagString: Untagged
@@ -14680,11 +14971,15 @@ MonoBehaviour:
   disabledColor: {r: 1, g: 1, b: 1, a: 1}
   duration: .200000003
   dragHighlight: 0
-  hoverSprite: Flat
-  pressedSprite: Button
-  disabledSprite: Flat
+  hoverSprite: 
+  pressedSprite: 
+  disabledSprite: 
   pixelSnap: 1
-  onClick: []
+  onClick:
+  - mTarget: {fileID: 1373977513}
+    mMethodName: ButtonScanMoreAmountSmashed
+    mParameters: []
+    oneShot: 0
 --- !u!114 &1373977512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14736,6 +15031,19 @@ MonoBehaviour:
   rightType: 1
   bottomType: 1
   topType: 1
+--- !u!114 &1373977513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1373977507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c75bbb6d0fd332448ebde403c51e9ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facWindow: {fileID: 0}
+  pMaster: {fileID: 0}
 --- !u!1 &1388041522
 GameObject:
   m_ObjectHideFlags: 0
@@ -15764,6 +16072,7 @@ GameObject:
   - 114: {fileID: 1462865673}
   - 65: {fileID: 1462865672}
   - 114: {fileID: 1462865671}
+  - 114: {fileID: 1462865675}
   m_Layer: 9
   m_Name: ButtonPipesMore
   m_TagString: Untagged
@@ -15831,11 +16140,15 @@ MonoBehaviour:
   disabledColor: {r: 1, g: 1, b: 1, a: 1}
   duration: .200000003
   dragHighlight: 0
-  hoverSprite: Flat
-  pressedSprite: Button
-  disabledSprite: Flat
+  hoverSprite: 
+  pressedSprite: 
+  disabledSprite: 
   pixelSnap: 1
-  onClick: []
+  onClick:
+  - mTarget: {fileID: 1462865675}
+    mMethodName: ButtonPipesMoreAmountSmashed
+    mParameters: []
+    oneShot: 0
 --- !u!114 &1462865674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15887,6 +16200,19 @@ MonoBehaviour:
   rightType: 1
   bottomType: 1
   topType: 1
+--- !u!114 &1462865675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1462865669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c75bbb6d0fd332448ebde403c51e9ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facWindow: {fileID: 0}
+  pMaster: {fileID: 0}
 --- !u!1 &1470475026
 GameObject:
   m_ObjectHideFlags: 0
@@ -16108,7 +16434,7 @@ Transform:
   m_GameObject: {fileID: 1489187716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .00380228134, y: .00380228134, z: .00380228134}
+  m_LocalScale: {x: .00379506638, y: .00379506638, z: .00379506638}
   m_Children:
   - {fileID: 2011316769}
   - {fileID: 99382028}
@@ -16655,7 +16981,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 10.3000002
+  aspectRatio: 4.23529434
   mAtlas: {fileID: 11400000, guid: 62adb30369acbf943a67cee0f69267a3, type: 2}
   mSpriteName: Stripes 3
   mType: 2
@@ -17077,7 +17403,8 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400002, guid: f1840ea704e2ca44597d8477f5a15927, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f1840ea704e2ca44597d8477f5a15927, type: 2}
   m_RootGameObject: {fileID: 946496273}
   m_IsPrefabParent: 0
@@ -18699,16 +19026,16 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 7
-  mWidth: 38
+  mWidth: 46
   mHeight: 20
   mDepth: 3
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 1.89999998
+  aspectRatio: 2.29999995
   keepCrispWhenShrunk: 1
-  mTrueTypeFont: {fileID: 0}
-  mFont: {fileID: 11400000, guid: 29056518aafb01b49a5b08faf8e30cff, type: 2}
+  mTrueTypeFont: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
+  mFont: {fileID: 0}
   mText: 70%
   mFontSize: 20
   mFontStyle: 0
@@ -18882,15 +19209,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400086, guid: d15d3b0a2b59b84429fcf138b6b5eeab, type: 2}
       propertyPath: m_LocalScale.x
-      value: .00380228134
+      value: .00379506638
       objectReference: {fileID: 0}
     - target: {fileID: 400086, guid: d15d3b0a2b59b84429fcf138b6b5eeab, type: 2}
       propertyPath: m_LocalScale.y
-      value: .00380228134
+      value: .00379506638
       objectReference: {fileID: 0}
     - target: {fileID: 400086, guid: d15d3b0a2b59b84429fcf138b6b5eeab, type: 2}
       propertyPath: m_LocalScale.z
-      value: .00380228134
+      value: .00379506638
       objectReference: {fileID: 0}
     - target: {fileID: 11400230, guid: d15d3b0a2b59b84429fcf138b6b5eeab, type: 2}
       propertyPath: mWidth
@@ -20171,11 +20498,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400010, guid: 0b2eaf764cd5dcc498274816bd1bec13, type: 2}
       propertyPath: mWidth
-      value: 38
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 11400010, guid: 0b2eaf764cd5dcc498274816bd1bec13, type: 2}
       propertyPath: aspectRatio
-      value: 1.89999998
+      value: 2.29999995
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 0b2eaf764cd5dcc498274816bd1bec13, type: 2}
       propertyPath: m_Layer
@@ -20273,6 +20600,15 @@ Prefab:
     - target: {fileID: 400004, guid: 0b2eaf764cd5dcc498274816bd1bec13, type: 2}
       propertyPath: m_LocalPosition.y
       value: -10.6083975
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: 0b2eaf764cd5dcc498274816bd1bec13, type: 2}
+      propertyPath: mTrueTypeFont
+      value: 
+      objectReference: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467,
+        type: 3}
+    - target: {fileID: 11400010, guid: 0b2eaf764cd5dcc498274816bd1bec13, type: 2}
+      propertyPath: mFont
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b2eaf764cd5dcc498274816bd1bec13, type: 2}

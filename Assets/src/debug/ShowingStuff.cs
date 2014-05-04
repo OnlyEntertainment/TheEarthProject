@@ -53,9 +53,5 @@ public class ShowingStuff : MonoBehaviour {
     void OnGUI()
     { 
         GUI.Label(new Rect(10, 10, 30, 30), "fps: " + lastFPS, textStyle);
-        GUI.Label(new Rect(10, 25, 30, 30), "speed: " + pControl.gettingMaterialSpeed, textStyle);
-        GUI.Label(new Rect(10, 40, 30, 30), "amount: " + pControl.gettingMaterialAmount, textStyle);
-        GUI.Label(new Rect(10, 55, 30, 30), "Buildings: " + buildingsCount, textStyle);
-        GUI.Label(new Rect(10, 70, 30, 30), "Storage: " + mass, textStyle);
-    } // END OnGUI
+   } // END OnGUI
 } // END END
