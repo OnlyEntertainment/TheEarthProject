@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class FactoryButtonClick : MonoBehaviour {
 
 
     public FactoryWindow facWindow;
     public PlayerAttributeControl pMaster;
+    public TaskWaitListWindow taskWindow;
+    
 
 
 	// Use this for initialization
@@ -13,16 +16,20 @@ public class FactoryButtonClick : MonoBehaviour {
 
         facWindow = GameObject.Find("00_GuiStuff").GetComponent<FactoryWindow>();
         pMaster = GameObject.Find("01_Player").GetComponent<PlayerAttributeControl>();
-
+        taskWindow = GameObject.Find("00_GuiStuff").GetComponent<TaskWaitListWindow>();
 	}
 	
 	// Update is called once per frame
 	public void ButtonBuySmashed () 
     {
-	    
 
+        taskWindow.SetTasks(facWindow.drillLabelType.text, Convert.ToInt32(facWindow.drillLabelValue.text));
+        taskWindow.SetTasks(facWindow.scanLabelType.text, Convert.ToInt32(facWindow.scanLabelValue.text));
+        taskWindow.SetTasks("Pipes", Convert.ToInt32(facWindow.pipesValue.text));
 
-	} // END ButtonBuySmashed
+        int amountResult = Convert.ToInt32(facWindow.drillLabelValue.text) + Convert.ToInt32(facWindow.scanLabelValue.text) + Convert.ToInt32(facWindow.pipesValue.text);
+        taskWindow.SetTaskList(amountResult);
+    } // END ButtonBuySmashed
 
     public void ButtonDrillMoreTypeSmashed()
     {
