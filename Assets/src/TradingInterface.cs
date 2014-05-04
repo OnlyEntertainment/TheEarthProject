@@ -194,7 +194,7 @@ public class TradingInterface : MonoBehaviour
         {
             changeOfPriceMin = 10;
             changeOfPriceMax = 20;
-        }
+        } 
         else if (rnd > 80 && rnd <= 100)
         {
             changeOfPriceMin = 30;

@@ -23,7 +23,16 @@ public class DS_GameHUD : MonoBehaviour
     void Update()
     {
         if (istAmBauen)
-        { 
+        {
+
+            if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape))
+            {
+
+                Destroy(instanzGebaeude);
+                istAmBauen = false;
+                instanzGebaeude = null;
+                return;
+            }
 
             Vector3 posMaus = camera.ScreenToWorldPoint(Input.mousePosition);
             Vector2 posNull = new Vector2(0, 0);
@@ -37,21 +46,21 @@ public class DS_GameHUD : MonoBehaviour
             if (posMaus.x >= posNull.x && posMaus.y <= posNull.y) winkel = winkel * -1 + 180; //Q 1
             else if (posMaus.x <= posNull.x && posMaus.y <= posNull.y) winkel = (90 - winkel) + 90; //Q 2
             else if (posMaus.x >= posNull.x && posMaus.y >= posNull.y) winkel = (90 - winkel) + 270; //Q 3
-            else winkel = winkel *-1;  
+            else winkel = winkel * -1;
 
             int volleTeile = (int)(winkel / winkelteil);
-            if (winkel%winkelteil >= (winkelteil / 2)) volleTeile += 1;
+            if (winkel % winkelteil >= (winkelteil / 2)) volleTeile += 1;
 
             Vector3 newPosition = prefabGebaeude.transform.position;
-            newPosition.x = Mathf.Cos((volleTeile+5)*alphaD) *radius;
-            newPosition.y = Mathf.Sin((volleTeile+5)*alphaD) *prefabGebaeude.transform.position.y;
-            
+            newPosition.x = Mathf.Cos((volleTeile + 5) * alphaD) * radius;
+            newPosition.y = Mathf.Sin((volleTeile + 5) * alphaD) * prefabGebaeude.transform.position.y;
+
             Vector3 rayPosition = prefabGebaeude.transform.position;
             rayPosition.x = Mathf.Cos((volleTeile + 5) * alphaD) * (prefabGebaeude.transform.position.y + 1);
             rayPosition.y = Mathf.Sin((volleTeile + 5) * alphaD) * (prefabGebaeude.transform.position.y + 1);
-            
+
             instanzGebaeude.transform.position = newPosition;
-            instanzGebaeude.transform.localEulerAngles  = new Vector3(0, 0, volleTeile* winkelteil);
+            instanzGebaeude.transform.localEulerAngles = new Vector3(0, 0, volleTeile * winkelteil);
 
 
             //Debug.DrawRay(rayPosition, newPosition * -1, Color.black);
@@ -60,7 +69,7 @@ public class DS_GameHUD : MonoBehaviour
 
             instanzGebaeude.renderer.material.color = colorDeniedToBuild;
 
-            if (!Physics.Raycast(rayPosition,newPosition*-1,out rayHitOtherBuilding,1f))            
+            if (!Physics.Raycast(rayPosition, newPosition * -1, out rayHitOtherBuilding, 1f))
             {
                 RaycastHit rayHitGround;
 
@@ -82,7 +91,7 @@ public class DS_GameHUD : MonoBehaviour
                         instanzGebaeude.renderer.material.color = colorAllowedToBuild;
 
 
-                        if (Input.GetMouseButton(1))
+                        if (Input.GetMouseButton(0))
                         {
                             instanzGebaeude.transform.position = new Vector3(instanzGebaeude.transform.position.x, instanzGebaeude.transform.position.y, 0);
                             instanzGebaeude.collider.enabled = true;
