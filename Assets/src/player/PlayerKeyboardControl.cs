@@ -41,17 +41,17 @@ public class PlayerKeyboardControl : MonoBehaviour {
 
 
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.F1))
         {
             menuResearchWindow.ResearchShow();
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F2))
         {
             menuFactoryWindow.FactoryShow();
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.F3))
         {
             menuStorageWindow.StorageShow();
         }

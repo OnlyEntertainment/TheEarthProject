@@ -23,12 +23,27 @@ public class FactoryButtonClick : MonoBehaviour {
 	public void ButtonBuySmashed () 
     {
 
-        taskWindow.SetTasks(facWindow.drillLabelType.text, Convert.ToInt32(facWindow.drillLabelValue.text));
-        taskWindow.SetTasks(facWindow.scanLabelType.text, Convert.ToInt32(facWindow.scanLabelValue.text));
-        taskWindow.SetTasks("Pipes", Convert.ToInt32(facWindow.pipesValue.text));
+        if (pMaster.playerMoney >= Convert.ToInt32(facWindow.costsValue.text))
+        {
 
-        int amountResult = Convert.ToInt32(facWindow.drillLabelValue.text) + Convert.ToInt32(facWindow.scanLabelValue.text) + Convert.ToInt32(facWindow.pipesValue.text);
-        taskWindow.SetTaskList(amountResult);
+            taskWindow.SetTasks(facWindow.drillLabelType.text, Convert.ToInt32(facWindow.drillLabelValue.text));
+            taskWindow.SetTasks(facWindow.scanLabelType.text, Convert.ToInt32(facWindow.scanLabelValue.text));
+            taskWindow.SetTasks("Pipes", Convert.ToInt32(facWindow.pipesValue.text));
+
+            int amountResult = Convert.ToInt32(facWindow.drillLabelValue.text) + Convert.ToInt32(facWindow.scanLabelValue.text) + Convert.ToInt32(facWindow.pipesValue.text);
+            if (amountResult > 0)
+            {
+                taskWindow.SetTaskList(amountResult);
+
+                pMaster.playerMoney -= Convert.ToInt32(facWindow.costsValue.text);
+                facWindow.costsAmount = 0;
+                facWindow.drillLabelType.text = "Standard";
+                facWindow.drillAmount = 0;
+                facWindow.scanAmount = 0;
+                facWindow.scanLabelType.text = "Starter Kit";
+                facWindow.pipesAmount = 0;
+            }
+        }
     } // END ButtonBuySmashed
 
     public void ButtonDrillMoreTypeSmashed()
@@ -204,7 +219,12 @@ public class FactoryButtonClick : MonoBehaviour {
 
     } // END ButtonScanMoreAmountSmashed
 
+    public void ButtonTaskList()
+    {
 
+        facWindow.OpenTaskListWindow();
+
+    } // END ButtonBuySmashed
 
 
 

@@ -20,6 +20,45 @@ public class StorageWindow : MonoBehaviour
 
     public Dictionary<bodenArten, int> bodenData = new Dictionary<bodenArten, int>();
 
+    // MaterialWindow
+    public GameObject matWindow;
+    public UILabel label1;
+    public UILabel label2;
+    public UILabel label3;
+    public UILabel label4;
+    public UILabel label5;
+    public UILabel label6;
+    public UILabel label1Value;
+    public UILabel label2Value;
+    public UILabel label3Value;
+    public UILabel label4Value;
+    public UILabel label5Value;
+    public UILabel label6Value;
+
+    public UILabel label7Pipes;
+    public UILabel label7PipesValue;
+
+    public UILabel labelShowType;
+    public bool showTypeInMaterialWindow = true;
+
+    public int drillStandardAmount = 0;
+    public int drillEisenAmount = 0;
+    public int drillStahlAmount = 0;
+    public int drillChromAmount = 0;
+    public int drillTitanAmount = 0;
+    public int drillDiamondAmount = 0;
+
+    public int scanStarterKitAmount = 0;
+    public int scanSchwachAmount = 0;
+    public int scanKleinAmount = 0;
+    public int scanMittelAmount = 0;
+    public int scanGrossAmount = 0;
+    public int scanStarkAmount = 0;
+
+    public int pipesAmount = 0;
+
+    public bool showMaterialWindow = false;
+
 
     // Grafiken
     public UILabel maxStorageLabel;
@@ -38,6 +77,24 @@ public class StorageWindow : MonoBehaviour
         FillDictionary();
 
         stoMaster = this.GetComponent<StorageMaster>();
+        matWindow = transform.FindChild("StorageWindowData").gameObject.transform.FindChild("MaterialWindow").gameObject;
+        label1 = matWindow.transform.FindChild("Label1").gameObject.GetComponent<UILabel>();
+        label1Value = matWindow.transform.FindChild("Label1").gameObject.transform.FindChild("Label1Value").gameObject.GetComponent<UILabel>();
+        label2 = matWindow.transform.FindChild("Label2").gameObject.GetComponent<UILabel>();
+        label2Value = matWindow.transform.FindChild("Label2").gameObject.transform.FindChild("Label2Value").gameObject.GetComponent<UILabel>();
+        label3 = matWindow.transform.FindChild("Label3").gameObject.GetComponent<UILabel>();
+        label3Value = matWindow.transform.FindChild("Label3").gameObject.transform.FindChild("Label3Value").gameObject.GetComponent<UILabel>();
+        label4 = matWindow.transform.FindChild("Label4").gameObject.GetComponent<UILabel>();
+        label4Value = matWindow.transform.FindChild("Label4").gameObject.transform.FindChild("Label4Value").gameObject.GetComponent<UILabel>();
+        label5 = matWindow.transform.FindChild("Label5").gameObject.GetComponent<UILabel>();
+        label5Value = matWindow.transform.FindChild("Label5").gameObject.transform.FindChild("Label5Value").gameObject.GetComponent<UILabel>();
+        label6 = matWindow.transform.FindChild("Label6").gameObject.GetComponent<UILabel>();
+        label6Value = matWindow.transform.FindChild("Label6").gameObject.transform.FindChild("Label6Value").gameObject.GetComponent<UILabel>();
+
+        label7Pipes = matWindow.transform.FindChild("Label7Pipes").gameObject.GetComponent<UILabel>();
+        label7PipesValue = matWindow.transform.FindChild("Label7Pipes").gameObject.transform.FindChild("Label7PipesValue").gameObject.GetComponent<UILabel>();
+
+        labelShowType = matWindow.transform.FindChild("LabelShowType").gameObject.GetComponent<UILabel>();
 
         GameObject storageWindowDataObject = transform.FindChild("StorageWindowData").gameObject;
         maxStorageLabel = storageWindowDataObject.transform.FindChild("LabelMaxStorage").gameObject.transform.FindChild("LabelMaxStorageValue").gameObject.GetComponent<UILabel>();
@@ -61,6 +118,7 @@ public class StorageWindow : MonoBehaviour
 
         RecheckCurrentStorageValue();
         ReloadStorageDataInWindow();
+        ShowMaterialWindow();
 
     } // END Update
 
@@ -86,7 +144,8 @@ public class StorageWindow : MonoBehaviour
         goldLabelValue.text = bodenData[bodenArten.Gold].ToString();
         oilLabelValue.text = bodenData[bodenArten.Oel].ToString();
         diamondLabelValue.text = bodenData[bodenArten.Diamant].ToString();
-
+        label7Pipes.text = "Pipes";
+        label7PipesValue.text = pipesAmount.ToString();
 
     } // END ReloadStorageDataInWindow
 
@@ -98,7 +157,7 @@ public class StorageWindow : MonoBehaviour
             showStorage = true;
             storageWindowMenu.SetActive(true);
 
-            
+
             ReloadStorageDataInWindow();
         }
         else
@@ -114,15 +173,15 @@ public class StorageWindow : MonoBehaviour
         if (bodenData.ContainsKey(bArten))
         {
 
-                if (currentStorageValue <maxStorageValue)
-                {                    
-                    int storedAmount = Mathf.Clamp(amount, 0,(maxStorageValue-currentStorageValue));
-                    bodenData[bArten] += storedAmount;
-                    currentStorageValue += storedAmount;
-                    return (amount-storedAmount);
+            if (currentStorageValue < maxStorageValue)
+            {
+                int storedAmount = Mathf.Clamp(amount, 0, (maxStorageValue - currentStorageValue));
+                bodenData[bArten] += storedAmount;
+                currentStorageValue += storedAmount;
+                return (amount - storedAmount);
 
-                }
-                return amount;
+            }
+            return amount;
         }
         else
         {
@@ -147,4 +206,73 @@ public class StorageWindow : MonoBehaviour
         }
 
     } // END RecheckCurrentStorageValue
+
+    void ShowMaterialWindow()
+    {
+
+        if (showMaterialWindow == true)
+        {
+
+            matWindow.SetActive(true);
+            if (showTypeInMaterialWindow == true)
+            {
+                labelShowType.text = "Drill";
+                label1.text = "Standard";
+                label2.text = "Eisen";
+                label3.text = "Stahl";
+                label4.text = "Chrom";
+                label5.text = "Titan";
+                label6.text = "Diamant";
+
+                label1Value.text = drillStandardAmount.ToString();
+                label2Value.text = drillEisenAmount.ToString();
+                label3Value.text = drillStahlAmount.ToString();
+                label4Value.text = drillChromAmount.ToString();
+                label5Value.text = drillTitanAmount.ToString();
+                label6Value.text = drillDiamondAmount.ToString();
+
+                label7Pipes.text = "Pipes";
+                label7PipesValue.text = pipesAmount.ToString();
+            }
+            else
+            {
+                labelShowType.text = "Scan";
+                label1.text = "Starter Kit";
+                label2.text = "Schwach";
+                label3.text = "Klein";
+                label4.text = "Mittel";
+                label5.text = "Groß";
+                label6.text = "Stark";
+
+                label1Value.text = scanStarterKitAmount.ToString();
+                label2Value.text = scanSchwachAmount.ToString();
+                label3Value.text = scanKleinAmount.ToString();
+                label4Value.text = scanMittelAmount.ToString();
+                label5Value.text = scanGrossAmount.ToString();
+                label6Value.text = scanStarkAmount.ToString();
+
+                label7Pipes.text = "Pipes";
+                label7PipesValue.text = pipesAmount.ToString();
+            }
+        }
+        else
+        {
+
+            matWindow.SetActive(false);
+        }
+
+    } // END ShowMaterialWindow
+
+    public void ChangeShowMaterialType()
+    {
+
+        if (showTypeInMaterialWindow == true)
+        {
+            showTypeInMaterialWindow = false;
+        }
+        else
+        {
+            showTypeInMaterialWindow = true;
+        }
+    } // END ChangeShowMaterialType
 }

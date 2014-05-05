@@ -49,25 +49,30 @@ public class FactoryWindow : MonoBehaviour
     // ProgressBar
     public UISlider progressSlider;
     public float progressTime = 0f;
-    
+
 
 
     // Warteliste
     public TaskWaitListWindow taskWindow;
+    public GameObject taskWindowObject;
     public bool taskStarted = false;
     public int currentTaskAmount = 0;
     public float currentTaskProgessTime = 0f;
     public string currentTaskType = "";
     public float taskResult = 0f;
     public float speicher1 = 0f;
+    public bool taskListShow = true;
+    public GameObject getLabelPrefab;
+
 
     // Use this for initialization
     void Start()
     {
 
-        
+
 
         factoryWindowMenu = GameObject.FindGameObjectWithTag("MenuFactory");
+        taskWindowObject = factoryWindowMenu.transform.FindChild("TaskListWindow").gameObject;
         dMaster = GetComponent<DrillMaster>();
         sMaster = GetComponent<ScanMaster>();
         taskWindow = GetComponent<TaskWaitListWindow>();
@@ -91,6 +96,7 @@ public class FactoryWindow : MonoBehaviour
         //drillLabelType = drillDataObject.transform.FindChild("LabelDrillType").gameObject.GetComponent<UILabel>();
         costsValue = kostenDataObject.transform.FindChild("LabelKostenValue").gameObject.GetComponent<UILabel>();
 
+        FactoryShow();
         FactoryWindowReload();
     } // END Start
 
@@ -129,21 +135,21 @@ public class FactoryWindow : MonoBehaviour
                 {
                     taskStarted = false;
                     taskWindow.DeleteTasks();
-                    
+
                 }
 
             }
         }
 
-
+        
         FactoryWindowReload();
     } // END Update
 
     public void SetCurrentTask(string productType, int amount)
     {
 
-        
-        if(productType == "Standard")
+
+        if (productType == "Standard")
         {
 
             currentTaskAmount = amount;
@@ -263,7 +269,16 @@ public class FactoryWindow : MonoBehaviour
             speicher1 = progressTime / 100;
             taskStarted = true;
         }
-        
+        else if (productType == "Pipes")
+        {
+
+            currentTaskAmount = amount;
+            currentTaskType = productType;
+            currentTaskProgessTime = pipesTime;
+            progressTime = currentTaskProgessTime;
+            speicher1 = progressTime / 100;
+            taskStarted = true;
+        }
 
     } // END SetCurrentTask
 
@@ -275,6 +290,8 @@ public class FactoryWindow : MonoBehaviour
         {
             showFactory = true;
             factoryWindowMenu.SetActive(true);
+            taskListShow = false;
+            taskWindowObject.SetActive(false);
 
             FactoryWindowReload();
         }
@@ -282,6 +299,9 @@ public class FactoryWindow : MonoBehaviour
         {
             showFactory = false;
             factoryWindowMenu.SetActive(false);
+
+            taskListShow = false;
+            taskWindowObject.SetActive(false);
         }
 
 
@@ -345,11 +365,17 @@ public class FactoryWindow : MonoBehaviour
 
         CostsReload();
         costsValue.text = costsAmount.ToString();
+
+
+
+        taskWindowObject.SetActive(taskListShow);
+
+
     } // END FactoryWindowReload
 
     void CostsReload()
     {
-        
+
 
         int drillCosts = drillDic[GetBohrerArtByString(drillLabelType.text)].costsMoney * drillAmount;
         int scanCosts = scanDic[GetSondenArtByString(scanLabelType.text)].costsMoney * scanAmount;
@@ -375,4 +401,23 @@ public class FactoryWindow : MonoBehaviour
         }
         return (sondenArten)0;
     } // END GetSondenArtByString
+
+    public void OpenTaskListWindow()
+    {
+
+        if (taskListShow == false)
+        {
+
+            taskListShow = true;
+            taskWindowObject.SetActive(taskListShow);
+        }
+        else
+        {
+            taskListShow = false;
+            taskWindowObject.SetActive(taskListShow);
+        }
+
+
+    }
+
 }

@@ -42,7 +42,8 @@ public class TaskWaitListWindow : MonoBehaviour
 
         if (amountResult > 0)
         {
-
+            
+            
             if (facWindow.taskStarted == false)
             {
                 facWindow.SetCurrentTask(taskListType[0], taskListAmount[0]);
