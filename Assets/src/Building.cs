@@ -18,7 +18,7 @@ public class Building : MonoBehaviour
     public BUILDINGSTATUS buildingStatus = BUILDINGSTATUS.Idle;
 
     public int drillingDepthCurrent = 0;
-    public int drillingDepthGoal = 0;    
+    public int drillingDepthGoal = 0;
     public BuildingInterface.BOHRERART drillType = BuildingInterface.BOHRERART.Standard;
 
     public int probingShowAmountMax = 0;
@@ -40,6 +40,7 @@ public class Building : MonoBehaviour
     private GameObject miningCell;
     private CellControl miningCellControl;
 
+    public bool DEBUG_GotException = false;
 
     void Start()
     {
@@ -52,8 +53,8 @@ public class Building : MonoBehaviour
     {
         switch (buildingStatus)
         {
-            case BUILDINGSTATUS.Drilling: 
-                Drilling(); 
+            case BUILDINGSTATUS.Drilling:
+                Drilling();
                 break;
             case BUILDINGSTATUS.Mining:
                 Mining();
@@ -65,7 +66,7 @@ public class Building : MonoBehaviour
                 Probing();
                 break;
         }
-    
+
 
 
         //if (showInterface)
@@ -156,20 +157,33 @@ public class Building : MonoBehaviour
                     if (cell.lage == (20 - drillingDepthCurrent + 1)) break;
                 }
 
-                newPos = new Vector3(layer.transform.position.x, layer.transform.position.y, prefabDrillObject.transform.position.z);
-                newDrill = (GameObject)Instantiate(prefabDrillObject, newPos, layer.transform.rotation);
-
-                drillList.Add(newDrill);
-                newDrill.transform.position = newPos;
-
-                if (cell.isHidden) { cell.isHidden = false; cell.LoadTexture(); }
-                if (!canDrill(cell)) { DestroyBuilding("Gestein zu Hart --> Abbruch"); }
-                else if (drillingDepthCurrent > drillingDepthGoal)
+                try
                 {
+                    newPos = new Vector3(layer.transform.position.x, layer.transform.position.y, prefabDrillObject.transform.position.z);
+                    newDrill = (GameObject)Instantiate(prefabDrillObject, newPos, layer.transform.rotation);
+                    newDrill.transform.parent = gameObject.transform.parent.transform;
 
-                    buildingStatus = BUILDINGSTATUS.Mining;
-                    miningCell = layer;
-                    miningCellControl = cell;
+
+
+                    drillList.Add(newDrill);
+                    newDrill.transform.position = newPos;
+
+                    if (cell.isHidden) { cell.isHidden = false; cell.LoadTexture(); }
+                    if (!canDrill(cell)) { DestroyBuilding("Gestein zu Hart --> Abbruch"); }
+                    else if (drillingDepthCurrent > drillingDepthGoal)
+                    {
+
+                        buildingStatus = BUILDINGSTATUS.Mining;
+                        miningCell = layer;
+                        miningCellControl = cell;
+                    }
+                }
+                catch
+                {
+                    DEBUG_GotException = true;
+                    timer = 0;
+                    drillingDepthCurrent--;
+
                 }
             }
         }
@@ -200,20 +214,31 @@ public class Building : MonoBehaviour
                     if (cell.lage == (20 - drillingDepthCurrent + 1)) break;
                 }
 
-                newPos = new Vector3(layer.transform.position.x, layer.transform.position.y, prefabProbeOject.transform.position.z);
-                newProbe = (GameObject)Instantiate(prefabProbeOject, newPos, layer.transform.rotation);
-
-                drillList.Add(newProbe);
-                newProbe.transform.position = newPos;
-
-                
-                if (cell.isHidden) { cell.isHidden = false; cell.LoadTexture(); }
-                if (cell.lage >= 20 - probingShowAmountMax) { cell.showAmount = true; }
-
-                if (drillingDepthCurrent > probingDepthGoal)
+                try
                 {
-                    buildingStatus = BUILDINGSTATUS.Idle;
-                    DestroyBuilding("Sondieren fertig");
+
+                    newPos = new Vector3(layer.transform.position.x, layer.transform.position.y, prefabProbeOject.transform.position.z);
+                    newProbe = (GameObject)Instantiate(prefabProbeOject, newPos, layer.transform.rotation);
+
+                    drillList.Add(newProbe);
+                    newProbe.transform.position = newPos;
+
+
+                    if (cell.isHidden) { cell.isHidden = false; cell.LoadTexture(); }
+                    if (cell.lage >= 20 - probingShowAmountMax) { cell.showAmount = true; }
+
+                    if (drillingDepthCurrent > probingDepthGoal)
+                    {
+                        buildingStatus = BUILDINGSTATUS.Idle;
+                        DestroyBuilding("Sondieren fertig");
+                    }
+                }
+                catch
+                {
+                    DEBUG_GotException = true;
+                    timer = 0;
+                    drillingDepthCurrent--;
+
                 }
             }
         }

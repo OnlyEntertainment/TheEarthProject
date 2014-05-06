@@ -17,6 +17,8 @@ public class BuildingInterface : MonoBehaviour
     public GameObject GUIStuff;
     public StorageWindow storageWindow;
 
+    
+
     //General
     public GameObject titleInput;
     public GameObject statusVar;

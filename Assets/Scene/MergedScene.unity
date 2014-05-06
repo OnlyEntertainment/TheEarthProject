@@ -10975,6 +10975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stoWindow: {fileID: 0}
   pMaster: {fileID: 0}
+  stoWindowSecond: {fileID: 0}
 --- !u!114 &1048579024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11944,6 +11945,37 @@ MonoBehaviour:
   mType: 0
   maxStorageValue: 1000
   currentStorageValue: 0
+  matWindow: {fileID: 0}
+  label1: {fileID: 0}
+  label2: {fileID: 0}
+  label3: {fileID: 0}
+  label4: {fileID: 0}
+  label5: {fileID: 0}
+  label6: {fileID: 0}
+  label1Value: {fileID: 0}
+  label2Value: {fileID: 0}
+  label3Value: {fileID: 0}
+  label4Value: {fileID: 0}
+  label5Value: {fileID: 0}
+  label6Value: {fileID: 0}
+  label7Pipes: {fileID: 0}
+  label7PipesValue: {fileID: 0}
+  labelShowType: {fileID: 0}
+  showTypeInMaterialWindow: 1
+  drillStandardAmount: 0
+  drillEisenAmount: 0
+  drillStahlAmount: 0
+  drillChromAmount: 0
+  drillTitanAmount: 0
+  drillDiamondAmount: 0
+  scanStarterKitAmount: 0
+  scanSchwachAmount: 0
+  scanKleinAmount: 0
+  scanMittelAmount: 0
+  scanGrossAmount: 0
+  scanStarkAmount: 0
+  pipesAmount: 0
+  showMaterialWindow: 0
   maxStorageLabel: {fileID: 0}
   curStorageLabel: {fileID: 0}
   coleLabelValue: {fileID: 0}
@@ -12124,6 +12156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showFactory: 1
   costsAmount: 0
+  stoWindow: {fileID: 0}
   dMaster: {fileID: 0}
   drillCurrentShownType: 0
   drillAmount: 0
@@ -12143,12 +12176,15 @@ MonoBehaviour:
   progressSlider: {fileID: 0}
   progressTime: 0
   taskWindow: {fileID: 0}
+  taskWindowObject: {fileID: 0}
   taskStarted: 0
   currentTaskAmount: 0
   currentTaskProgessTime: 0
   currentTaskType: 
   taskResult: 0
   speicher1: 0
+  taskListShow: 1
+  getLabelPrefab: {fileID: 0}
 --- !u!114 &1154738530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19146,6 +19182,10 @@ Prefab:
       propertyPath: playerAttributeControlObject
       value: 
       objectReference: {fileID: 1262509461}
+    - target: {fileID: 100316, guid: d15d3b0a2b59b84429fcf138b6b5eeab, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d15d3b0a2b59b84429fcf138b6b5eeab, type: 2}
   m_RootGameObject: {fileID: 1154738518}
@@ -21189,7 +21229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2048810048
 Transform:
   m_ObjectHideFlags: 0

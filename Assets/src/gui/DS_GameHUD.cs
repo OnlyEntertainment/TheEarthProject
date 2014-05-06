@@ -6,6 +6,7 @@ public class DS_GameHUD : MonoBehaviour
 
     private bool istAmBauen = false;
 
+    public GameObject worldGen;
     public GameObject prefabGebaeude;
     private GameObject instanzGebaeude;
 
@@ -94,6 +95,7 @@ public class DS_GameHUD : MonoBehaviour
                         if (Input.GetMouseButton(0))
                         {
                             instanzGebaeude.transform.position = new Vector3(instanzGebaeude.transform.position.x, instanzGebaeude.transform.position.y, 0);
+                            instanzGebaeude.transform.parent = worldGen.transform;
                             instanzGebaeude.collider.enabled = true;
                             instanzGebaeude.renderer.material.color = colorInit;
                             istAmBauen = false;
