@@ -275,4 +275,53 @@ public class StorageWindow : MonoBehaviour
             showTypeInMaterialWindow = true;
         }
     } // END ChangeShowMaterialType
+
+    public void SetMaterialWindowDataUp(string product, int amount)
+    {
+
+
+        switch(product)
+        {
+            case "Standard":
+                drillStandardAmount += amount;
+                break;
+            case "Eisen":
+                drillEisenAmount += amount;
+                break;
+            case "Stahl":
+                drillStandardAmount += amount;
+                break;
+            case "Chrom":
+                drillChromAmount += amount;
+                break;
+            case "Titan":
+                drillTitanAmount += amount;
+                break;
+            case "Diamant":
+                drillDiamondAmount+= amount;
+                break;
+            case "Starter Kit":
+                scanStarterKitAmount += amount;
+                break;
+            case "Schwach":
+                scanSchwachAmount += amount;
+                break;
+            case "Klein":
+                scanKleinAmount += amount;
+                break;
+            case "Mittel":
+                scanMittelAmount += amount;
+                break;
+            case "Groß":
+                scanGrossAmount += amount;
+                break;
+            case "Stark":
+                scanStarkAmount += amount;
+                break;
+            case "Pipes":
+                pipesAmount += amount;
+                break;
+        }
+
+    } // END SetMaterialWindowDataUp
 }

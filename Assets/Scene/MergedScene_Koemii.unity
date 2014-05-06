@@ -2250,7 +2250,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 125709157}
   m_LocalRotation: {x: 0, y: 0, z: -8.74227766e-08, w: 1}
-  m_LocalPosition: {x: -47.9068604, y: 60.9116211, z: 0}
+  m_LocalPosition: {x: -34, y: 59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1614097043}
@@ -2286,13 +2286,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 42
+  mWidth: 75
   mHeight: 18
   mDepth: 5
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.33333325
+  aspectRatio: 4.16666651
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
   mFont: {fileID: 0}
@@ -2306,7 +2306,7 @@ MonoBehaviour:
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
-  mOverflow: 2
+  mOverflow: 0
   mMaterial: {fileID: 0}
   mApplyGradient: 1
   mGradientTop: {r: 0, g: .544117689, b: .116328575, a: 1}
@@ -3659,7 +3659,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 228924539}
   m_LocalRotation: {x: 0, y: 0, z: -8.74227766e-08, w: 1}
-  m_LocalPosition: {x: -47.9068604, y: 38.4876709, z: 0}
+  m_LocalPosition: {x: -34, y: 36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1956821853}
@@ -3695,13 +3695,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 42
+  mWidth: 75
   mHeight: 18
   mDepth: 5
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.33333325
+  aspectRatio: 4.16666651
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
   mFont: {fileID: 0}
@@ -3715,7 +3715,7 @@ MonoBehaviour:
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
-  mOverflow: 2
+  mOverflow: 0
   mMaterial: {fileID: 0}
   mApplyGradient: 1
   mGradientTop: {r: 0, g: .544117689, b: .116328575, a: 1}
@@ -4591,7 +4591,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 263911759}
   m_LocalRotation: {x: 0, y: 0, z: -8.74227766e-08, w: 1}
-  m_LocalPosition: {x: -47.9069214, y: -31.4223633, z: 0}
+  m_LocalPosition: {x: -34, y: -34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 63807000}
@@ -4627,13 +4627,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 42
+  mWidth: 75
   mHeight: 18
   mDepth: 5
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.33333325
+  aspectRatio: 4.16666651
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
   mFont: {fileID: 0}
@@ -4647,7 +4647,7 @@ MonoBehaviour:
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
-  mOverflow: 2
+  mOverflow: 0
   mMaterial: {fileID: 0}
   mApplyGradient: 1
   mGradientTop: {r: 0, g: .544117689, b: .116328575, a: 1}
@@ -11896,7 +11896,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 986152534}
   m_LocalRotation: {x: 0, y: 0, z: -8.74227766e-08, w: 1}
-  m_LocalPosition: {x: -47.9069214, y: -57.144165, z: 0}
+  m_LocalPosition: {x: -34, y: -59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1658106187}
@@ -11932,13 +11932,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 42
+  mWidth: 75
   mHeight: 18
   mDepth: 5
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.33333325
+  aspectRatio: 4.16666651
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
   mFont: {fileID: 0}
@@ -11952,7 +11952,7 @@ MonoBehaviour:
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
-  mOverflow: 2
+  mOverflow: 0
   mMaterial: {fileID: 0}
   mApplyGradient: 1
   mGradientTop: {r: 0, g: .544117689, b: .116328575, a: 1}
@@ -12751,7 +12751,7 @@ MonoBehaviour:
   alwaysOnScreen: 1
   anchorOffset: 1
   renderQueue: 0
-  startingRenderQueue: 3024
+  startingRenderQueue: 3020
   mAlpha: 1
   mClipping: 3
   mClipRange: {x: 35.7100677, y: -30, z: 178, w: 276}
@@ -13900,7 +13900,7 @@ Transform:
   m_GameObject: {fileID: 1154738518}
   m_LocalRotation: {x: 0, y: 0, z: -8.74227766e-08, w: -1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .00296296296, y: .00296296296, z: .00296296296}
+  m_LocalScale: {x: .00307219662, y: .00307219662, z: .00307219662}
   m_Children:
   - {fileID: 2048810048}
   - {fileID: 1967106868}
@@ -14141,6 +14141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showFactory: 1
   costsAmount: 0
+  stoWindow: {fileID: 0}
   dMaster: {fileID: 0}
   drillCurrentShownType: 0
   drillAmount: 0
@@ -14167,7 +14168,7 @@ MonoBehaviour:
   currentTaskType: 
   taskResult: 0
   speicher1: 0
-  taskListShow: 0
+  taskListShow: 1
   getLabelPrefab: {fileID: 0}
 --- !u!114 &1154738530
 MonoBehaviour:
@@ -17214,7 +17215,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.125
+  aspectRatio: 4.23529434
   mAtlas: {fileID: 11400000, guid: 62adb30369acbf943a67cee0f69267a3, type: 2}
   mSpriteName: Stripes 3
   mType: 2
@@ -21044,7 +21045,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1804016264}
   m_LocalRotation: {x: 0, y: 0, z: -8.74227766e-08, w: 1}
-  m_LocalPosition: {x: -47.9069061, y: 13.4257202, z: 0}
+  m_LocalPosition: {x: -34, y: 13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 628006931}
@@ -21080,13 +21081,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 42
+  mWidth: 75
   mHeight: 18
   mDepth: 5
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.33333325
+  aspectRatio: 4.16666651
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
   mFont: {fileID: 0}
@@ -21100,7 +21101,7 @@ MonoBehaviour:
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
-  mOverflow: 2
+  mOverflow: 0
   mMaterial: {fileID: 0}
   mApplyGradient: 1
   mGradientTop: {r: 0, g: .544117689, b: .116328575, a: 1}
@@ -21614,7 +21615,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1827584176}
   m_LocalRotation: {x: 0, y: 0, z: -8.74227766e-08, w: 1}
-  m_LocalPosition: {x: -47.9069061, y: -7.67932129, z: 0}
+  m_LocalPosition: {x: -34, y: -10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 60857691}
@@ -21650,13 +21651,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 42
+  mWidth: 75
   mHeight: 18
   mDepth: 5
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.33333325
+  aspectRatio: 4.16666651
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
   mFont: {fileID: 0}
@@ -21670,7 +21671,7 @@ MonoBehaviour:
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
-  mOverflow: 2
+  mOverflow: 0
   mMaterial: {fileID: 0}
   mApplyGradient: 1
   mGradientTop: {r: 0, g: .544117689, b: .116328575, a: 1}
@@ -22209,15 +22210,15 @@ Prefab:
       objectReference: {fileID: 1262509461}
     - target: {fileID: 400086, guid: d15d3b0a2b59b84429fcf138b6b5eeab, type: 2}
       propertyPath: m_LocalScale.x
-      value: .00296296296
+      value: .00307219662
       objectReference: {fileID: 0}
     - target: {fileID: 400086, guid: d15d3b0a2b59b84429fcf138b6b5eeab, type: 2}
       propertyPath: m_LocalScale.y
-      value: .00296296296
+      value: .00307219662
       objectReference: {fileID: 0}
     - target: {fileID: 400086, guid: d15d3b0a2b59b84429fcf138b6b5eeab, type: 2}
       propertyPath: m_LocalScale.z
-      value: .00296296296
+      value: .00307219662
       objectReference: {fileID: 0}
     - target: {fileID: 11400210, guid: d15d3b0a2b59b84429fcf138b6b5eeab, type: 2}
       propertyPath: mWidth
@@ -23383,7 +23384,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 1.125
+  aspectRatio: 4.23529434
   mAtlas: {fileID: 11400000, guid: 62adb30369acbf943a67cee0f69267a3, type: 2}
   mSpriteName: Stripes 3
   mType: 2
