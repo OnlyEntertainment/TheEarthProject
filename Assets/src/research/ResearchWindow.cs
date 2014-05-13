@@ -87,6 +87,34 @@ public class ResearchWindow : MonoBehaviour {
             {
                 rMaster.SetUpgrade(currentResearchType);
                 ResearchWindowReload();
+
+                if(currentResearchType == rType.Speed)
+                {
+                    playerMaster.researchDrillingSpeed = rMaster.resDictionary[rType.Speed].valueStep[rMaster.resDictionary[rType.Speed].currentLevel];
+                }
+                else if (currentResearchType == rType.Amount)
+                {
+                    playerMaster.researchDrillingAmount = rMaster.resDictionary[rType.Amount].valueStep[rMaster.resDictionary[rType.Amount].currentLevel];
+
+                }
+                else if (currentResearchType == rType.Scan)
+                {
+                    playerMaster.researchScanSpeed = rMaster.resDictionary[rType.Scan].valueStep[rMaster.resDictionary[rType.Scan].currentLevel];
+
+                }
+                else if (currentResearchType == rType.Drill)
+                {
+                   // playerMaster.researchDrillType = rMaster.resDictionary[rType.Drill].valueStep[rMaster.resDictionary[rType.Drill].currentLevel];
+
+                }
+
+
+
+
+
+
+
+
                 researchingStarted = false;
             }
             

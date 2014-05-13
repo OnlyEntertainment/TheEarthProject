@@ -1,0 +1,6 @@
+BUGS
+
+- Marktverkauf interagiert nicht korrekt mit dem Lager
+- Marmor wird nicht aufgedeckt bzw. die Textur wird nicht geändert
+- man kann durch die Fenster klicken
+- Storage Mengenangabe geht nicht korrekt, wird nicht hoch gesetzt bzw. zurück

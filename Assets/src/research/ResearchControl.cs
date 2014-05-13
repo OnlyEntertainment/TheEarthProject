@@ -51,9 +51,9 @@ public class ResearchControl : MonoBehaviour {
         if (researchType == "Speed")
         {
             
-            playerControl.gettingMaterialSpeed = actValue;
+            playerControl.researchDrillingSpeed = actValue;
         }
-        else { playerControl.gettingMaterialAmount = actValue; }
+        else { playerControl.researchDrillingAmount = actValue; }
     }
 
 }

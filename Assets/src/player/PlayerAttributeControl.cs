@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using rType = ResearchMain.rType;
+using bArten = BuildingInterface.BOHRERART;
+using sArten = BuildingInterface.SONDENART;
 
 public class PlayerAttributeControl : MonoBehaviour {
 
@@ -18,8 +22,13 @@ public class PlayerAttributeControl : MonoBehaviour {
 
     // +++++++
 
-    public float gettingMaterialSpeed = 1.0f;
-    public float gettingMaterialAmount = 1.0f;
+    public float researchDrillingSpeed = 1.0f;
+    public float researchDrillingAmount = 1.0f;
+    public float researchScanSpeed = 1.0f;
+    public bArten researchDrillType = bArten.Standard;
+    public sArten researchScanType = sArten.Starterkit;
+    public bool researchOffShore = false;
+    public float researchBuildCosts = 1.0f;
 
 	// Use this for initialization
 	void Start () 
@@ -28,7 +37,7 @@ public class PlayerAttributeControl : MonoBehaviour {
         moneyGameObject = GameObject.FindGameObjectWithTag("Money");
 
 
-        researchPointsGameObject = GameObject.FindGameObjectWithTag("LaborPoints");
+        //researchPointsGameObject = GameObject.FindGameObjectWithTag("LaborPoints");
 
 
 
@@ -69,14 +78,14 @@ public class PlayerAttributeControl : MonoBehaviour {
 
     void SetNewGettingMaterialSpeed(float newGettingMaterialSpeed)
     {
-        gettingMaterialSpeed = newGettingMaterialSpeed;
+        researchDrillingSpeed = newGettingMaterialSpeed;
         
     }
 
     void GetNewGettingMaterialSpeed(float newGettingMaterialSpeed)
     {
 
-        if (newGettingMaterialSpeed > gettingMaterialSpeed)
+        if (newGettingMaterialSpeed > researchDrillingSpeed)
         {
             SetNewGettingMaterialSpeed(newGettingMaterialSpeed);
         }

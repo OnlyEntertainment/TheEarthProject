@@ -18,7 +18,7 @@ public class StorageButtonClick : MonoBehaviour
 
         stoWindow = gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<StorageWindow>();
         pMaster = GameObject.Find("01_Player").GetComponent<PlayerAttributeControl>();
-        stoWindowSecond = gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<StorageWindow>();
+        stoWindowSecond = gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<StorageWindow>();
     } // END Start
 
     // Update is called once per frame
@@ -50,36 +50,19 @@ public class StorageButtonClick : MonoBehaviour
 
     } // END StorageButtonClick
 
-    public void StorageMaterialTypeNext()
-    {
-
-        stoWindowSecond.ChangeShowMaterialType();
-
-    } // END StorageMaterialTypeNext
-
-    public void StorageMaterialTypeBack()
-    {
-        stoWindowSecond.ChangeShowMaterialType();
-
-
-
-    } // END StorageMaterialTypeBack
-
-
     public void StorageOpenMaterialWindow()
     {
-        if (stoWindow.showMaterialWindow == true)
+        if (stoWindowSecond.showMaterialWindow == true)
         {
-            stoWindow.showMaterialWindow = false;
+            stoWindowSecond.showMaterialWindow = false;
         }
         else
         {
-            stoWindow.showMaterialWindow = true;
+            stoWindowSecond.showMaterialWindow = true;
         }
 
 
 
     } // END StorageOpenMaterialWindow
-
 
 }
