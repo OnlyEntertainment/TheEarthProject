@@ -289,7 +289,7 @@ public class StorageWindow : MonoBehaviour
                 drillEisenAmount += amount;
                 break;
             case "Stahl":
-                drillStandardAmount += amount;
+                drillStahlAmount += amount;
                 break;
             case "Chrom":
                 drillChromAmount += amount;
