@@ -82,7 +82,7 @@ public class TradingInterface : MonoBehaviour
         tradingPrices[BODENARTEN.Oel] = InitValues[BODENARTEN.Oel] = 400;
         tradingPrices[BODENARTEN.Diamant] = InitValues[BODENARTEN.Diamant] = 500;
 
-        fixedStorage = new Dictionary<BODENARTEN, int>(storageWindow.bodenData);
+        //fixedStorage = new Dictionary<BODENARTEN, int>(storageWindow.bodenData);
 
     }
 
@@ -111,7 +111,7 @@ public class TradingInterface : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         if ( fixedStorage == null)fixedStorage = new Dictionary<BODENARTEN, int>(storageWindow.bodenData);
 
         if (Input.GetKeyDown(KeyCode.F4))
@@ -132,7 +132,6 @@ public class TradingInterface : MonoBehaviour
             }
 
         }
-
 
         coalStorageVar.text = (coalStorageSlider.value * fixedStorage[BODENARTEN.Kohle]).ToString();
         oreStorageVar.text = (oreStorageSlider.value * fixedStorage[BODENARTEN.Erz]).ToString();
@@ -175,7 +174,7 @@ public class TradingInterface : MonoBehaviour
     public void ShowWindow()
     {
 
-        //fixedStorage = new Dictionary<BODENARTEN, int>(storageWindow.bodenData);
+        fixedStorage = new Dictionary<BODENARTEN, int>(storageWindow.bodenData);
         coalStorageSlider.numberOfSteps = (fixedStorage[BODENARTEN.Kohle]) + 1;
         oreStorageSlider.numberOfSteps = (fixedStorage[BODENARTEN.Erz]) + 1;
         goldStorageSlider.numberOfSteps = (fixedStorage[BODENARTEN.Gold]) + 1;
