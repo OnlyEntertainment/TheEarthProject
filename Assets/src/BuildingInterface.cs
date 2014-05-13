@@ -75,23 +75,25 @@ public class BuildingInterface : MonoBehaviour
         UISlider slider = drillingDepthSlider.GetComponent<UISlider>();
         slider.numberOfSteps = drillingDepthMax;
 
-        drillingDepthVar.GetComponent<UILabel>().text = ((slider.value * (drillingDepthMax - 1)) + 1).ToString();// +"-" + slider.value.ToString();
+        drillingDepthVar.GetComponent<UILabel>().text = ((slider.value * (drillingDepthMax - 1)) + 1).ToString() + " ("+storageWindow.pipesAmount+")"; ;// +"-" + slider.value.ToString();
     }
 
     void UpdateGUIDrillType()
     {
         UISlider slider = drillTypeSlider.GetComponent<UISlider>();
         slider.numberOfSteps = Enum.GetNames(typeof(BOHRERART)).Length;
+        BOHRERART drillType =  (BOHRERART)(slider.value * (slider.numberOfSteps - 1));
 
-        drillTypeVar.GetComponent<UILabel>().text = ((BOHRERART)(slider.value * (slider.numberOfSteps - 1))).ToString();// +"-" + slider.value.ToString();
+        drillTypeVar.GetComponent<UILabel>().text = drillType.ToString() + " ("+GetDrillAmount(drillType)+")";// +"-" + slider.value.ToString();
     }
 
     void UpdateGUIProbeType()
     {
         UISlider slider = probeTypeSlider.GetComponent<UISlider>();
         slider.numberOfSteps = Enum.GetNames(typeof(SONDENART)).Length;
+        SONDENART probeType = (SONDENART)(slider.value * (slider.numberOfSteps - 1));
 
-        probeTypeVar.GetComponent<UILabel>().text = ((SONDENART)(slider.value * (slider.numberOfSteps - 1))).ToString();// +"-" + slider.value.ToString();
+        probeTypeVar.GetComponent<UILabel>().text = probeType.ToString() + " ("+GetProbeAmount(probeType)+")";// +"-" + slider.value.ToString();
     }
 
     void UpdateGUITitle()
@@ -117,57 +119,54 @@ public class BuildingInterface : MonoBehaviour
 
     public void StartDrilling()
     {
-        building.timer = building.timerIntervallDrilling;
-        StartBuilding(Building.BUILDINGSTATUS.Drilling);
+        //DrillMaster
+
+        int drillingDepth = (int)((drillingDepthSlider.GetComponent<UISlider>().value * (drillingDepthMax - 1)) + 1);
+        BOHRERART drillType = (BOHRERART)(drillTypeSlider.GetComponent<UISlider>().value * (drillTypeSlider.GetComponent<UISlider>().numberOfSteps - 1));
+
+        if (drillingDepth <= storageWindow.pipesAmount && GetDrillAmount(drillType) > 0)
+        {
+            storageWindow.pipesAmount -= drillingDepth;
+            ReduceDrillAmount(drillType);
+
+            building.timer = building.timerIntervallDrilling;
+            StartBuilding(Building.BUILDINGSTATUS.Drilling);
+        }
 
     }
 
     public void StartProbing()
     {
+        SONDENART probeType = (SONDENART)(probeTypeSlider.GetComponent<UISlider>().value * (probeTypeSlider.GetComponent<UISlider>().numberOfSteps - 1));
 
+        drillingDepthSlider.GetComponent<UISlider>().value = (float)(((float)GetProbingDepthGoal(probeType) - 1f) / ((float)drillingDepthMax - 1f));
 
-        building.timer = building.timerIntervallProbing;
-        // TODO building.drillingDepthGoal Setzten aufgrund der Sonde
-        StartBuilding(Building.BUILDINGSTATUS.Probing);
+        int drillingDepth = (int)((drillingDepthSlider.GetComponent<UISlider>().value * (drillingDepthMax - 1)) + 1);
+
+        //if (drillingDepth <= storageWindow.pipesAmount && GetProbeAmount(probeType) > 0)
+            if (GetProbeAmount(probeType) > 0)
+        {
+
+            //storageWindow.pipesAmount -= drillingDepth;
+            ReduceProbeAmount(probeType);
+
+            building.timer = building.timerIntervallProbing;
+            // TODO building.drillingDepthGoal Setzten aufgrund der Sonde
+            StartBuilding(Building.BUILDINGSTATUS.Probing);
+        }
 
     }
 
     private void StartBuilding(Building.BUILDINGSTATUS buildingStatus)
     {
+        
         building.drillingDepthGoal = (int)((drillingDepthSlider.GetComponent<UISlider>().value * (drillingDepthMax - 1)) + 1);
         building.drillType = (BOHRERART)(drillTypeSlider.GetComponent<UISlider>().value * (drillTypeSlider.GetComponent<UISlider>().numberOfSteps - 1));
         building.probeType = (SONDENART)(probeTypeSlider.GetComponent<UISlider>().value * (probeTypeSlider.GetComponent<UISlider>().numberOfSteps - 1));
         building.drillingDepthCurrent = 1;
 
-        switch (building.probeType)
-        {
-            //Max 20 Ebenen
-            case SONDENART.Starterkit:
-                building.probingDepthGoal = 4;
-                building.probingShowAmountMax = 2;
-                break;
-            case SONDENART.Schwach:
-                building.probingDepthGoal = 8;
-                building.probingShowAmountMax = 4;
-                break;
-            case SONDENART.Klein:
-                building.probingDepthGoal = 12;
-                building.probingShowAmountMax = 6;
-                break;
-            case SONDENART.Mittel:
-                building.probingDepthGoal = 16;
-                building.probingShowAmountMax = 8;
-                break;
-            case SONDENART.Groß:
-                building.probingDepthGoal = 20;
-                building.probingShowAmountMax = 10;
-                break;
-            case SONDENART.Stark:
-                building.probingDepthGoal = 20;
-                building.probingShowAmountMax = 15;
-                break;
-
-        }
+        building.probingDepthGoal = GetProbingDepthGoal(building.probeType);
+       building.probingShowAmountMax= GetProbingShowAmountMax(building.probeType);
 
         building.buildingStatus = buildingStatus;
     }
@@ -194,4 +193,167 @@ public class BuildingInterface : MonoBehaviour
 
         BuildingWindowSpriteContainer.SetActive(true);
     }
+
+    private int GetDrillAmount(BOHRERART drillType)
+    { 
+        switch (drillType)
+            {
+            case BOHRERART.Chrom:
+                    return storageWindow.drillChromAmount;
+                break;
+            case BOHRERART.Diamant:
+                return storageWindow.drillDiamondAmount;
+                break;
+            case BOHRERART.Eisen:
+                return storageWindow.drillEisenAmount;
+                break;
+            case BOHRERART.Stahl:
+                return storageWindow.drillStahlAmount;
+                break;
+            case BOHRERART.Standard:
+                return storageWindow.drillStandardAmount;
+                break;
+            case BOHRERART.Titan:
+                return storageWindow.drillTitanAmount;
+                break;
+        }
+        return 0;
+    }
+
+    private void ReduceDrillAmount(BOHRERART drillType) { ReduceDrillAmount(drillType, 1); }
+    private void ReduceDrillAmount(BOHRERART drillType, int amount)
+    {
+        switch (drillType)
+        {
+            case BOHRERART.Chrom:
+                storageWindow.drillChromAmount-=amount;
+                break;
+            case BOHRERART.Diamant:
+                storageWindow.drillDiamondAmount -= amount;
+                break;
+            case BOHRERART.Eisen:
+                storageWindow.drillEisenAmount -= amount;
+                break;
+            case BOHRERART.Stahl:
+                storageWindow.drillStahlAmount -= amount;
+                break;
+            case BOHRERART.Standard:
+                storageWindow.drillStandardAmount -= amount;
+                break;
+            case BOHRERART.Titan:
+                storageWindow.drillTitanAmount -= amount;
+                break;
+        }
+        
+    }
+
+    private int GetProbeAmount(SONDENART probeType)
+    {
+        switch (probeType)
+        {
+            case SONDENART.Starterkit:
+                return storageWindow.scanStarterKitAmount;
+                break;
+            case SONDENART.Stark:
+                return storageWindow.scanStarkAmount;
+                break;
+            case SONDENART.Schwach:
+                return storageWindow.scanSchwachAmount;
+                break;
+            case SONDENART.Mittel:
+                return storageWindow.scanMittelAmount;
+                break;
+            case SONDENART.Klein:
+                return storageWindow.scanKleinAmount;
+                break;
+            case SONDENART.Groß:
+                return storageWindow.scanGrossAmount;
+                break;
+        }
+        return 0;
+    }
+
+    private void ReduceProbeAmount(SONDENART probeType) { ReduceProbeAmount(probeType, 1); }
+    private void ReduceProbeAmount(SONDENART probeType, int amount)
+    {
+        switch (probeType)
+        {
+            case SONDENART.Starterkit:
+                storageWindow.scanStarterKitAmount -= amount;
+                break;
+            case SONDENART.Stark:
+                storageWindow.scanStarkAmount -= amount;
+                break;
+            case SONDENART.Schwach:
+                storageWindow.scanSchwachAmount -= amount;
+                break;
+            case SONDENART.Mittel:
+                storageWindow.scanMittelAmount -= amount;
+                break;
+            case SONDENART.Klein:
+                storageWindow.scanKleinAmount -= amount;
+                break;
+            case SONDENART.Groß:
+                storageWindow.scanGrossAmount -= amount;
+                break;
+        }
+    }
+
+    private int GetProbingDepthGoal(SONDENART probeType)
+    {
+        switch (probeType)
+        {
+            //Max 20 Ebenen
+            case SONDENART.Starterkit:
+                return 4;
+                break;
+            case SONDENART.Schwach:
+                return 8;
+                break;
+            case SONDENART.Klein:
+                return 12;
+                break;
+            case SONDENART.Mittel:
+                return 16;
+                break;
+            case SONDENART.Groß:
+                return 20;
+                break;
+            case SONDENART.Stark:
+                return 20;
+                break;
+        }
+
+        return 0;
+    }
+
+    private int GetProbingShowAmountMax(SONDENART probeType)
+    {
+        switch (probeType)
+        {
+            //Max 20 Ebenen
+            case SONDENART.Starterkit:
+                return 2;
+                break;
+            case SONDENART.Schwach:
+                return 4;
+                break;
+            case SONDENART.Klein:
+                return 6;
+                break;
+            case SONDENART.Mittel:
+                return 8;
+                break;
+            case SONDENART.Groß:
+                return 10;
+                break;
+            case SONDENART.Stark:
+                return 15;
+                break;
+        }
+        return 0;
+    }
+
 }
+
+

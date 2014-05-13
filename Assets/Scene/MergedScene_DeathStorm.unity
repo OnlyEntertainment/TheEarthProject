@@ -372,15 +372,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400064, guid: d15d3b0a2b59b84429fcf138b6b5eeab, type: 2}
       propertyPath: aspectRatio
-      value: 9
+      value: 9.11111069
       objectReference: {fileID: 0}
     - target: {fileID: 11400166, guid: d15d3b0a2b59b84429fcf138b6b5eeab, type: 2}
       propertyPath: aspectRatio
-      value: 7
+      value: 7.11111116
       objectReference: {fileID: 0}
     - target: {fileID: 11400678, guid: d15d3b0a2b59b84429fcf138b6b5eeab, type: 2}
       propertyPath: aspectRatio
-      value: 2.33333325
+      value: 2.44444442
+      objectReference: {fileID: 0}
+    - target: {fileID: 400086, guid: d15d3b0a2b59b84429fcf138b6b5eeab, type: 2}
+      propertyPath: m_LocalScale.x
+      value: .00282485876
+      objectReference: {fileID: 0}
+    - target: {fileID: 400086, guid: d15d3b0a2b59b84429fcf138b6b5eeab, type: 2}
+      propertyPath: m_LocalScale.y
+      value: .00282485876
+      objectReference: {fileID: 0}
+    - target: {fileID: 400086, guid: d15d3b0a2b59b84429fcf138b6b5eeab, type: 2}
+      propertyPath: m_LocalScale.z
+      value: .00282485876
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d15d3b0a2b59b84429fcf138b6b5eeab, type: 2}
@@ -5280,7 +5292,7 @@ Transform:
   m_GameObject: {fileID: 521276995}
   m_LocalRotation: {x: 0, y: 0, z: -8.74227766e-08, w: -1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .00202224473, y: .00202224473, z: .00202224473}
+  m_LocalScale: {x: .00282485876, y: .00282485876, z: .00282485876}
   m_Children:
   - {fileID: 505050879}
   - {fileID: 904211774}
@@ -13037,7 +13049,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 7
+  aspectRatio: 7.11111116
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
   mFont: {fileID: 0}
@@ -14629,8 +14641,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMoney: 10000
   playerResearchPoints: 1000
-  gettingMaterialSpeed: 1
-  gettingMaterialAmount: 1
+  researchDrillingSpeed: 1
+  researchDrillingAmount: 1
+  researchScanSpeed: 1
+  researchDrillType: 0
+  researchScanType: 0
+  researchOffShore: 0
+  researchBuildCosts: 1
 --- !u!114 &1262509464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16777,7 +16794,7 @@ MonoBehaviour:
   alwaysOnScreen: 1
   anchorOffset: 1
   renderQueue: 0
-  startingRenderQueue: 3021
+  startingRenderQueue: 3031
   mAlpha: 1
   mClipping: 3
   mClipRange: {x: 35.7100677, y: -30, z: 178, w: 276}
@@ -17832,7 +17849,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.33333325
+  aspectRatio: 2.44444442
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
   mFont: {fileID: 0}
@@ -20224,7 +20241,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 9
+  aspectRatio: 9.11111069
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 2339a8d6d9b48ac4392339f04f05e467, type: 3}
   mFont: {fileID: 0}
