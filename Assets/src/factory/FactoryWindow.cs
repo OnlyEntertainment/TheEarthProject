@@ -414,6 +414,7 @@ public class FactoryWindow : MonoBehaviour
 
             taskListShow = true;
             taskWindowObject.SetActive(taskListShow);
+            taskWindow.TaskListShowed();
         }
         else
         {

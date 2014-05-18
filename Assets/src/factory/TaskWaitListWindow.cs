@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using bohrerArten = BuildingInterface.BOHRERART;
 using sondenArten = BuildingInterface.SONDENART;
 
+
+
 public class TaskWaitListWindow : MonoBehaviour
 {
 
@@ -11,12 +13,20 @@ public class TaskWaitListWindow : MonoBehaviour
     public List<string> taskListType = new List<string>();
     public List<int> taskListAmount = new List<int>();
 
+    public GameObject testContainerObject;
+    public GameObject spriteTest;
+
     public FactoryWindow facWindow;
+
+    public int currentAmount = 0;
+    public List<GameObject> listOfLabels = new List<GameObject>();
 
     // Use this for initialization
     void Start()
     {
         facWindow = GetComponent<FactoryWindow>();
+        testContainerObject = transform.FindChild("FactoryWindowData").gameObject.transform.FindChild("TaskListWindow").gameObject.transform.FindChild("Scroll View").gameObject.transform.FindChild("TaskContainer").gameObject;
+            //transform.GetChild(1).gameObject.transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
@@ -33,14 +43,17 @@ public class TaskWaitListWindow : MonoBehaviour
         {
             taskListType.Add(product);
             taskListAmount.Add(amount);
+          
             
         }
     } // END SetTasks
 
     public void SetTaskList(int amountResult)
     {
+        currentAmount = amountResult;
 
-        if (amountResult > 0)
+
+        if (currentAmount > 0)
         {
             
             
@@ -74,5 +87,29 @@ public class TaskWaitListWindow : MonoBehaviour
             facWindow.SetCurrentTask(taskListType[0], taskListAmount[0]);
 
     } // END SetTasksAgain
+
+
+    void SetAnTaskEntry()
+    {
+
+        GameObject.Instantiate(spriteTest, testContainerObject.transform.position, new Quaternion(0f, 0f, 0f, 0f));
+
+    }
+
+    public void TaskListShowed()
+    {
+
+        if(facWindow.currentTaskAmount > 0)
+        {
+
+            GameObject newLabel = (GameObject)GameObject.Instantiate(spriteTest, testContainerObject.transform.position, new Quaternion(0f, 0f, 0f, 0f));
+            UILabel newLabelLabel = newLabel.GetComponent<UILabel>();
+
+            newLabelLabel.text = taskListType[0] + " - " + taskListAmount[0];
+
+        }
+
+
+    }
 
 }
