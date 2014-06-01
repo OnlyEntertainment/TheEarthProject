@@ -74,7 +74,7 @@ public class FactoryWindow : MonoBehaviour
 
         factoryWindowMenuObject = GameObject.FindGameObjectWithTag("MenuFactory");
         taskWindowObject = factoryWindowMenuObject.transform.FindChild("TaskListWindow").gameObject;
-        storageWindow = GetComponent<StorageWindow>();
+        storageWindowData = GetComponent<StorageWindow>();
         drillMasterData = GetComponent<DrillMaster>();
         scanMasterData = GetComponent<ScanMaster>();
         taskWaitListWindowData = GetComponent<TaskWaitListWindow>();
@@ -132,7 +132,7 @@ public class FactoryWindow : MonoBehaviour
                 {
                     currentTaskAmount--;
                     progressTime = currentTaskProgessTime;
-                    storageWindow.SetMaterialWindowDataUp(currentTaskType, 1);
+                    storageWindowData.SetMaterialWindowDataUp(currentTaskType, 1);
                 }
                 else
                 {
