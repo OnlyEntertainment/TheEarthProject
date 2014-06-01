@@ -6,16 +6,16 @@ using rType = ResearchMain.rType;
 public class ResearchButtonClick : MonoBehaviour
 {
 
-    public ResearchWindow resWindow;
-    public PlayerAttributeControl pMaster;
+    public ResearchWindow researchWindowData;
+    public PlayerAttributeControl playerAttributeControlData;
 
 
     // Use this for initialization
     void Awake()
     {
 
-        resWindow = gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<ResearchWindow>();
-        pMaster = GameObject.Find("01_Player").GetComponent<PlayerAttributeControl>();
+        researchWindowData = gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<ResearchWindow>();
+        playerAttributeControlData = GameObject.Find("01_Player").GetComponent<PlayerAttributeControl>();
 
     } // END Awake
 
@@ -28,26 +28,26 @@ public class ResearchButtonClick : MonoBehaviour
     public void ButtonSmashed()
     {
 
-        Dictionary<rType, ResearchMain> rMasterDic = resWindow.rMaster.resDictionary;
+        Dictionary<rType, ResearchMain> rMasterDic = researchWindowData.researchMasterData.researchDictionary;
 
         switch (gameObject.name)
         {
             case "ButtonAmount":
                 ResearchMain researchAmount = rMasterDic[rType.Amount];
-                if (resWindow.researchingStarted == false)
+                if (researchWindowData.researchingStarted == false)
                 {
                     if (researchAmount.currentLevel < researchAmount.maxLevel)
                     {
 
-                        if (pMaster.playerMoney >= researchAmount.costsMoney[researchAmount.currentLevel] && pMaster.playerResearchPoints >= researchAmount.costsResearch[researchAmount.currentLevel])
+                        if (playerAttributeControlData.playerMoney >= researchAmount.costsMoney[researchAmount.currentLevel] && playerAttributeControlData.playerResearchPoints >= researchAmount.costsResearch[researchAmount.currentLevel])
                         {
-                            resWindow.currentResearchType = rType.Amount;
-                            resWindow.researchTime = researchAmount.researchTime[researchAmount.currentLevel];
-                            resWindow.speicher1 = resWindow.researchTime / 100;
-                            resWindow.researchingStarted = true;
+                            researchWindowData.currentResearchType = rType.Amount;
+                            researchWindowData.researchTime = researchAmount.researchTime[researchAmount.currentLevel];
+                            researchWindowData.speicher1 = researchWindowData.researchTime / 100;
+                            researchWindowData.researchingStarted = true;
 
-                            pMaster.playerMoney -= researchAmount.costsMoney[researchAmount.currentLevel];
-                            pMaster.playerResearchPoints -= researchAmount.costsResearch[researchAmount.currentLevel];
+                            playerAttributeControlData.playerMoney -= researchAmount.costsMoney[researchAmount.currentLevel];
+                            playerAttributeControlData.playerResearchPoints -= researchAmount.costsResearch[researchAmount.currentLevel];
                         }
 
                     }
@@ -56,20 +56,20 @@ public class ResearchButtonClick : MonoBehaviour
                 break;
             case "ButtonBuildCosts":
                 ResearchMain researchBuildCosts = rMasterDic[rType.BuildCosts];
-                if (resWindow.researchingStarted == false)
+                if (researchWindowData.researchingStarted == false)
                 {
                     if (researchBuildCosts.currentLevel < researchBuildCosts.maxLevel)
                     {
 
-                        if (pMaster.playerMoney >= researchBuildCosts.costsMoney[researchBuildCosts.currentLevel] && pMaster.playerResearchPoints >= researchBuildCosts.costsResearch[researchBuildCosts.currentLevel])
+                        if (playerAttributeControlData.playerMoney >= researchBuildCosts.costsMoney[researchBuildCosts.currentLevel] && playerAttributeControlData.playerResearchPoints >= researchBuildCosts.costsResearch[researchBuildCosts.currentLevel])
                         {
-                            resWindow.currentResearchType = rType.BuildCosts;
-                            resWindow.researchTime = researchBuildCosts.researchTime[researchBuildCosts.currentLevel];
-                            resWindow.speicher1 = resWindow.researchTime / 100;
-                            resWindow.researchingStarted = true;
+                            researchWindowData.currentResearchType = rType.BuildCosts;
+                            researchWindowData.researchTime = researchBuildCosts.researchTime[researchBuildCosts.currentLevel];
+                            researchWindowData.speicher1 = researchWindowData.researchTime / 100;
+                            researchWindowData.researchingStarted = true;
 
-                            pMaster.playerMoney -= researchBuildCosts.costsMoney[researchBuildCosts.currentLevel];
-                            pMaster.playerResearchPoints -= researchBuildCosts.costsResearch[researchBuildCosts.currentLevel];
+                            playerAttributeControlData.playerMoney -= researchBuildCosts.costsMoney[researchBuildCosts.currentLevel];
+                            playerAttributeControlData.playerResearchPoints -= researchBuildCosts.costsResearch[researchBuildCosts.currentLevel];
                         }
 
                     }
@@ -77,20 +77,20 @@ public class ResearchButtonClick : MonoBehaviour
                 break;
             case "ButtonDrill":
                 ResearchMain researchDrill = rMasterDic[rType.Drill];
-                if (resWindow.researchingStarted == false)
+                if (researchWindowData.researchingStarted == false)
                 {
                     if (researchDrill.currentLevel < researchDrill.maxLevel)
                     {
 
-                        if (pMaster.playerMoney >= researchDrill.costsMoney[researchDrill.currentLevel] && pMaster.playerResearchPoints >= researchDrill.costsResearch[researchDrill.currentLevel])
+                        if (playerAttributeControlData.playerMoney >= researchDrill.costsMoney[researchDrill.currentLevel] && playerAttributeControlData.playerResearchPoints >= researchDrill.costsResearch[researchDrill.currentLevel])
                         {
-                            resWindow.currentResearchType = rType.Drill;
-                            resWindow.researchTime = researchDrill.researchTime[researchDrill.currentLevel];
-                            resWindow.speicher1 = resWindow.researchTime / 100;
-                            resWindow.researchingStarted = true;
+                            researchWindowData.currentResearchType = rType.Drill;
+                            researchWindowData.researchTime = researchDrill.researchTime[researchDrill.currentLevel];
+                            researchWindowData.speicher1 = researchWindowData.researchTime / 100;
+                            researchWindowData.researchingStarted = true;
 
-                            pMaster.playerMoney -= researchDrill.costsMoney[researchDrill.currentLevel];
-                            pMaster.playerResearchPoints -= researchDrill.costsResearch[researchDrill.currentLevel];
+                            playerAttributeControlData.playerMoney -= researchDrill.costsMoney[researchDrill.currentLevel];
+                            playerAttributeControlData.playerResearchPoints -= researchDrill.costsResearch[researchDrill.currentLevel];
                         }
 
                     }
@@ -98,20 +98,20 @@ public class ResearchButtonClick : MonoBehaviour
                 break;
             case "ButtonSpeed":
                 ResearchMain researchSpeed = rMasterDic[rType.Speed];
-                if (resWindow.researchingStarted == false)
+                if (researchWindowData.researchingStarted == false)
                 {
                     if (researchSpeed.currentLevel < researchSpeed.maxLevel)
                     {
 
-                        if (pMaster.playerMoney >= researchSpeed.costsMoney[researchSpeed.currentLevel] && pMaster.playerResearchPoints >= researchSpeed.costsResearch[researchSpeed.currentLevel])
+                        if (playerAttributeControlData.playerMoney >= researchSpeed.costsMoney[researchSpeed.currentLevel] && playerAttributeControlData.playerResearchPoints >= researchSpeed.costsResearch[researchSpeed.currentLevel])
                         {
-                            resWindow.currentResearchType = rType.Speed;
-                            resWindow.researchTime = researchSpeed.researchTime[researchSpeed.currentLevel];
-                            resWindow.speicher1 = resWindow.researchTime / 100;
-                            resWindow.researchingStarted = true;
+                            researchWindowData.currentResearchType = rType.Speed;
+                            researchWindowData.researchTime = researchSpeed.researchTime[researchSpeed.currentLevel];
+                            researchWindowData.speicher1 = researchWindowData.researchTime / 100;
+                            researchWindowData.researchingStarted = true;
 
-                            pMaster.playerMoney -= researchSpeed.costsMoney[researchSpeed.currentLevel];
-                            pMaster.playerResearchPoints -= researchSpeed.costsResearch[researchSpeed.currentLevel];
+                            playerAttributeControlData.playerMoney -= researchSpeed.costsMoney[researchSpeed.currentLevel];
+                            playerAttributeControlData.playerResearchPoints -= researchSpeed.costsResearch[researchSpeed.currentLevel];
                         }
 
                     }
@@ -119,20 +119,20 @@ public class ResearchButtonClick : MonoBehaviour
                 break;
             case "ButtonDrillPlattform":
                 ResearchMain researchDrillPlattform = rMasterDic[rType.DrillingPlattform];
-                if (resWindow.researchingStarted == false)
+                if (researchWindowData.researchingStarted == false)
                 {
                     if (researchDrillPlattform.currentLevel < researchDrillPlattform.maxLevel)
                     {
 
-                        if (pMaster.playerMoney >= researchDrillPlattform.costsMoney[researchDrillPlattform.currentLevel] && pMaster.playerResearchPoints >= researchDrillPlattform.costsResearch[researchDrillPlattform.currentLevel])
+                        if (playerAttributeControlData.playerMoney >= researchDrillPlattform.costsMoney[researchDrillPlattform.currentLevel] && playerAttributeControlData.playerResearchPoints >= researchDrillPlattform.costsResearch[researchDrillPlattform.currentLevel])
                         {
-                            resWindow.currentResearchType = rType.DrillingPlattform;
-                            resWindow.researchTime = researchDrillPlattform.researchTime[researchDrillPlattform.currentLevel];
-                            resWindow.speicher1 = resWindow.researchTime / 100;
-                            resWindow.researchingStarted = true;
+                            researchWindowData.currentResearchType = rType.DrillingPlattform;
+                            researchWindowData.researchTime = researchDrillPlattform.researchTime[researchDrillPlattform.currentLevel];
+                            researchWindowData.speicher1 = researchWindowData.researchTime / 100;
+                            researchWindowData.researchingStarted = true;
 
-                            pMaster.playerMoney -= researchDrillPlattform.costsMoney[researchDrillPlattform.currentLevel];
-                            pMaster.playerResearchPoints -= researchDrillPlattform.costsResearch[researchDrillPlattform.currentLevel];
+                            playerAttributeControlData.playerMoney -= researchDrillPlattform.costsMoney[researchDrillPlattform.currentLevel];
+                            playerAttributeControlData.playerResearchPoints -= researchDrillPlattform.costsResearch[researchDrillPlattform.currentLevel];
                         }
 
                     }
@@ -140,21 +140,21 @@ public class ResearchButtonClick : MonoBehaviour
                 break;
             case "ButtonScan":
                 ResearchMain researchScan = rMasterDic[rType.Scan];
-                if (resWindow.researchingStarted == false)
+                if (researchWindowData.researchingStarted == false)
                 {
                     if (researchScan.currentLevel < researchScan.maxLevel)
                     {
 
-                        if (pMaster.playerMoney >= researchScan.costsMoney[researchScan.currentLevel] && pMaster.playerResearchPoints >= researchScan.costsResearch[researchScan.currentLevel])
+                        if (playerAttributeControlData.playerMoney >= researchScan.costsMoney[researchScan.currentLevel] && playerAttributeControlData.playerResearchPoints >= researchScan.costsResearch[researchScan.currentLevel])
                         {
 
-                            resWindow.currentResearchType = rType.Scan;
-                            resWindow.researchTime = researchScan.researchTime[researchScan.currentLevel];
-                            resWindow.speicher1 = resWindow.researchTime / 100;
-                            resWindow.researchingStarted = true;
+                            researchWindowData.currentResearchType = rType.Scan;
+                            researchWindowData.researchTime = researchScan.researchTime[researchScan.currentLevel];
+                            researchWindowData.speicher1 = researchWindowData.researchTime / 100;
+                            researchWindowData.researchingStarted = true;
 
-                            pMaster.playerMoney -= researchScan.costsMoney[researchScan.currentLevel];
-                            pMaster.playerResearchPoints -= researchScan.costsResearch[researchScan.currentLevel];
+                            playerAttributeControlData.playerMoney -= researchScan.costsMoney[researchScan.currentLevel];
+                            playerAttributeControlData.playerResearchPoints -= researchScan.costsResearch[researchScan.currentLevel];
                         }
 
                     }

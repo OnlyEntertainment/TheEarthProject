@@ -11,8 +11,8 @@ public class PlayerAttributeControl : MonoBehaviour {
     public int playerMoney = 0;                     // Menge an Geld des Spielers
     public int playerResearchPoints = 0;                 // Menge an Labor/Forschungspunkten des Spielers
 
-    GameObject moneyGameObject;
-    GameObject researchPointsGameObject;
+    GameObject moneyLabelObject;
+    GameObject researchPointsLabelObject;
 
 
     // +++++++
@@ -34,7 +34,7 @@ public class PlayerAttributeControl : MonoBehaviour {
 	void Start () 
     {
 
-        moneyGameObject = GameObject.FindGameObjectWithTag("Money");
+        moneyLabelObject = GameObject.FindGameObjectWithTag("Money");
 
 
         //researchPointsGameObject = GameObject.FindGameObjectWithTag("LaborPoints");

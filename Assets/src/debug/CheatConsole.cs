@@ -5,12 +5,12 @@ public class CheatConsole : MonoBehaviour {
     
     //Variablen
     // Player
-    public GameObject pObject;
-    public PlayerAttributeControl pControl;
-    public PlayerKeyboardControl pKeyControl;
+    public GameObject playerObject;
+    public PlayerAttributeControl playerControlData;
+    public PlayerKeyboardControl playerKeyControlData;
     // Camera
-    public GameObject camObject;
-    public ShowingStuff cShowingStuff;
+    public GameObject cameraObject;
+    public ShowingStuff cameraShowingStuffData;
 
     //
 
@@ -19,13 +19,13 @@ public class CheatConsole : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        pObject = GameObject.Find("01_Player");
-        pControl = pObject.GetComponent<PlayerAttributeControl>();
-        pKeyControl = pObject.GetComponent<PlayerKeyboardControl>();
+        playerObject = GameObject.Find("01_Player");
+        playerControlData = playerObject.GetComponent<PlayerAttributeControl>();
+        playerKeyControlData = playerObject.GetComponent<PlayerKeyboardControl>();
 
 
-        camObject = GameObject.Find("00_MainCamera");
-        cShowingStuff = camObject.GetComponent<ShowingStuff>();
+        cameraObject = GameObject.Find("00_MainCamera");
+        cameraShowingStuffData = cameraObject.GetComponent<ShowingStuff>();
 
 
 	}

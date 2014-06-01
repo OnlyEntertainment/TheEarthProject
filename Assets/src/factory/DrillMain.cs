@@ -12,20 +12,20 @@ public class DrillMain
     public float buildTime; // Bauzeit in der Fabrik
 
     public float drillSpeed;
-    public int materialAmount;
+    public int materialAmount;  // Abbaumenge
     public float mainPriceToDrill;
 
 
     // Use this for initialization
-    public DrillMain(string dName, int moneyCost, float bTime, float dSpeed, int mAmount, float mPriceToDrill)
+    public DrillMain(string drillNameTemp, int moneyCostTemp, float buildTimeTemp, float drillSpeedTemp, int materialAmountTemp, float mainPriceToDrillTemp)
     {
 
-        drillName = dName;
-        costsMoney = moneyCost;
-        buildTime = bTime;
-        drillSpeed = dSpeed;
-        materialAmount = mAmount;
-        mainPriceToDrill = mPriceToDrill;
+        drillName = drillNameTemp;
+        costsMoney = moneyCostTemp;
+        buildTime = buildTimeTemp;
+        drillSpeed = drillSpeedTemp;
+        materialAmount = materialAmountTemp;
+        mainPriceToDrill = mainPriceToDrillTemp;
 
     }
 

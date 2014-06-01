@@ -7,21 +7,21 @@ public class StorageWindow : MonoBehaviour
 {
 
     public bool showStorage = true;
-    public StorageMaster stoMaster;
+    public StorageMaster storageMasterData;
 
-    public GameObject storageWindowMenu;
+    public GameObject storageWindowMenuObject;
 
 
     public enum MaterialType { Cole, Oil, Ore, Gold, Diamond };
-    public MaterialType mType;
+    public MaterialType materialType;
 
     public int maxStorageValue = 1000;
     public int currentStorageValue = 0;
 
-    public Dictionary<bodenArten, int> bodenData = new Dictionary<bodenArten, int>();
+    public Dictionary<bodenArten, int> bodenArtenDictionary = new Dictionary<bodenArten, int>();
 
     // MaterialWindow
-    public GameObject matWindow;
+    public GameObject matWindowObject;
     public UILabel label1;
     public UILabel label2;
     public UILabel label3;
@@ -76,25 +76,25 @@ public class StorageWindow : MonoBehaviour
 
         FillDictionary();
 
-        stoMaster = this.GetComponent<StorageMaster>();
-        matWindow = transform.FindChild("StorageWindowData").gameObject.transform.FindChild("MaterialWindow").gameObject;
-        label1 = matWindow.transform.FindChild("Label1").gameObject.GetComponent<UILabel>();
-        label1Value = matWindow.transform.FindChild("Label1").gameObject.transform.FindChild("Label1Value").gameObject.GetComponent<UILabel>();
-        label2 = matWindow.transform.FindChild("Label2").gameObject.GetComponent<UILabel>();
-        label2Value = matWindow.transform.FindChild("Label2").gameObject.transform.FindChild("Label2Value").gameObject.GetComponent<UILabel>();
-        label3 = matWindow.transform.FindChild("Label3").gameObject.GetComponent<UILabel>();
-        label3Value = matWindow.transform.FindChild("Label3").gameObject.transform.FindChild("Label3Value").gameObject.GetComponent<UILabel>();
-        label4 = matWindow.transform.FindChild("Label4").gameObject.GetComponent<UILabel>();
-        label4Value = matWindow.transform.FindChild("Label4").gameObject.transform.FindChild("Label4Value").gameObject.GetComponent<UILabel>();
-        label5 = matWindow.transform.FindChild("Label5").gameObject.GetComponent<UILabel>();
-        label5Value = matWindow.transform.FindChild("Label5").gameObject.transform.FindChild("Label5Value").gameObject.GetComponent<UILabel>();
-        label6 = matWindow.transform.FindChild("Label6").gameObject.GetComponent<UILabel>();
-        label6Value = matWindow.transform.FindChild("Label6").gameObject.transform.FindChild("Label6Value").gameObject.GetComponent<UILabel>();
+        storageMasterData = this.GetComponent<StorageMaster>();
+        matWindowObject = transform.FindChild("StorageWindowData").gameObject.transform.FindChild("MaterialWindow").gameObject;
+        label1 = matWindowObject.transform.FindChild("Label1").gameObject.GetComponent<UILabel>();
+        label1Value = matWindowObject.transform.FindChild("Label1").gameObject.transform.FindChild("Label1Value").gameObject.GetComponent<UILabel>();
+        label2 = matWindowObject.transform.FindChild("Label2").gameObject.GetComponent<UILabel>();
+        label2Value = matWindowObject.transform.FindChild("Label2").gameObject.transform.FindChild("Label2Value").gameObject.GetComponent<UILabel>();
+        label3 = matWindowObject.transform.FindChild("Label3").gameObject.GetComponent<UILabel>();
+        label3Value = matWindowObject.transform.FindChild("Label3").gameObject.transform.FindChild("Label3Value").gameObject.GetComponent<UILabel>();
+        label4 = matWindowObject.transform.FindChild("Label4").gameObject.GetComponent<UILabel>();
+        label4Value = matWindowObject.transform.FindChild("Label4").gameObject.transform.FindChild("Label4Value").gameObject.GetComponent<UILabel>();
+        label5 = matWindowObject.transform.FindChild("Label5").gameObject.GetComponent<UILabel>();
+        label5Value = matWindowObject.transform.FindChild("Label5").gameObject.transform.FindChild("Label5Value").gameObject.GetComponent<UILabel>();
+        label6 = matWindowObject.transform.FindChild("Label6").gameObject.GetComponent<UILabel>();
+        label6Value = matWindowObject.transform.FindChild("Label6").gameObject.transform.FindChild("Label6Value").gameObject.GetComponent<UILabel>();
 
-        label7Pipes = matWindow.transform.FindChild("Label7Pipes").gameObject.GetComponent<UILabel>();
-        label7PipesValue = matWindow.transform.FindChild("Label7Pipes").gameObject.transform.FindChild("Label7PipesValue").gameObject.GetComponent<UILabel>();
+        label7Pipes = matWindowObject.transform.FindChild("Label7Pipes").gameObject.GetComponent<UILabel>();
+        label7PipesValue = matWindowObject.transform.FindChild("Label7Pipes").gameObject.transform.FindChild("Label7PipesValue").gameObject.GetComponent<UILabel>();
 
-        labelShowType = matWindow.transform.FindChild("LabelShowType").gameObject.GetComponent<UILabel>();
+        labelShowType = matWindowObject.transform.FindChild("LabelShowType").gameObject.GetComponent<UILabel>();
 
         GameObject storageWindowDataObject = transform.FindChild("StorageWindowData").gameObject;
         maxStorageLabel = storageWindowDataObject.transform.FindChild("LabelMaxStorage").gameObject.transform.FindChild("LabelMaxStorageValue").gameObject.GetComponent<UILabel>();
@@ -107,7 +107,7 @@ public class StorageWindow : MonoBehaviour
         diamondLabelValue = storageWindowDataObject.transform.FindChild("LabelDiamond").gameObject.transform.FindChild("LabelDiamondValue").gameObject.GetComponent<UILabel>();
 
 
-        storageWindowMenu = GameObject.FindGameObjectWithTag("MenuStorage");
+        storageWindowMenuObject = GameObject.FindGameObjectWithTag("MenuStorage");
 
         StorageShow();
     } // END Start
@@ -126,11 +126,11 @@ public class StorageWindow : MonoBehaviour
     void FillDictionary()
     {
 
-        bodenData.Add(bodenArten.Kohle, 10);
-        bodenData.Add(bodenArten.Erz, 20);
-        bodenData.Add(bodenArten.Oel, 30);
-        bodenData.Add(bodenArten.Gold, 40);
-        bodenData.Add(bodenArten.Diamant, 50);
+        bodenArtenDictionary.Add(bodenArten.Kohle, 10);
+        bodenArtenDictionary.Add(bodenArten.Erz, 20);
+        bodenArtenDictionary.Add(bodenArten.Oel, 30);
+        bodenArtenDictionary.Add(bodenArten.Gold, 40);
+        bodenArtenDictionary.Add(bodenArten.Diamant, 50);
     } // END FillDictionary
 
     void ReloadStorageDataInWindow()
@@ -139,11 +139,11 @@ public class StorageWindow : MonoBehaviour
         maxStorageLabel.text = maxStorageValue.ToString();
         curStorageLabel.text = currentStorageValue.ToString();
 
-        coleLabelValue.text = bodenData[bodenArten.Kohle].ToString();
-        oreLabelValue.text = bodenData[bodenArten.Erz].ToString();
-        goldLabelValue.text = bodenData[bodenArten.Gold].ToString();
-        oilLabelValue.text = bodenData[bodenArten.Oel].ToString();
-        diamondLabelValue.text = bodenData[bodenArten.Diamant].ToString();
+        coleLabelValue.text = bodenArtenDictionary[bodenArten.Kohle].ToString();
+        oreLabelValue.text = bodenArtenDictionary[bodenArten.Erz].ToString();
+        goldLabelValue.text = bodenArtenDictionary[bodenArten.Gold].ToString();
+        oilLabelValue.text = bodenArtenDictionary[bodenArten.Oel].ToString();
+        diamondLabelValue.text = bodenArtenDictionary[bodenArten.Diamant].ToString();
         label7Pipes.text = "Pipes";
         label7PipesValue.text = pipesAmount.ToString();
 
@@ -155,7 +155,7 @@ public class StorageWindow : MonoBehaviour
         if (showStorage == false)
         {
             showStorage = true;
-            storageWindowMenu.SetActive(true);
+            storageWindowMenuObject.SetActive(true);
 
 
             ReloadStorageDataInWindow();
@@ -163,20 +163,20 @@ public class StorageWindow : MonoBehaviour
         else
         {
             showStorage = false;
-            storageWindowMenu.SetActive(false);
+            storageWindowMenuObject.SetActive(false);
         }
     } // END StorageShow
 
     public int SetStorageUp(bodenArten bArten, int amount)
     {
 
-        if (bodenData.ContainsKey(bArten))
+        if (bodenArtenDictionary.ContainsKey(bArten))
         {
 
             if (currentStorageValue < maxStorageValue)
             {
                 int storedAmount = Mathf.Clamp(amount, 0, (maxStorageValue - currentStorageValue));
-                bodenData[bArten] += storedAmount;
+                bodenArtenDictionary[bArten] += storedAmount;
                 currentStorageValue += storedAmount;
                 return (amount - storedAmount);
 
@@ -193,7 +193,7 @@ public class StorageWindow : MonoBehaviour
     public void RecheckCurrentStorageValue()
     {
 
-        int result = bodenData[bodenArten.Kohle] + bodenData[bodenArten.Erz] + bodenData[bodenArten.Gold] + bodenData[bodenArten.Oel] + bodenData[bodenArten.Diamant];
+        int result = bodenArtenDictionary[bodenArten.Kohle] + bodenArtenDictionary[bodenArten.Erz] + bodenArtenDictionary[bodenArten.Gold] + bodenArtenDictionary[bodenArten.Oel] + bodenArtenDictionary[bodenArten.Diamant];
 
         if (result <= maxStorageValue)
         {
@@ -213,7 +213,7 @@ public class StorageWindow : MonoBehaviour
         if (showMaterialWindow == true)
         {
 
-            matWindow.SetActive(true);
+            matWindowObject.SetActive(true);
             if (showTypeInMaterialWindow == true)
             {
                 labelShowType.text = "Drill";
@@ -258,7 +258,7 @@ public class StorageWindow : MonoBehaviour
         else
         {
 
-            matWindow.SetActive(false);
+            matWindowObject.SetActive(false);
         }
 
     } // END ShowMaterialWindow

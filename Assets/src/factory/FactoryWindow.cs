@@ -14,12 +14,12 @@ public class FactoryWindow : MonoBehaviour
     // Factory
     // Allgemein
     public int costsAmount = 0;
-    public StorageWindow stoWindow;
+    public StorageWindow storageWindowData;
 
     // Factory
     // Drill
-    public DrillMaster dMaster;
-    public Dictionary<bohrerArten, DrillMain> drillDic;
+    public DrillMaster drillMasterData;
+    public Dictionary<bohrerArten, DrillMain> drillDictionary;
     public int drillCurrentShownType = 0;
     public int drillAmount = 0;
     public UILabel drillLabelType;
@@ -27,8 +27,8 @@ public class FactoryWindow : MonoBehaviour
 
     // Factory
     // Scan
-    public ScanMaster sMaster;
-    public Dictionary<sondenArten, ScanMain> scanDic;
+    public ScanMaster scanMasterData;
+    public Dictionary<sondenArten, ScanMain> scanDictionary;
     public int scanCurrentShownType = 0;
     public int scanAmount = 0;
     public UILabel scanLabelType;
@@ -42,7 +42,7 @@ public class FactoryWindow : MonoBehaviour
     public UILabel pipesValue;
 
     // Links
-    public GameObject factoryWindowMenu;
+    public GameObject factoryWindowMenuObject;
 
     // Label
     public UILabel costsValue;
@@ -54,7 +54,7 @@ public class FactoryWindow : MonoBehaviour
 
 
     // Warteliste
-    public TaskWaitListWindow taskWindow;
+    public TaskWaitListWindow taskWaitListWindowData;
     public GameObject taskWindowObject;
     public bool taskStarted = false;
     public int currentTaskAmount = 0;
@@ -72,15 +72,15 @@ public class FactoryWindow : MonoBehaviour
 
 
 
-        factoryWindowMenu = GameObject.FindGameObjectWithTag("MenuFactory");
-        taskWindowObject = factoryWindowMenu.transform.FindChild("TaskListWindow").gameObject;
-        stoWindow = GetComponent<StorageWindow>();
-        dMaster = GetComponent<DrillMaster>();
-        sMaster = GetComponent<ScanMaster>();
-        taskWindow = GetComponent<TaskWaitListWindow>();
-        drillDic = dMaster.drillDictionary;
-        scanDic = sMaster.scanDictionary;
-        progressSlider = factoryWindowMenu.transform.FindChild("ProgressBarBuild").gameObject.GetComponent<UISlider>();
+        factoryWindowMenuObject = GameObject.FindGameObjectWithTag("MenuFactory");
+        taskWindowObject = factoryWindowMenuObject.transform.FindChild("TaskListWindow").gameObject;
+        storageWindow = GetComponent<StorageWindow>();
+        drillMasterData = GetComponent<DrillMaster>();
+        scanMasterData = GetComponent<ScanMaster>();
+        taskWaitListWindowData = GetComponent<TaskWaitListWindow>();
+        drillDictionary = drillMasterData.drillDictionary;
+        scanDictionary = scanMasterData.scanDictionary;
+        progressSlider = factoryWindowMenuObject.transform.FindChild("ProgressBarBuild").gameObject.GetComponent<UISlider>();
 
         GameObject drillDataObject = transform.FindChild("FactoryWindowData").gameObject.transform.FindChild("DrillData").gameObject;
         drillLabelType = drillDataObject.transform.FindChild("LabelDrillType").gameObject.GetComponent<UILabel>();
@@ -132,13 +132,13 @@ public class FactoryWindow : MonoBehaviour
                 {
                     currentTaskAmount--;
                     progressTime = currentTaskProgessTime;
-                    stoWindow.SetMaterialWindowDataUp(currentTaskType, 1);
+                    storageWindow.SetMaterialWindowDataUp(currentTaskType, 1);
                 }
                 else
                 {
                     taskStarted = false;
                     //stoWindow.SetMaterialWindowDataUp(currentTaskType, 1);
-                    taskWindow.DeleteTasks();
+                    taskWaitListWindowData.DeleteTasks();
 
                 }
 
@@ -158,7 +158,7 @@ public class FactoryWindow : MonoBehaviour
 
             currentTaskAmount = amount;
             currentTaskType = productType;
-            currentTaskProgessTime = drillDic[bohrerArten.Standard].buildTime;
+            currentTaskProgessTime = drillDictionary[bohrerArten.Standard].buildTime;
             progressTime = currentTaskProgessTime;
             speicher1 = progressTime / 100;
             taskStarted = true;
@@ -168,7 +168,7 @@ public class FactoryWindow : MonoBehaviour
 
             currentTaskAmount = amount;
             currentTaskType = productType;
-            currentTaskProgessTime = drillDic[bohrerArten.Eisen].buildTime;
+            currentTaskProgessTime = drillDictionary[bohrerArten.Eisen].buildTime;
             progressTime = currentTaskProgessTime;
             speicher1 = progressTime / 100;
             taskStarted = true;
@@ -178,7 +178,7 @@ public class FactoryWindow : MonoBehaviour
 
             currentTaskAmount = amount;
             currentTaskType = productType;
-            currentTaskProgessTime = drillDic[bohrerArten.Stahl].buildTime;
+            currentTaskProgessTime = drillDictionary[bohrerArten.Stahl].buildTime;
             progressTime = currentTaskProgessTime;
             speicher1 = progressTime / 100;
             taskStarted = true;
@@ -188,7 +188,7 @@ public class FactoryWindow : MonoBehaviour
 
             currentTaskAmount = amount;
             currentTaskType = productType;
-            currentTaskProgessTime = drillDic[bohrerArten.Chrom].buildTime;
+            currentTaskProgessTime = drillDictionary[bohrerArten.Chrom].buildTime;
             progressTime = currentTaskProgessTime;
             speicher1 = progressTime / 100;
             taskStarted = true;
@@ -198,7 +198,7 @@ public class FactoryWindow : MonoBehaviour
 
             currentTaskAmount = amount;
             currentTaskType = productType;
-            currentTaskProgessTime = drillDic[bohrerArten.Titan].buildTime;
+            currentTaskProgessTime = drillDictionary[bohrerArten.Titan].buildTime;
             progressTime = currentTaskProgessTime;
             speicher1 = progressTime / 100;
             taskStarted = true;
@@ -208,7 +208,7 @@ public class FactoryWindow : MonoBehaviour
 
             currentTaskAmount = amount;
             currentTaskType = productType;
-            currentTaskProgessTime = drillDic[bohrerArten.Diamant].buildTime;
+            currentTaskProgessTime = drillDictionary[bohrerArten.Diamant].buildTime;
             progressTime = currentTaskProgessTime;
             speicher1 = progressTime / 100;
             taskStarted = true;
@@ -218,7 +218,7 @@ public class FactoryWindow : MonoBehaviour
 
             currentTaskAmount = amount;
             currentTaskType = productType;
-            currentTaskProgessTime = scanDic[sondenArten.Starterkit].buildTime;
+            currentTaskProgessTime = scanDictionary[sondenArten.Starterkit].buildTime;
             progressTime = currentTaskProgessTime;
             speicher1 = progressTime / 100;
             taskStarted = true;
@@ -228,7 +228,7 @@ public class FactoryWindow : MonoBehaviour
 
             currentTaskAmount = amount;
             currentTaskType = productType;
-            currentTaskProgessTime = scanDic[sondenArten.Schwach].buildTime;
+            currentTaskProgessTime = scanDictionary[sondenArten.Schwach].buildTime;
             progressTime = currentTaskProgessTime;
             speicher1 = progressTime / 100;
             taskStarted = true;
@@ -238,7 +238,7 @@ public class FactoryWindow : MonoBehaviour
 
             currentTaskAmount = amount;
             currentTaskType = productType;
-            currentTaskProgessTime = scanDic[sondenArten.Klein].buildTime;
+            currentTaskProgessTime = scanDictionary[sondenArten.Klein].buildTime;
             progressTime = currentTaskProgessTime;
             speicher1 = progressTime / 100;
             taskStarted = true;
@@ -248,7 +248,7 @@ public class FactoryWindow : MonoBehaviour
 
             currentTaskAmount = amount;
             currentTaskType = productType;
-            currentTaskProgessTime = scanDic[sondenArten.Mittel].buildTime;
+            currentTaskProgessTime = scanDictionary[sondenArten.Mittel].buildTime;
             progressTime = currentTaskProgessTime;
             speicher1 = progressTime / 100;
             taskStarted = true;
@@ -258,7 +258,7 @@ public class FactoryWindow : MonoBehaviour
 
             currentTaskAmount = amount;
             currentTaskType = productType;
-            currentTaskProgessTime = scanDic[sondenArten.Groß].buildTime;
+            currentTaskProgessTime = scanDictionary[sondenArten.Groß].buildTime;
             progressTime = currentTaskProgessTime;
             speicher1 = progressTime / 100;
             taskStarted = true;
@@ -268,7 +268,7 @@ public class FactoryWindow : MonoBehaviour
 
             currentTaskAmount = amount;
             currentTaskType = productType;
-            currentTaskProgessTime = scanDic[sondenArten.Stark].buildTime;
+            currentTaskProgessTime = scanDictionary[sondenArten.Stark].buildTime;
             progressTime = currentTaskProgessTime;
             speicher1 = progressTime / 100;
             taskStarted = true;
@@ -293,7 +293,7 @@ public class FactoryWindow : MonoBehaviour
         if (showFactory == false)
         {
             showFactory = true;
-            factoryWindowMenu.SetActive(true);
+            factoryWindowMenuObject.SetActive(true);
             taskListShow = false;
             taskWindowObject.SetActive(false);
 
@@ -302,7 +302,7 @@ public class FactoryWindow : MonoBehaviour
         else
         {
             showFactory = false;
-            factoryWindowMenu.SetActive(false);
+            factoryWindowMenuObject.SetActive(false);
 
             taskListShow = false;
             taskWindowObject.SetActive(false);
@@ -318,22 +318,22 @@ public class FactoryWindow : MonoBehaviour
         switch (drillCurrentShownType)
         {
             case 0:
-                drillLabelType.text = drillDic[bohrerArten.Standard].drillName;
+                drillLabelType.text = drillDictionary[bohrerArten.Standard].drillName;
                 break;
             case 1:
-                drillLabelType.text = drillDic[bohrerArten.Eisen].drillName;
+                drillLabelType.text = drillDictionary[bohrerArten.Eisen].drillName;
                 break;
             case 2:
-                drillLabelType.text = drillDic[bohrerArten.Stahl].drillName;
+                drillLabelType.text = drillDictionary[bohrerArten.Stahl].drillName;
                 break;
             case 3:
-                drillLabelType.text = drillDic[bohrerArten.Chrom].drillName;
+                drillLabelType.text = drillDictionary[bohrerArten.Chrom].drillName;
                 break;
             case 4:
-                drillLabelType.text = drillDic[bohrerArten.Titan].drillName;
+                drillLabelType.text = drillDictionary[bohrerArten.Titan].drillName;
                 break;
             case 5:
-                drillLabelType.text = drillDic[bohrerArten.Diamant].drillName;
+                drillLabelType.text = drillDictionary[bohrerArten.Diamant].drillName;
                 break;
         } // DrillLabelType
 
@@ -344,22 +344,22 @@ public class FactoryWindow : MonoBehaviour
         switch (scanCurrentShownType)
         {
             case 0:
-                scanLabelType.text = scanDic[sondenArten.Starterkit].scanName;
+                scanLabelType.text = scanDictionary[sondenArten.Starterkit].scanName;
                 break;
             case 1:
-                scanLabelType.text = scanDic[sondenArten.Schwach].scanName;
+                scanLabelType.text = scanDictionary[sondenArten.Schwach].scanName;
                 break;
             case 2:
-                scanLabelType.text = scanDic[sondenArten.Klein].scanName;
+                scanLabelType.text = scanDictionary[sondenArten.Klein].scanName;
                 break;
             case 3:
-                scanLabelType.text = scanDic[sondenArten.Mittel].scanName;
+                scanLabelType.text = scanDictionary[sondenArten.Mittel].scanName;
                 break;
             case 4:
-                scanLabelType.text = scanDic[sondenArten.Groß].scanName;
+                scanLabelType.text = scanDictionary[sondenArten.Groß].scanName;
                 break;
             case 5:
-                scanLabelType.text = scanDic[sondenArten.Stark].scanName;
+                scanLabelType.text = scanDictionary[sondenArten.Stark].scanName;
                 break;
         } // ScanLabelType
 
@@ -381,8 +381,8 @@ public class FactoryWindow : MonoBehaviour
     {
 
 
-        int drillCosts = drillDic[GetBohrerArtByString(drillLabelType.text)].costsMoney * drillAmount;
-        int scanCosts = scanDic[GetSondenArtByString(scanLabelType.text)].costsMoney * scanAmount;
+        int drillCosts = drillDictionary[GetBohrerArtByString(drillLabelType.text)].costsMoney * drillAmount;
+        int scanCosts = scanDictionary[GetSondenArtByString(scanLabelType.text)].costsMoney * scanAmount;
         int pipesCosts = pipesPrice * pipesAmount;
 
         costsAmount = drillCosts + scanCosts + pipesCosts;
@@ -414,7 +414,7 @@ public class FactoryWindow : MonoBehaviour
 
             taskListShow = true;
             taskWindowObject.SetActive(taskListShow);
-            taskWindow.TaskListShowed();
+            taskWaitListWindowData.TaskListShowed();
         }
         else
         {

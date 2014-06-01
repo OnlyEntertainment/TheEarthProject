@@ -14,9 +14,9 @@ public class TaskWaitListWindow : MonoBehaviour
     public List<int> taskListAmount = new List<int>();
 
     public GameObject testContainerObject;
-    public GameObject spriteTest;
+    public GameObject spriteTestObject;
 
-    public FactoryWindow facWindow;
+    public FactoryWindow factoryWindowData;
 
     public int currentAmount = 0;
     public List<GameObject> listOfLabels = new List<GameObject>();
@@ -24,7 +24,7 @@ public class TaskWaitListWindow : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        facWindow = GetComponent<FactoryWindow>();
+        factoryWindowData = GetComponent<FactoryWindow>();
         testContainerObject = transform.FindChild("FactoryWindowData").gameObject.transform.FindChild("TaskListWindow").gameObject.transform.FindChild("Scroll View").gameObject.transform.FindChild("TaskContainer").gameObject;
             //transform.GetChild(1).gameObject.transform.GetChild(1).gameObject;
     }
@@ -57,9 +57,9 @@ public class TaskWaitListWindow : MonoBehaviour
         {
             
             
-            if (facWindow.taskStarted == false)
+            if (factoryWindowData.taskStarted == false)
             {
-                facWindow.SetCurrentTask(taskListType[0], taskListAmount[0]);
+                factoryWindowData.SetCurrentTask(taskListType[0], taskListAmount[0]);
             }
         }
 
@@ -84,7 +84,7 @@ public class TaskWaitListWindow : MonoBehaviour
     {
 
 
-            facWindow.SetCurrentTask(taskListType[0], taskListAmount[0]);
+            factoryWindowData.SetCurrentTask(taskListType[0], taskListAmount[0]);
 
     } // END SetTasksAgain
 
@@ -99,7 +99,7 @@ public class TaskWaitListWindow : MonoBehaviour
     public void TaskListShowed()
     {
 
-        if(facWindow.currentTaskAmount > 0)
+        if(factoryWindowData.currentTaskAmount > 0)
         {
 
             GameObject newLabel = (GameObject)GameObject.Instantiate(spriteTest, testContainerObject.transform.position, new Quaternion(0f, 0f, 0f, 0f));

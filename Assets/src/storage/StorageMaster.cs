@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 public class StorageMaster : MonoBehaviour {
 
-    public Dictionary<string, StorageMain> stoDictionary;
+    public Dictionary<string, StorageMain> storageDictionary;
 
 
 	void Awake () {
 
-        stoDictionary = StorageMain.GenerateStorage();
+        storageDictionary = StorageMain.GenerateStorage();
 
 	} // END Awake
 	

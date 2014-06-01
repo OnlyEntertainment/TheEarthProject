@@ -7,18 +7,18 @@ using bodenArten = CellControl.BODENARTEN;
 public class StorageButtonClick : MonoBehaviour
 {
 
-    public StorageWindow stoWindow;
-    public PlayerAttributeControl pMaster;
-    public StorageWindow stoWindowSecond;
+    public StorageWindow storageWindowData;
+    public PlayerAttributeControl playerAttributeControllData;
+    public StorageWindow storageWindowSecondData;
 
 
     // Use this for initialization
     void Awake()
     {
 
-        stoWindow = gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<StorageWindow>();
-        pMaster = GameObject.Find("01_Player").GetComponent<PlayerAttributeControl>();
-        stoWindowSecond = gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<StorageWindow>();
+        storageWindowData = gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<StorageWindow>();
+        playerAttributeControllData = GameObject.Find("01_Player").GetComponent<PlayerAttributeControl>();
+        storageWindowSecondData = gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<StorageWindow>();
     } // END Start
 
     // Update is called once per frame
@@ -30,16 +30,16 @@ public class StorageButtonClick : MonoBehaviour
     public void StorageButtonClicked()
     {
 
-        Dictionary<string, StorageMain> rMasterDic = stoWindow.stoMaster.stoDictionary;
+        Dictionary<string, StorageMain> rMasterDic = storageWindowData.storageMasterData.storageDictionary;
 
         if (rMasterDic["Storage"].currentLevel < rMasterDic["Storage"].maxLevel)
         {
 
-            if (pMaster.playerMoney >= rMasterDic["Storage"].costsMoney[rMasterDic["Storage"].currentLevel])
+            if (playerAttributeControllData.playerMoney >= rMasterDic["Storage"].costsMoney[rMasterDic["Storage"].currentLevel])
             {
 
-                pMaster.playerMoney -= rMasterDic["Storage"].costsMoney[rMasterDic["Storage"].currentLevel];
-                stoWindow.maxStorageValue += rMasterDic["Storage"].valueStep[rMasterDic["Storage"].currentLevel];
+                playerAttributeControllData.playerMoney -= rMasterDic["Storage"].costsMoney[rMasterDic["Storage"].currentLevel];
+                storageWindowData.maxStorageValue += rMasterDic["Storage"].valueStep[rMasterDic["Storage"].currentLevel];
                 rMasterDic["Storage"].currentLevel++;
 
 
@@ -52,13 +52,13 @@ public class StorageButtonClick : MonoBehaviour
 
     public void StorageOpenMaterialWindow()
     {
-        if (stoWindowSecond.showMaterialWindow == true)
+        if (storageWindowSecondData.showMaterialWindow == true)
         {
-            stoWindowSecond.showMaterialWindow = false;
+            storageWindowSecondData.showMaterialWindow = false;
         }
         else
         {
-            stoWindowSecond.showMaterialWindow = true;
+            storageWindowSecondData.showMaterialWindow = true;
         }
 
 

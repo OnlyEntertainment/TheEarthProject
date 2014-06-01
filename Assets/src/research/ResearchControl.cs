@@ -14,7 +14,7 @@ public class ResearchControl : MonoBehaviour {
     public bool activated = false;
 
     public GameObject playerObject;
-    public PlayerAttributeControl playerControl;
+    public PlayerAttributeControl playerAttributeControlData;
 
 
 
@@ -22,7 +22,7 @@ public class ResearchControl : MonoBehaviour {
 	void Start () {
 
         playerObject = GameObject.Find("01_Player");
-        playerControl = playerObject.GetComponent<PlayerAttributeControl>();
+        playerAttributeControlData = playerObject.GetComponent<PlayerAttributeControl>();
 
         this.name = "05_" + researchName;
 
@@ -51,9 +51,9 @@ public class ResearchControl : MonoBehaviour {
         if (researchType == "Speed")
         {
             
-            playerControl.researchDrillingSpeed = actValue;
+            playerAttributeControlData.researchDrillingSpeed = actValue;
         }
-        else { playerControl.researchDrillingAmount = actValue; }
+        else { playerAttributeControlData.researchDrillingAmount = actValue; }
     }
 
 }

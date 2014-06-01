@@ -12,14 +12,14 @@ public class StorageMain {
 
 
 
-    public StorageMain(string stoName, int cLevel, int mLevel, List<int> moneyCosts, List<int> vStep)
+    public StorageMain(string storageNameTemp, int currentLevelTemp, int maxLevelTemp, List<int> moneyCostsTemp, List<int> valueStepTemp)
     {
 
-        storageName = stoName;
-        currentLevel = cLevel;
-        maxLevel = mLevel;
-        costsMoney = moneyCosts;      
-        valueStep = vStep;
+        storageName = storageNameTemp;
+        currentLevel = currentLevelTemp;
+        maxLevel = maxLevelTemp;
+        costsMoney = moneyCostsTemp;      
+        valueStep = valueStepTemp;
         
 
 

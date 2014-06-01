@@ -6,8 +6,8 @@ using rType = ResearchMain.rType;
 public class ResearchWindow : MonoBehaviour {
 
     // Allgemein
-    public ResearchMaster rMaster;
-    public PlayerAttributeControl playerMaster;
+    public ResearchMaster researchMasterData;
+    public PlayerAttributeControl playerAttributeControlData;
     
     // Research
     public bool showResearch = true;
@@ -19,7 +19,7 @@ public class ResearchWindow : MonoBehaviour {
     public rType currentResearchType;
 
     // Grafik
-    public GameObject researchWindowMenu;
+    public GameObject researchWindowMenuObject;
 
     // Buttons
     public UILabel buttonSpeedLabel;
@@ -41,11 +41,11 @@ public class ResearchWindow : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        rMaster = this.GetComponent<ResearchMaster>();
-        researchTypeCount = rMaster.resDictionary.Count;
-        playerMaster = GameObject.Find("01_Player").GetComponent<PlayerAttributeControl>();
+        researchMasterData = this.GetComponent<ResearchMaster>();
+        researchTypeCount = researchMasterData.researchDictionary.Count;
+        playerAttributeControlData = GameObject.Find("01_Player").GetComponent<PlayerAttributeControl>();
 
-        researchWindowMenu = GameObject.FindGameObjectWithTag("MenuResearch");
+        researchWindowMenuObject = GameObject.FindGameObjectWithTag("MenuResearch");
 
         
 
@@ -85,21 +85,21 @@ public class ResearchWindow : MonoBehaviour {
             }
             else
             {
-                rMaster.SetUpgrade(currentResearchType);
+                researchMasterData.SetUpgrade(currentResearchType);
                 ResearchWindowReload();
 
                 if(currentResearchType == rType.Speed)
                 {
-                    playerMaster.researchDrillingSpeed = rMaster.resDictionary[rType.Speed].valueStep[rMaster.resDictionary[rType.Speed].currentLevel];
+                    playerAttributeControlData.researchDrillingSpeed = researchMasterData.researchDictionary[rType.Speed].valueStep[researchMasterData.researchDictionary[rType.Speed].currentLevel];
                 }
                 else if (currentResearchType == rType.Amount)
                 {
-                    playerMaster.researchDrillingAmount = rMaster.resDictionary[rType.Amount].valueStep[rMaster.resDictionary[rType.Amount].currentLevel];
+                    playerAttributeControlData.researchDrillingAmount = researchMasterData.researchDictionary[rType.Amount].valueStep[researchMasterData.researchDictionary[rType.Amount].currentLevel];
 
                 }
                 else if (currentResearchType == rType.Scan)
                 {
-                    playerMaster.researchScanSpeed = rMaster.resDictionary[rType.Scan].valueStep[rMaster.resDictionary[rType.Scan].currentLevel];
+                    playerAttributeControlData.researchScanSpeed = researchMasterData.researchDictionary[rType.Scan].valueStep[researchMasterData.researchDictionary[rType.Scan].currentLevel];
 
                 }
                 else if (currentResearchType == rType.Drill)
@@ -138,14 +138,14 @@ public class ResearchWindow : MonoBehaviour {
         if(showResearch == false) 
         { 
             showResearch = true;
-            researchWindowMenu.SetActive(true);
+            researchWindowMenuObject.SetActive(true);
 
             ResearchWindowReload();
         } 
         else
         { 
             showResearch = false;
-            researchWindowMenu.SetActive(false);
+            researchWindowMenuObject.SetActive(false);
         }
 
         
@@ -154,12 +154,12 @@ public class ResearchWindow : MonoBehaviour {
 
     public void ResearchWindowReload()
     {
-        buttonSpeedLabel.text = rMaster.resDictionary[rType.Speed].researchTitle + " - " + rMaster.resDictionary[rType.Speed].currentLevel;
-        buttonAmountLabel.text = rMaster.resDictionary[rType.Amount].researchTitle + " - " + rMaster.resDictionary[rType.Amount].currentLevel;
-        buttonDrillLabel.text = rMaster.resDictionary[rType.Drill].researchTitle + " - " + rMaster.resDictionary[rType.Drill].currentLevel;
-        buttonBuildCostsLabel.text = rMaster.resDictionary[rType.BuildCosts].researchTitle + " - " + rMaster.resDictionary[rType.BuildCosts].currentLevel;
-        buttonScan.text = rMaster.resDictionary[rType.Scan].researchTitle + " - " + rMaster.resDictionary[rType.Scan].currentLevel;
-        buttonDrillPlattformLabel.text = rMaster.resDictionary[rType.DrillingPlattform].researchTitle + " - " + rMaster.resDictionary[rType.DrillingPlattform].currentLevel;
+        buttonSpeedLabel.text = researchMasterData.researchDictionary[rType.Speed].researchTitle + " - " + researchMasterData.researchDictionary[rType.Speed].currentLevel;
+        buttonAmountLabel.text = researchMasterData.researchDictionary[rType.Amount].researchTitle + " - " + researchMasterData.researchDictionary[rType.Amount].currentLevel;
+        buttonDrillLabel.text = researchMasterData.researchDictionary[rType.Drill].researchTitle + " - " + researchMasterData.researchDictionary[rType.Drill].currentLevel;
+        buttonBuildCostsLabel.text = researchMasterData.researchDictionary[rType.BuildCosts].researchTitle + " - " + researchMasterData.researchDictionary[rType.BuildCosts].currentLevel;
+        buttonScan.text = researchMasterData.researchDictionary[rType.Scan].researchTitle + " - " + researchMasterData.researchDictionary[rType.Scan].currentLevel;
+        buttonDrillPlattformLabel.text = researchMasterData.researchDictionary[rType.DrillingPlattform].researchTitle + " - " + researchMasterData.researchDictionary[rType.DrillingPlattform].currentLevel;
 
 
         progressbarSlider.value = researchResult;

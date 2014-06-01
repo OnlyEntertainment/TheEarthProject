@@ -6,12 +6,12 @@ using rType = ResearchMain.rType;
 public class ResearchMaster : MonoBehaviour {
 
 
-    public Dictionary<rType, ResearchMain> resDictionary;
+    public Dictionary<rType, ResearchMain> researchDictionary;
 
 	// Use this for initialization
 	void Awake () {
 
-        resDictionary = ResearchMain.GenerateResearch();
+        researchDictionary = ResearchMain.GenerateResearch();
 
 	}
 	
@@ -29,32 +29,32 @@ public class ResearchMaster : MonoBehaviour {
         {
             case rType.Speed:
 
-                resDictionary[rType.Speed].currentLevel++;
+                researchDictionary[rType.Speed].currentLevel++;
 
                 break;
             case rType.Amount:
 
-                resDictionary[rType.Amount].currentLevel++;
+                researchDictionary[rType.Amount].currentLevel++;
 
                 break;
             case rType.Drill:
 
-                resDictionary[rType.Drill].currentLevel++;
+                researchDictionary[rType.Drill].currentLevel++;
 
                 break;
             case rType.DrillingPlattform:
 
-                resDictionary[rType.DrillingPlattform].currentLevel++;
+                researchDictionary[rType.DrillingPlattform].currentLevel++;
 
                 break;
             case rType.BuildCosts:
 
-                resDictionary[rType.BuildCosts].currentLevel++;
+                researchDictionary[rType.BuildCosts].currentLevel++;
 
                 break;
             case rType.Scan:
 
-                resDictionary[rType.Scan].currentLevel++;
+                researchDictionary[rType.Scan].currentLevel++;
 
                 break;
         }

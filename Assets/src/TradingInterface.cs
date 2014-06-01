@@ -88,11 +88,11 @@ public class TradingInterface : MonoBehaviour
 
     public void ButtonPressed_Sell()
     {
-        storageWindow.bodenData[BODENARTEN.Kohle] -= (int)(coalStorageSlider.value * fixedStorage[BODENARTEN.Kohle]);
-        storageWindow.bodenData[BODENARTEN.Erz] -= (int)(oreStorageSlider.value * fixedStorage[BODENARTEN.Erz]);
-        storageWindow.bodenData[BODENARTEN.Gold] -= (int)(goldStorageSlider.value * fixedStorage[BODENARTEN.Gold]);
-        storageWindow.bodenData[BODENARTEN.Oel] -= (int)(oilStorageSlider.value * fixedStorage[BODENARTEN.Oel]);
-        storageWindow.bodenData[BODENARTEN.Diamant] -= (int)(diamondStorageSlider.value * fixedStorage[BODENARTEN.Diamant]);
+        storageWindow.bodenArtenDictionary[BODENARTEN.Kohle] -= (int)(coalStorageSlider.value * fixedStorage[BODENARTEN.Kohle]);
+        storageWindow.bodenArtenDictionary[BODENARTEN.Erz] -= (int)(oreStorageSlider.value * fixedStorage[BODENARTEN.Erz]);
+        storageWindow.bodenArtenDictionary[BODENARTEN.Gold] -= (int)(goldStorageSlider.value * fixedStorage[BODENARTEN.Gold]);
+        storageWindow.bodenArtenDictionary[BODENARTEN.Oel] -= (int)(oilStorageSlider.value * fixedStorage[BODENARTEN.Oel]);
+        storageWindow.bodenArtenDictionary[BODENARTEN.Diamant] -= (int)(diamondStorageSlider.value * fixedStorage[BODENARTEN.Diamant]);
 
         playerAttributeControl.playerMoney += Convert.ToInt32(sumPriceVar.text);
 
@@ -112,7 +112,7 @@ public class TradingInterface : MonoBehaviour
     void Update()
     {
         
-        if ( fixedStorage == null)fixedStorage = new Dictionary<BODENARTEN, int>(storageWindow.bodenData);
+        if ( fixedStorage == null)fixedStorage = new Dictionary<BODENARTEN, int>(storageWindow.bodenArtenDictionary);
 
         if (Input.GetKeyDown(KeyCode.F4))
         {
@@ -174,7 +174,7 @@ public class TradingInterface : MonoBehaviour
     public void ShowWindow()
     {
 
-        fixedStorage = new Dictionary<BODENARTEN, int>(storageWindow.bodenData);
+        fixedStorage = new Dictionary<BODENARTEN, int>(storageWindow.bodenArtenDictionary);
         coalStorageSlider.numberOfSteps = (fixedStorage[BODENARTEN.Kohle]) + 1;
         oreStorageSlider.numberOfSteps = (fixedStorage[BODENARTEN.Erz]) + 1;
         goldStorageSlider.numberOfSteps = (fixedStorage[BODENARTEN.Gold]) + 1;

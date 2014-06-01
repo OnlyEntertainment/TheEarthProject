@@ -5,43 +5,43 @@ using System;
 public class FactoryButtonClick : MonoBehaviour {
 
 
-    public FactoryWindow facWindow;
-    public PlayerAttributeControl pMaster;
-    public TaskWaitListWindow taskWindow;
+    public FactoryWindow factoryWindowData;
+    public PlayerAttributeControl playerAttributeControlData;
+    public TaskWaitListWindow taskWaitListWindowData;
     
 
 
 	// Use this for initialization
 	void Awake () {
 
-        facWindow = GameObject.Find("00_GuiStuff").GetComponent<FactoryWindow>();
-        pMaster = GameObject.Find("01_Player").GetComponent<PlayerAttributeControl>();
-        taskWindow = GameObject.Find("00_GuiStuff").GetComponent<TaskWaitListWindow>();
+        factoryWindowData = GameObject.Find("00_GuiStuff").GetComponent<FactoryWindow>();
+        playerAttributeControlData = GameObject.Find("01_Player").GetComponent<PlayerAttributeControl>();
+        taskWaitListWindowData = GameObject.Find("00_GuiStuff").GetComponent<TaskWaitListWindow>();
 	}
 	
 	// Update is called once per frame
 	public void ButtonBuySmashed () 
     {
 
-        if (pMaster.playerMoney >= Convert.ToInt32(facWindow.costsValue.text))
+        if (playerAttributeControlData.playerMoney >= Convert.ToInt32(factoryWindowData.costsValue.text))
         {
 
-            taskWindow.SetTasks(facWindow.drillLabelType.text, Convert.ToInt32(facWindow.drillLabelValue.text));
-            taskWindow.SetTasks(facWindow.scanLabelType.text, Convert.ToInt32(facWindow.scanLabelValue.text));
-            taskWindow.SetTasks("Pipes", Convert.ToInt32(facWindow.pipesValue.text));
+            taskWaitListWindowData.SetTasks(factoryWindowData.drillLabelType.text, Convert.ToInt32(factoryWindowData.drillLabelValue.text));
+            taskWaitListWindowData.SetTasks(factoryWindowData.scanLabelType.text, Convert.ToInt32(factoryWindowData.scanLabelValue.text));
+            taskWaitListWindowData.SetTasks("Pipes", Convert.ToInt32(factoryWindowData.pipesValue.text));
 
-            int amountResult = Convert.ToInt32(facWindow.drillLabelValue.text) + Convert.ToInt32(facWindow.scanLabelValue.text) + Convert.ToInt32(facWindow.pipesValue.text);
+            int amountResult = Convert.ToInt32(factoryWindowData.drillLabelValue.text) + Convert.ToInt32(factoryWindowData.scanLabelValue.text) + Convert.ToInt32(factoryWindowData.pipesValue.text);
             if (amountResult > 0)
             {
-                taskWindow.SetTaskList(amountResult);
+                taskWaitListWindowData.SetTaskList(amountResult);
 
-                pMaster.playerMoney -= Convert.ToInt32(facWindow.costsValue.text);
-                facWindow.costsAmount = 0;
-                facWindow.drillLabelType.text = "Standard";
-                facWindow.drillAmount = 0;
-                facWindow.scanAmount = 0;
-                facWindow.scanLabelType.text = "Starter Kit";
-                facWindow.pipesAmount = 0;
+                playerAttributeControlData.playerMoney -= Convert.ToInt32(factoryWindowData.costsValue.text);
+                factoryWindowData.costsAmount = 0;
+                factoryWindowData.drillLabelType.text = "Standard";
+                factoryWindowData.drillAmount = 0;
+                factoryWindowData.scanAmount = 0;
+                factoryWindowData.scanLabelType.text = "Starter Kit";
+                factoryWindowData.pipesAmount = 0;
             }
         }
     } // END ButtonBuySmashed
@@ -49,15 +49,15 @@ public class FactoryButtonClick : MonoBehaviour {
     public void ButtonDrillMoreTypeSmashed()
     {
 
-        if(facWindow.drillCurrentShownType < 5)
+        if(factoryWindowData.drillCurrentShownType < 5)
         {
 
-            facWindow.drillCurrentShownType++;
+            factoryWindowData.drillCurrentShownType++;
 
         }
         else
         {
-            facWindow.drillCurrentShownType = 0;
+            factoryWindowData.drillCurrentShownType = 0;
 
         }
 
@@ -66,15 +66,15 @@ public class FactoryButtonClick : MonoBehaviour {
     public void ButtonDrillLessTypeSmashed()
     {
 
-        if (facWindow.drillCurrentShownType > 0)
+        if (factoryWindowData.drillCurrentShownType > 0)
         {
 
-            facWindow.drillCurrentShownType--;
+            factoryWindowData.drillCurrentShownType--;
 
         }
         else
         {
-            facWindow.drillCurrentShownType = 5;
+            factoryWindowData.drillCurrentShownType = 5;
 
         }
 
@@ -84,10 +84,10 @@ public class FactoryButtonClick : MonoBehaviour {
     public void ButtonDrillLessAmountSmashed()
     {
 
-        if (facWindow.drillAmount > 0)
+        if (factoryWindowData.drillAmount > 0)
         {
 
-            facWindow.drillAmount--;
+            factoryWindowData.drillAmount--;
 
         }
         else
@@ -101,10 +101,10 @@ public class FactoryButtonClick : MonoBehaviour {
     public void ButtonDrillMoreAmountSmashed()
     {
 
-        if (facWindow.drillAmount < 999)
+        if (factoryWindowData.drillAmount < 999)
         {
 
-            facWindow.drillAmount++;
+            factoryWindowData.drillAmount++;
 
         }
         else
@@ -119,15 +119,15 @@ public class FactoryButtonClick : MonoBehaviour {
     public void ButtonScanMoreTypeSmashed()
     {
 
-        if (facWindow.scanCurrentShownType < 5)
+        if (factoryWindowData.scanCurrentShownType < 5)
         {
 
-            facWindow.scanCurrentShownType++;
+            factoryWindowData.scanCurrentShownType++;
 
         }
         else
         {
-            facWindow.scanCurrentShownType = 0;
+            factoryWindowData.scanCurrentShownType = 0;
 
         }
 
@@ -136,15 +136,15 @@ public class FactoryButtonClick : MonoBehaviour {
     public void ButtonScanLessTypeSmashed()
     {
 
-        if (facWindow.scanCurrentShownType > 0)
+        if (factoryWindowData.scanCurrentShownType > 0)
         {
 
-            facWindow.scanCurrentShownType--;
+            factoryWindowData.scanCurrentShownType--;
 
         }
         else
         {
-            facWindow.scanCurrentShownType = 5;
+            factoryWindowData.scanCurrentShownType = 5;
 
         }
 
@@ -153,10 +153,10 @@ public class FactoryButtonClick : MonoBehaviour {
     public void ButtonScanLessAmountSmashed()
     {
 
-        if (facWindow.scanAmount > 0)
+        if (factoryWindowData.scanAmount > 0)
         {
 
-            facWindow.scanAmount--;
+            factoryWindowData.scanAmount--;
 
         }
         else
@@ -170,10 +170,10 @@ public class FactoryButtonClick : MonoBehaviour {
     public void ButtonScanMoreAmountSmashed()
     {
 
-        if (facWindow.scanAmount < 999)
+        if (factoryWindowData.scanAmount < 999)
         {
 
-            facWindow.scanAmount++;
+            factoryWindowData.scanAmount++;
 
         }
         else
@@ -188,10 +188,10 @@ public class FactoryButtonClick : MonoBehaviour {
     public void ButtonPipesLessAmountSmashed()
     {
 
-        if (facWindow.pipesAmount > 0)
+        if (factoryWindowData.pipesAmount > 0)
         {
 
-            facWindow.pipesAmount--;
+            factoryWindowData.pipesAmount--;
 
         }
         else
@@ -205,10 +205,10 @@ public class FactoryButtonClick : MonoBehaviour {
     public void ButtonPipesMoreAmountSmashed()
     {
 
-        if (facWindow.pipesAmount < 999)
+        if (factoryWindowData.pipesAmount < 999)
         {
 
-            facWindow.pipesAmount++;
+            factoryWindowData.pipesAmount++;
 
         }
         else
@@ -222,7 +222,7 @@ public class FactoryButtonClick : MonoBehaviour {
     public void ButtonTaskList()
     {
 
-        facWindow.OpenTaskListWindow();
+        factoryWindowData.OpenTaskListWindow();
 
     } // END ButtonBuySmashed
 

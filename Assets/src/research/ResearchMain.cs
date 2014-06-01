@@ -15,17 +15,17 @@ public class ResearchMain {
     public rType researchType;
 
 
-    public ResearchMain (string rTitle, int cLevel, int mLevel, List<int> moneyCosts, List<int> researchCosts, List<int> vStep, List<float>rTime, rType resType)
+    public ResearchMain (string researchTitleTemp, int currentLevelTemp, int maxLevelTemp, List<int> moneyCostsTemp, List<int> researchCostsTemp, List<int> valueStepTemp, List<float>researchTimeTemp, rType researchTypeTemp)
     {
 
-        researchTitle = rTitle;
-        currentLevel = cLevel;
-        maxLevel = mLevel;
-        costsMoney = moneyCosts;
-        costsResearch = researchCosts;
-        valueStep = vStep;
-        researchTime = rTime;
-        researchType = resType;
+        researchTitle = researchTitleTemp;
+        currentLevel = currentLevelTemp;
+        maxLevel = maxLevelTemp;
+        costsMoney = moneyCostsTemp;
+        costsResearch = researchCostsTemp;
+        valueStep = valueStepTemp;
+        researchTime = researchTimeTemp;
+        researchType = researchTypeTemp;
 
 
     }

@@ -13,15 +13,15 @@ public class ScanMain
     public int drillDepht;
     public float mainPriceToprobing;
 
-    public ScanMain(string sName, int moneyCost, float bTime, float pSpeed, int dDepht, float mPriceToProbing)
+    public ScanMain(string scanNameTemp, int moneyCostTemp, float buildTimeTemp, float probingSpeedTemp, int drillDephtTemp, float mainPriceToProbingTemp)
     {
 
-        scanName = sName;
-        costsMoney = moneyCost;
-        buildTime = bTime;
-        probingSpeed = pSpeed;
-        drillDepht = dDepht;
-        mainPriceToprobing = mPriceToProbing;
+        scanName = scanNameTemp;
+        costsMoney = moneyCostTemp;
+        buildTime = buildTimeTemp;
+        probingSpeed = probingSpeedTemp;
+        drillDepht = drillDephtTemp;
+        mainPriceToprobing = mainPriceToProbingTemp;
     } // END ScanMain
 
     

@@ -6,7 +6,7 @@ public class ShowingStuff : MonoBehaviour {
     // ---------
     // Variablen
 
-    float timeA;
+    float timeValue;
     public int fps;
     public int lastFPS;
     public GUIStyle textStyle;
@@ -14,8 +14,8 @@ public class ShowingStuff : MonoBehaviour {
     //++++++++++++++
     // PlayerControl
 
-    public GameObject pObject;
-    public PlayerAttributeControl pControl;
+    public GameObject playerObject;
+    public PlayerAttributeControl playerAttributeControlData;
 
     //++++++++++++++
     // Buildings
@@ -26,26 +26,26 @@ public class ShowingStuff : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        pObject = GameObject.Find("01_Player");
-        pControl = pObject.GetComponent<PlayerAttributeControl>();
+        playerObject = GameObject.Find("01_Player");
+        playerAttributeControlData = playerObject.GetComponent<PlayerAttributeControl>();
         
         
         
-        timeA = Time.timeSinceLevelLoad;
+        timeValue = Time.timeSinceLevelLoad;
         DontDestroyOnLoad(this);
     } // END Start
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeSinceLevelLoad - timeA <= 1)
+        if (Time.timeSinceLevelLoad - timeValue <= 1)
         {
             fps++;
         }
         else
         {
             lastFPS = fps + 1;
-            timeA = Time.timeSinceLevelLoad;
+            timeValue = Time.timeSinceLevelLoad;
             fps = 0;
         }
     } // END Update

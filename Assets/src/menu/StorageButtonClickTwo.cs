@@ -5,31 +5,31 @@ using bodenArten = CellControl.BODENARTEN;
 
 public class StorageButtonClickTwo : MonoBehaviour {
 
-    public StorageWindow stoWindow;
-    public PlayerAttributeControl pMaster;
-    public StorageWindow stoWindowSecond;
+    public StorageWindow storageWindowData;
+    public PlayerAttributeControl playerAttributeControlData;
+    public StorageWindow storageWindowSecondData;
 
 
     // Use this for initialization
     void Awake()
     {
 
-        stoWindow = gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<StorageWindow>();
-        pMaster = GameObject.Find("01_Player").GetComponent<PlayerAttributeControl>();
-        stoWindowSecond = gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<StorageWindow>();
+        storageWindowData = gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<StorageWindow>();
+        playerAttributeControlData = GameObject.Find("01_Player").GetComponent<PlayerAttributeControl>();
+        storageWindowSecondData = gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<StorageWindow>();
     } // END Start
 
 
     public void StorageMaterialTypeNext()
     {
 
-        stoWindowSecond.ChangeShowMaterialType();
+        storageWindowSecondData.ChangeShowMaterialType();
 
     } // END StorageMaterialTypeNext
 
     public void StorageMaterialTypeBack()
     {
-        stoWindowSecond.ChangeShowMaterialType();
+        storageWindowSecondData.ChangeShowMaterialType();
 
 
 
@@ -38,13 +38,13 @@ public class StorageButtonClickTwo : MonoBehaviour {
 
     public void StorageOpenMaterialWindow()
     {
-        if (stoWindowSecond.showMaterialWindow == true)
+        if (storageWindowSecondData.showMaterialWindow == true)
         {
-            stoWindowSecond.showMaterialWindow = false;
+            storageWindowSecondData.showMaterialWindow = false;
         }
         else
         {
-            stoWindowSecond.showMaterialWindow = true;
+            storageWindowSecondData.showMaterialWindow = true;
         }
 
 

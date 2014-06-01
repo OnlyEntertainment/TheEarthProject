@@ -9,12 +9,12 @@ public class PlayerKeyboardControl : MonoBehaviour {
     private bool showStorage = false;
     private bool showFactory = false;
 
-    public PlayerAttributeControl pControl;
+    public PlayerAttributeControl playerAttributeControlData;
 
-    public GameObject menuResearch;
-    public ResearchWindow menuResearchWindow;
-    public StorageWindow menuStorageWindow;
-    public FactoryWindow menuFactoryWindow;
+    public GameObject researchObject;
+    public ResearchWindow menuResearchWindowData;
+    public StorageWindow menuStorageWindowData;
+    public FactoryWindow menuFactoryWindowData;
     // #####
     
     
@@ -26,12 +26,12 @@ public class PlayerKeyboardControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         
-        pControl = gameObject.GetComponent<PlayerAttributeControl>();
+        playerAttributeControlData = gameObject.GetComponent<PlayerAttributeControl>();
 
-        menuResearch = GameObject.Find("00_GuiStuff");
-        menuResearchWindow = menuResearch.GetComponent<ResearchWindow>();
-        menuStorageWindow = menuResearch.GetComponent<StorageWindow>();
-        menuFactoryWindow = menuResearch.GetComponent<FactoryWindow>();
+        researchObject = GameObject.Find("00_GuiStuff");
+        menuResearchWindowData = researchObject.GetComponent<ResearchWindow>();
+        menuStorageWindowData = researchObject.GetComponent<StorageWindow>();
+        menuFactoryWindowData = researchObject.GetComponent<FactoryWindow>();
 
 	} // END Start
 	
@@ -43,17 +43,17 @@ public class PlayerKeyboardControl : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            menuResearchWindow.ResearchShow();
+            menuResearchWindowData.ResearchShow();
         }
 
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            menuFactoryWindow.FactoryShow();
+            menuFactoryWindowData.FactoryShow();
         }
 
         if (Input.GetKeyDown(KeyCode.F3))
         {
-            menuStorageWindow.StorageShow();
+            menuStorageWindowData.StorageShow();
         }
 
 
