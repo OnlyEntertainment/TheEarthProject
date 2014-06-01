@@ -92,7 +92,7 @@ public class TaskWaitListWindow : MonoBehaviour
     void SetAnTaskEntry()
     {
 
-        GameObject.Instantiate(spriteTest, testContainerObject.transform.position, new Quaternion(0f, 0f, 0f, 0f));
+        GameObject.Instantiate(spriteTestObject, testContainerObject.transform.position, new Quaternion(0f, 0f, 0f, 0f));
 
     }
 
@@ -102,7 +102,7 @@ public class TaskWaitListWindow : MonoBehaviour
         if(factoryWindowData.currentTaskAmount > 0)
         {
 
-            GameObject newLabel = (GameObject)GameObject.Instantiate(spriteTest, testContainerObject.transform.position, new Quaternion(0f, 0f, 0f, 0f));
+            GameObject newLabel = (GameObject)GameObject.Instantiate(spriteTestObject, testContainerObject.transform.position, new Quaternion(0f, 0f, 0f, 0f));
             UILabel newLabelLabel = newLabel.GetComponent<UILabel>();
 
             newLabelLabel.text = taskListType[0] + " - " + taskListAmount[0];
